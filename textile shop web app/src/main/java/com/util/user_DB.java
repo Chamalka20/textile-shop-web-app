@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
+
 
 
 
@@ -92,9 +94,13 @@ public static boolean user_insert(String first_name,String last_name,String pass
 	return isSuccess;
 	
 }
+
+}	
+	
+public static List<user> user_login(){
 	
 	
-	
+}	
 	
 	
 }
