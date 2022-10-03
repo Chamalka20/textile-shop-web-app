@@ -90,7 +90,7 @@ public class user_DB {
 	}
 
 		
-	public static user user_validation(String name,String email,String password){
+	public static user user_validation(String name,String password){
 	
 		user us =new user();
 	
@@ -103,7 +103,7 @@ public class user_DB {
 			Connection con = DriverManager.getConnection(url,userName,pass);
 			Statement stmt = con.createStatement();
 			
-			String sql = "SELECT * FROM user,user_address WHERE (user.first_name='"+name+"' OR user.email='"+email+"')AND user.password='"+password+"'";
+			String sql = "SELECT * FROM user,user_address WHERE (user.first_name='"+name+"' OR user.email='"+name+"')AND user.password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
