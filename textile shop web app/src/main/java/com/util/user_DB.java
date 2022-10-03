@@ -107,7 +107,14 @@ public class user_DB {
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			if(rs.next()) {
-				us.
+				us.setUser_id(rs.getInt("user_id"));
+				us.setFirst_name(rs.getString("first_name"));
+				us.setLast_name(rs.getString("last_name"));
+				us.setEmail(rs.getString("email"));
+				us.setTelephone(rs.getInt("telephone"));
+				us.setAddress_line1(rs.getString("address_line1"));
+				us.setAddress_line2(rs.getString("address_line2"));
+				us.setCity(rs.getString("city"));
 			}
 			
 		}

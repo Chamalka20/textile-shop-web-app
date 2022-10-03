@@ -59,6 +59,12 @@ public class user {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	@Override
+	public String toString() {
+		return "user [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
+				+ email + ", telephone=" + telephone + ", address_line1=" + address_line1 + ", address_line2="
+				+ address_line2 + ", city=" + city + "]";
+	}
 	
 	
 }
