@@ -36,8 +36,18 @@
 	
 	</servlet-mapping>
 	
+	<servlet>
+		
+		<servlet-name>add_product</servlet-name>
+		<servlet-class>com.servlet.add_product</servlet-class>
 	
+	</servlet>
 	
+	<servlet-mapping>
+		
+		<servlet-name>add_product</servlet-name>
+		<url-pattern>/pro_add</url-pattern>
 	
+	</servlet-mapping>
 
 </web-app>
