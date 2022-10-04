@@ -18,11 +18,16 @@ public class user_DB {
 		ResultSet generatedkeys=null;
 		int user_id = 0; 
 		
+
+		java.util.Date today = new java.util.Date();
+		java.sql.Timestamp timesta = new java.sql.Timestamp(today.getTime());
+		System.out.println(timesta);
+		
 		String url = "jdbc:mysql://localhost:3306/textile";
 		String userName ="root";
 		String pass ="root";
 		
-		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"')";
+		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`,`ceated_at`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"',?)";
 		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`address_line1`, `address_line2`, `city`) VALUES (?,'"+address_line1+"','"+address_line2+"', '"+city+"')";
 		
 		try {
@@ -31,6 +36,7 @@ public class user_DB {
 			Connection con = DriverManager.getConnection(url,userName,pass);
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS );
 			
+			stmt1.setTimestamp(1, timesta);
 			int rs =stmt1.executeUpdate();
 			generatedkeys = stmt1.getGeneratedKeys();
 			
