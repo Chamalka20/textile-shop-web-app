@@ -13,6 +13,7 @@
 		Name<input type="text" name="name"><br>
 		Description<input type="text" name="desc"><br>
 		Price<input type="text" name="price"><br>
+		quantity<input type="text" name="quan">
 		<input type="submit">
 	
 	</form>
