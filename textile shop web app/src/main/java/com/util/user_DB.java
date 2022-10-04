@@ -17,23 +17,19 @@ public class user_DB {
 		boolean isSuccess = false;
 		ResultSet generatedkeys=null;
 		int user_id = 0; 
+		DB_connect db = new DB_connect();
+		Connection con = null; 
 		
-
 		java.util.Date today = new java.util.Date();
 		java.sql.Timestamp timesta = new java.sql.Timestamp(today.getTime());
 		System.out.println(timesta);
-		
-		String url = "jdbc:mysql://localhost:3306/textile";
-		String userName ="root";
-		String pass ="root";
 		
 		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`,`ceated_at`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"',?)";
 		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`address_line1`, `address_line2`, `city`) VALUES (?,'"+address_line1+"','"+address_line2+"', '"+city+"')";
 		
 		try {
 			
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url,userName,pass);
+			con=db.getConnection();
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS );
 			
 			stmt1.setTimestamp(1, timesta);
@@ -99,14 +95,12 @@ public class user_DB {
 	public  user user_validation(String name,String password){
 	
 		user us =new user();
-	
-		String url = "jdbc:mysql://localhost:3306/textile";
-		String userName ="root";
-		String pass ="root";
-	
+		DB_connect db = new DB_connect();
+		Connection con = null; 
+		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url,userName,pass);
+			
+			con=db.getConnection();
 			Statement stmt = con.createStatement();
 			
 			String sql = "SELECT * FROM user,user_address WHERE (user.first_name='"+name+"' OR user.email='"+name+"')AND user.password='"+password+"'";
