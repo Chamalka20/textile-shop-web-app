@@ -23,9 +23,11 @@ public class user_login extends HttpServlet {
 		String uname = req.getParameter("uname");
 		String pass = req.getParameter("pass");
 	
-		user s1 = user_DB.user_validation(uname,pass);
+		user_DB ud = new user_DB();
+		user s1 = ud.user_validation(uname,pass);
 		req.setAttribute("user", s1);
 		
+	
 		RequestDispatcher rd = req.getRequestDispatcher("show_user.jsp");
 		rd.forward(req, res);
 		

@@ -8,9 +8,10 @@
 </head>
 <body>
 
-	<form action="#" method="post">
+	<form action="validate" method="post">
 		user name<input type="text" name="uname"><br>
-		password<input type="password" name="uname">
+		password<input type="password" name="pass">
+		<input type="submit">
 	
 	</form>
 

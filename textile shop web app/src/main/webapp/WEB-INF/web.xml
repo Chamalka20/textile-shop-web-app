@@ -9,7 +9,7 @@
 	<servlet>
 		
 		<servlet-name>user_registration</servlet-name>
-		<servlet-class>com.user.user_registration</servlet-class>
+		<servlet-class>com.servlet.user_registration</servlet-class>
 	
 	</servlet>
 	
@@ -22,8 +22,19 @@
 	</servlet-mapping>
 	
 	
+	<servlet>
+		
+		<servlet-name>user_login</servlet-name>
+		<servlet-class>com.servlet.user_login</servlet-class>
 	
+	</servlet>
 	
+	<servlet-mapping>
+		
+		<servlet-name>user_login</servlet-name>
+		<url-pattern>/validate</url-pattern>
+	
+	</servlet-mapping>
 	
 	
 	

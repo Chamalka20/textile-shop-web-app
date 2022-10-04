@@ -90,7 +90,7 @@ public class user_DB {
 	}
 
 		
-	public static user user_validation(String name,String password){
+	public  user user_validation(String name,String password){
 	
 		user us =new user();
 	
@@ -105,7 +105,7 @@ public class user_DB {
 			
 			String sql = "SELECT * FROM user,user_address WHERE (user.first_name='"+name+"' OR user.email='"+name+"')AND user.password='"+password+"'";
 			ResultSet rs = stmt.executeQuery(sql);
-			
+			System.out.println(name);
 			if(rs.next()) {
 				us.setUser_id(rs.getInt("user_id"));
 				us.setFirst_name(rs.getString("first_name"));
