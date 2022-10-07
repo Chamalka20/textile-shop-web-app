@@ -49,5 +49,19 @@
 		<url-pattern>/pro_add</url-pattern>
 	
 	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>addProCategory</servlet-name>
+		<servlet-class>com.servlet.addProCategory</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>addProCategory</servlet-name>
+		<url-pattern>/pro_cat</url-pattern>
+	
+	</servlet-mapping>
 
 </web-app>

@@ -21,9 +21,10 @@ public class add_product extends HttpServlet {
 		String desc = req.getParameter("desc");
 		String price = req.getParameter("price");
 		String quantity = req.getParameter("quan");
+		String category = req.getParameter("cate");
 		product_DB pro = new product_DB();
 		
-		boolean isSuccess = pro.insert_pro(name, desc, price,quantity); 
+		boolean isSuccess = pro.insert_pro(name, desc, price,quantity,category); 
 		
 		if(isSuccess==true) {
 			
