@@ -15,6 +15,9 @@
 		Price<input type="text" name="price"><br>
 		quantity<input type="text" name="quan"><br>
 		category<input type="text" name="cate"><br>
+		discount:   add<input type="radio" name="adddisc" value=1> not add<input type="radio" name="adddisc" value=0><br>
+		
+		
 		<input type="submit">
 	
 	
