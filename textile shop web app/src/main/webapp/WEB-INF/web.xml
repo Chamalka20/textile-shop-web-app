@@ -63,5 +63,19 @@
 		<url-pattern>/pro_cat</url-pattern>
 	
 	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>add_discount</servlet-name>
+		<servlet-class>com.servlet.add_discount</servlet-class>
+	
+	</servlet>
+
+	<servlet-mapping>
+		
+		<servlet-name>add_discount</servlet-name>
+		<url-pattern>/dis_add</url-pattern>
+	
+	</servlet-mapping>
 
 </web-app>

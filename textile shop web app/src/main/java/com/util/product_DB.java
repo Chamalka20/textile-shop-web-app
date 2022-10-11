@@ -39,7 +39,7 @@ public class product_DB {
 				
 				System.out.println("category id not get");
 			}
-			
+			//Insert in to inventory
 			int rs2 = stmt2.executeUpdate();
 			generateKey = stmt2.getGeneratedKeys();
 			if(generateKey.next()) {
@@ -100,6 +100,66 @@ public class product_DB {
 			e.printStackTrace();
 			
 		}
+		
+		
+		return isSuccess;
+	}
+	
+	
+	public  boolean add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
+		boolean isSuccess = false;
+		ResultSet generateKey=null;
+		int disid = 0;
+		
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
+		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
+		//String sql3 = "SELECT name FROM textile.product_category;";
+		
+		try {
+			
+			con=db.getConnection();
+			//insert discount table---------------
+			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			int rs =stmt1.executeUpdate();
+			generateKey = stmt1.getGeneratedKeys();
+			
+			if(rs>0) {
+				
+				System.out.println("discount add is success");
+
+			}else {
+				System.out.println("discount add is not success");
+			}
+			
+			//get discount table id primary key------------------
+			if(generateKey.next()) {
+				 disid = generateKey.getInt(1);
+				
+			}else {
+				
+				System.out.println("Not generatekeys");
+			}
+			
+			//set discount to all products-------------
+			if(disapply.equals("all")) {
+				
+				stmt2.setInt(1,disid);
+				stmt2.executeUpdate();
+				
+			}else {
+				System.out.println("not equal all");
+			}
+			
+			
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
 		
 		
 		return isSuccess;
