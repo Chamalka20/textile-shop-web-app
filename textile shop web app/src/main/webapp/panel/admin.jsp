@@ -8,15 +8,14 @@
 </head>
 <body>
 	<h2>add products</h2>
-	<form action="pro_add" method="post">
+	<form action="../pro_add" method="post">
 	
 		Name<input type="text" name="name"><br>
 		Description<input type="text" name="desc"><br>
 		Price<input type="text" name="price"><br>
 		quantity<input type="text" name="quan"><br>
 		category<input type="text" name="cate"><br>
-		discount:   add<input type="radio" name="adddisc" value=1> not add<input type="radio" name="adddisc" value=0><br>
-		
+	
 		
 		<input type="submit">
 	
