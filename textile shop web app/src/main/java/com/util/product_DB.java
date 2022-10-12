@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+
 
 
 
@@ -106,8 +108,8 @@ public class product_DB {
 	}
 	
 	
-	public  boolean add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
-		boolean isSuccess = false;
+	public ArrayList<String> add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
+		ArrayList<String> names = new ArrayList<String>();
 		ResultSet generateKey=null;
 		int disid = 0;
 		
@@ -115,7 +117,7 @@ public class product_DB {
 		Connection con = null;
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
 		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
-		//String sql3 = "SELECT name FROM textile.product_category;";
+		String sql3 = "SELECT name FROM textile.product_category;";
 		
 		try {
 			
@@ -123,6 +125,7 @@ public class product_DB {
 			//insert discount table---------------
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			Statement stmt3 = con.createStatement();
 			int rs =stmt1.executeUpdate();
 			generateKey = stmt1.getGeneratedKeys();
 			
@@ -153,6 +156,20 @@ public class product_DB {
 				System.out.println("not equal all");
 			}
 			
+			//set discount to specific category----------------
+			if(disapply.equals("category")) {
+				ResultSet results=stmt3.executeQuery(sql3);
+				
+			
+				while(results.next()) {
+					names.add(results.getString("name"));
+					
+				}
+				
+			}else {
+				System.out.println("not equal category");
+			}
+			
 			
 			
 		}catch(Exception e) {
@@ -162,7 +179,7 @@ public class product_DB {
 		
 		
 		
-		return isSuccess;
+		return names;
 	}
 	
 	
