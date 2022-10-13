@@ -77,5 +77,19 @@
 		<url-pattern>/dis_add</url-pattern>
 	
 	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>test</servlet-name>
+		<servlet-class>com.servlet.test</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>test</servlet-name>
+		<url-pattern>/someservlet/*</url-pattern>
+	
+	</servlet-mapping>
 
 </web-app>

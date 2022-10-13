@@ -28,7 +28,6 @@ public class add_discount extends HttpServlet {
 	
 		product_DB pro = new product_DB(); 
 		ArrayList<String> names =pro.add_discount(disname, disvalue, disapply, miniperamount, startdate, enddate);
-		
 		String[] listnames = new String[names.size()];
 		listnames = names.toArray(listnames);
 		System.out.println(listnames[3] );
