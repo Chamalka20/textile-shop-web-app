@@ -22,11 +22,20 @@ public class get_categories extends HttpServlet {
 	try {
 		product_DB pro = new product_DB();
 		List<String> names = pro.getpro_category();
+		PrintWriter out = response.getWriter();
+		int lasteli = names.size()-1;
 				for(int i=0;i<names.size();i++) {
 			
-			PrintWriter out = response.getWriter();
-			out.print(names.get(i)+" ");
-			System.out.println(names.get(i));
+			if(i==lasteli) {
+				
+				out.print(names.get(i));
+				System.out.println(names.get(i));
+			}else {
+				out.print(names.get(i)+" ");
+				System.out.println(names.get(i));
+			}
+			
+			
 		}
 		
 		

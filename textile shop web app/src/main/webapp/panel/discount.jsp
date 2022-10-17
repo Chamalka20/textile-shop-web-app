@@ -7,7 +7,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<link rel="stylesheet" href="../css/discount.css">
 </head>
 
 <body>
@@ -18,12 +18,11 @@
 	applies to<br>
 		<input type="radio" name="disaddtype" value="all"  onclick="searchCategoryClose()">All products<br>
 		<input type="radio" name="disaddtype" value="category" id="category" onclick="search_category()">Specific category<br>
-		<ul id="someul">
-			
-		</ul>
 		<input type="radio" name="disaddtype" value="product" onclick="search_product()">Specific product<br>
-	<input type="text" placeholder="Search category" id="search" style="display: none;" ><br>
-	
+	<input type="text" placeholder="Search category" id="search" style="display: none;" >
+	<ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
+			
+	</ul>
 	Minimum purchase amount<input type="text" name="miniamount"><br>
 	Start date<input type="date" name="startdate"><br>
 	end date<input type="date" name="enddate"><br>
@@ -42,6 +41,28 @@
 
 <script>
 var bar = document.getElementById("search");
+var ullist =document.getElementById("someul");
+var split_string =[];
+
+var catadd = "false";
+
+//list items showing load data----------------------------
+function loadData(data){
+	ullist.innerHTML ="";		
+	 data.sort();
+	 console.log(data);
+	 
+	 $("#someul").append(data.map(function (el) {
+		   	return $('<li>').text(el);
+		}));	
+	
+	 	
+	 	catadd="true";
+	 	
+	 	
+	
+}
+
 
 function search_category(){
 	
@@ -58,25 +79,23 @@ function search_category(){
 	}
 	
 	 $.get("../someservlet", function(arraylist) {   
-	        
-		 const split_string = arraylist.split(" ");
-		 
-		 
-		 $("#someul").append(split_string.map(function (el) {
-			    return $('<li>').text(el);
-			}));	
-		
-		 console.log(split_string);
-		 
+		 split_string = arraylist.split(" ");   
+		 loadData(split_string);	
 			
 	    });
 	
+}
+
+// filter data from user input------------------
+function filterdata(data,searchText){
+	return data.filter((x)=>x.toLowerCase().includes(searchText.toLowerCase()));
 }
 
 function searchCategoryClose(){
 	
 	if (bar.style.display === "block") {
 	    bar.style.display = "none";
+	    ullist.style.display = "none"
 	  } else {
 	   
 		 console.log("not"); 
@@ -98,8 +117,19 @@ function search_product(){
 	bar.placeholder = "Search products";
 	
 }
-
-
+//input search  categories--------------------------------------
+bar.addEventListener('input',function(e){
+	
+	if(bar.value==""){
+		ullist.style.display = "none";
+	}else{
+		ullist.style.display = "block";
+		const data =filterdata(split_string,bar.value);
+		loadData(data);
+	}
+	
+	
+})
 </script>
 
 
