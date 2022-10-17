@@ -20,7 +20,7 @@ public class addProCategory extends HttpServlet {
 		String catname = req.getParameter("catname");
 		String desc = req.getParameter("desc");
 		
-		boolean ok = product_DB.pro_category(catname,desc);
+		boolean ok = product_DB.setpro_category(catname,desc);
 		
 		System.out.println(ok);
 		

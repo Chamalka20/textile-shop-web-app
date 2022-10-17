@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,15 +12,18 @@
 
 <body>
 
-
 <form action="../dis_add" method="post">
 	discount title<input type="text" name="disname"><br>
 	value<input type="text" name="disvalue"><br>
 	applies to<br>
 		<input type="radio" name="disaddtype" value="all"  onclick="searchCategoryClose()">All products<br>
 		<input type="radio" name="disaddtype" value="category" id="category" onclick="search_category()">Specific category<br>
+		<ul id="someul">
+			
+		</ul>
 		<input type="radio" name="disaddtype" value="product" onclick="search_product()">Specific product<br>
-	<input type="text" placeholder="Search category" id="search" style="display: none;" ><br>	
+	<input type="text" placeholder="Search category" id="search" style="display: none;" ><br>
+	
 	Minimum purchase amount<input type="text" name="miniamount"><br>
 	Start date<input type="date" name="startdate"><br>
 	end date<input type="date" name="enddate"><br>
@@ -27,7 +31,7 @@
 	<input type="submit">	
 </form>
 
-<div id="somediv"></div><br>
+
 
 
 
@@ -41,6 +45,7 @@ var bar = document.getElementById("search");
 
 function search_category(){
 	
+	
 	if (bar.style.display === "none") {
 	    bar.style.display = "block";
 	  } else {
@@ -52,8 +57,18 @@ function search_category(){
 		bar.placeholder ="Search category";
 	}
 	
-	 $.get("../someservlet", function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
-	        $("#somediv").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+	 $.get("../someservlet", function(arraylist) {   
+	        
+		 const split_string = arraylist.split(" ");
+		 
+		 
+		 $("#someul").append(split_string.map(function (el) {
+			    return $('<li>').text(el);
+			}));	
+		
+		 console.log(split_string);
+		 
+			
 	    });
 	
 }
@@ -72,6 +87,13 @@ function searchCategoryClose(){
 }
 
 function search_product(){
+	
+	if (bar.style.display === "none") {
+	    bar.style.display = "block";
+	  } else {
+	   
+		 console.log("not"); 
+	  }
 	
 	bar.placeholder = "Search products";
 	

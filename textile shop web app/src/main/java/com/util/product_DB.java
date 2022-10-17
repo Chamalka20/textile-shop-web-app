@@ -77,7 +77,7 @@ public class product_DB {
 		return isSuccess;
 	}
 	
-	public static boolean pro_category(String name,String desc ) {
+	public static boolean setpro_category(String name,String desc ) {
 		boolean isSuccess = false;
 		
 		DB_connect db = new DB_connect();
@@ -107,9 +107,40 @@ public class product_DB {
 		return isSuccess;
 	}
 	
-	
-	public ArrayList<String> add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
+	public ArrayList<String> getpro_category(){
 		ArrayList<String> names = new ArrayList<String>();
+		
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		String sql1 = "SELECT name FROM textile.product_category;";
+		
+		try {
+			
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			
+			ResultSet rs = stmt1.executeQuery();
+			
+			while(rs.next()) {
+				
+				 names.add(rs.getString("name"));
+			}
+			
+			
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return names;
+	}
+	
+	
+	public boolean add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
+		boolean isSuccess=false;
 		ResultSet generateKey=null;
 		int disid = 0;
 		
@@ -117,7 +148,6 @@ public class product_DB {
 		Connection con = null;
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
 		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
-		String sql3 = "SELECT name FROM textile.product_category;";
 		String sql4 = "SELECT name FROM textile.product;";
 		try {
 			
@@ -184,7 +214,7 @@ public class product_DB {
 		
 		
 		
-		return names;
+		return isSuccess;
 	}
 	
 	

@@ -80,14 +80,14 @@
 	
 	<servlet>
 		
-		<servlet-name>test</servlet-name>
-		<servlet-class>com.servlet.test</servlet-class>
+		<servlet-name>get_categories</servlet-name>
+		<servlet-class>com.servlet.get_categories</servlet-class>
 	
 	</servlet>
 	
 	<servlet-mapping>
 		
-		<servlet-name>test</servlet-name>
+		<servlet-name>get_categories</servlet-name>
 		<url-pattern>/someservlet/*</url-pattern>
 	
 	</servlet-mapping>
