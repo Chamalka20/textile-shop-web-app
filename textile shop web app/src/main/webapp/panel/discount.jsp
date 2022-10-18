@@ -29,12 +29,11 @@
 	
 	<input type="submit">	
 </form>
-
-
-
-
-
-
+<ul>
+	<li class="gt">fr</li>
+	<li class="gt">yy</li>
+	<li class="gt">ht</li>
+</ul>
 
 
 
@@ -43,23 +42,30 @@
 var bar = document.getElementById("search");
 var ullist =document.getElementById("someul");
 var split_string =[];
-
+var liitems = [];
+var test = document.querySelectorAll(".gt");
 var catadd = "false";
 
 //list items showing load data----------------------------
 function loadData(data){
+	
 	ullist.innerHTML ="";		
 	 data.sort();
-	 console.log(data);
 	 
 	 $("#someul").append(data.map(function (el) {
-		   	return $('<li>').text(el);
-		}));	
+		   	return $('<li class="liitems">').text(el);
+		   	
+		}));
+	 liitems = document.querySelectorAll('.liitems');
 	
-	 	
-	 	catadd="true";
-	 	
-	 	
+	 //When one is selectedfrom the list---------------------------------------
+	 liitems.forEach((x)=>{
+			x.addEventListener('click',function(e){
+				bar.value = x.innerHTML;
+			})
+		})
+	 
+	 
 	
 }
 
@@ -102,7 +108,6 @@ function searchCategoryClose(){
 	  }
 	
 	
-	
 }
 
 function search_product(){
@@ -130,6 +135,9 @@ bar.addEventListener('input',function(e){
 	
 	
 })
+
+
+
 </script>
 
 
