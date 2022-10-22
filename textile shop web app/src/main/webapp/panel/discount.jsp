@@ -153,7 +153,6 @@ bar.addEventListener('input',function(e){
 })
 
  
-
 </script>
 
 

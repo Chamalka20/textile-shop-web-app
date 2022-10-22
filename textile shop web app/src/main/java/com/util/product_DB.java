@@ -149,7 +149,7 @@ public class product_DB {
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
 		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
 		String sql3 = "UPDATE `textile`.`product_category` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
-		String sql6 = "SELECT name FROM textile.product;";
+		String sql4 = "UPDATE `textile`.`product` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
 		try {
 			
 			con=db.getConnection();
@@ -157,6 +157,7 @@ public class product_DB {
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
 			PreparedStatement stmt3 = con.prepareStatement(sql3);
+			PreparedStatement stmt4 = con.prepareStatement(sql4);
 			
 			int rs =stmt1.executeUpdate();
 			generateKey = stmt1.getGeneratedKeys();
@@ -201,7 +202,8 @@ public class product_DB {
 			
 			//set discount to specific product------------------------
 			if(disapply.equals("product")) {
-				
+				stmt4.setInt(1, disid);
+				stmt4.executeUpdate();
 				
 			}else {
 				

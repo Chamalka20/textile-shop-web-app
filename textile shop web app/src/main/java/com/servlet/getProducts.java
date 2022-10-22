@@ -28,7 +28,7 @@ public class getProducts extends HttpServlet {
 		for(int i=0; i<nameList.size();i++) {
 			
 			out.print(nameList.get(i)+" ");
-			System.out.println(nameList.get(i));
+			
 		}
 		
 		
