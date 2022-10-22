@@ -38,7 +38,7 @@
 <script>
 var bar = document.getElementById("search");
 var ullist =document.getElementById("someul");
-var split_string =[];
+var ArrayList =[];
 var liitems = [];
 var catadd = "false";
 
@@ -70,7 +70,8 @@ function loadData(data){
 
 function search_category(){
 	
-	
+	ullist.style.display = "none";
+	bar.value = "";
 	if (bar.style.display === "none") {
 	    bar.style.display = "block";
 	  } else {
@@ -82,9 +83,9 @@ function search_category(){
 		bar.placeholder ="Search category";
 	}
 	
-	 $.get("../someservlet", function(arraylist) {   
-		 split_string = arraylist.split(" ");   
-		 loadData(split_string);	
+	 $.get("../getCate", function(arraylist) {   
+		 ArrayList = arraylist.split(" ");   
+		 loadData(ArrayList);	
 			
 	    });
 	
@@ -110,16 +111,33 @@ function searchCategoryClose(){
 
 function search_product(){
 	
+	
+	ullist.style.display = "none";
+	bar.value = "";
+	ArrayList =[];
+	$.get("../getPro", function(arraylist) {   
+		ArrayList = arraylist.split(" ");   
+		loadData(ArrayList);	
+			
+	   });
+	 
+	
 	if (bar.style.display === "none") {
 	    bar.style.display = "block";
+	   
+	    
+	    
+	    
 	  } else {
 	   
 		 console.log("not"); 
 	  }
 	
 	bar.placeholder = "Search products";
+	console.log(ArrayList);
 	
 }
+
 //input search  categories--------------------------------------
 bar.addEventListener('input',function(e){
 	
@@ -127,7 +145,7 @@ bar.addEventListener('input',function(e){
 		ullist.style.display = "none";
 	}else{
 		ullist.style.display = "block";
-		const data =filterdata(split_string,bar.value);
+		const data =filterdata(ArrayList,bar.value);
 		loadData(data);
 	}
 	

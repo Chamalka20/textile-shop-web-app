@@ -88,7 +88,21 @@
 	<servlet-mapping>
 		
 		<servlet-name>get_categories</servlet-name>
-		<url-pattern>/someservlet/*</url-pattern>
+		<url-pattern>/getCate</url-pattern>
+	
+	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>getProducts</servlet-name>
+		<servlet-class>com.servlet.getProducts</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>getProducts</servlet-name>
+		<url-pattern>/getPro/*</url-pattern>
 	
 	</servlet-mapping>
 

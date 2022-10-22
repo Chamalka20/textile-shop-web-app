@@ -71,7 +71,7 @@ function search_category(){
 	
 	
 	//get categorys from database---------------------------------
-	$.get("../someservlet", function(arraylist) {   
+	$.get("../getCate", function(arraylist) {   
 		 split_string = arraylist.split(" ");   
 		 loadData(split_string);	
 			

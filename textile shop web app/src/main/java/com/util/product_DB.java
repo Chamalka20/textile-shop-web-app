@@ -220,6 +220,35 @@ public class product_DB {
 		return isSuccess;
 	}
 	
-	
+	public ArrayList<String> getProducts(){
+		ArrayList<String> proNames = new ArrayList<String>();
+		
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		String sql1 = "SELECT * FROM textile.product;";
+		
+		try {
+			
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			
+			ResultSet rs = stmt1.executeQuery();
+			
+			while(rs.next()) {
+				
+				 proNames.add(rs.getString("name"));
+			}
+			
+			
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return proNames;
+	}
 	
 }
