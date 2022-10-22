@@ -22,12 +22,13 @@ public class add_discount extends HttpServlet {
 		String disname = req.getParameter("disname");
 		String disvalue = req.getParameter("disvalue");
 		String disapply = req.getParameter("disaddtype");
+		String userSelect = req.getParameter("catOrPro");
 		String miniperamount = req.getParameter("miniamount");
 		String startdate = req.getParameter("startdate");
 		String enddate = req.getParameter("enddate");
 	
 		product_DB pro = new product_DB(); 
-		pro.add_discount(disname, disvalue, disapply, miniperamount, startdate, enddate);
+		pro.add_discount(disname, disvalue, disapply,userSelect, miniperamount, startdate, enddate);
 		
 	}
 

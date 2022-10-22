@@ -139,7 +139,7 @@ public class product_DB {
 	}
 	
 	
-	public boolean add_discount(String disname,String disvalue,String disapply,String miniperamount,String startdate,String enddate) {
+	public boolean add_discount(String disname,String disvalue,String disapply,String userSelect,String miniperamount,String startdate,String enddate) {
 		boolean isSuccess=false;
 		ResultSet generateKey=null;
 		int disid = 0;
@@ -148,23 +148,25 @@ public class product_DB {
 		Connection con = null;
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
 		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
-		String sql4 = "SELECT name FROM textile.product;";
+		String sql3 = "UPDATE `textile`.`product_category` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
+		String sql6 = "SELECT name FROM textile.product;";
 		try {
 			
 			con=db.getConnection();
-			//insert discount table---------------
+			//insert discount table------------------
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			PreparedStatement stmt3 = con.prepareStatement(sql3);
 			
 			int rs =stmt1.executeUpdate();
 			generateKey = stmt1.getGeneratedKeys();
 			
 			if(rs>0) {
 				
-				System.out.println("discount add is success");
+				System.out.println("discount details add is success to the discount table");
 
 			}else {
-				System.out.println("discount add is not success");
+				System.out.println("discount details add is not success to the discount table");
 			}
 			
 			//get discount table id primary key------------------
@@ -189,7 +191,8 @@ public class product_DB {
 			//set discount to specific category----------------
 			if(disapply.equals("category")) {
 				
-				
+				stmt3.setInt(1, disid);
+				stmt3.executeUpdate();
 			
 				
 			}else {

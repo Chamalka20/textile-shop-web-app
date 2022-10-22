@@ -19,7 +19,7 @@
 		<input type="radio" name="disaddtype" value="all"  onclick="searchCategoryClose()">All products<br>
 		<input type="radio" name="disaddtype" value="category" id="category" onclick="search_category()">Specific category<br>
 		<input type="radio" name="disaddtype" value="product" onclick="search_product()">Specific product<br>
-	<input type="text" placeholder="Search category" id="search" style="display: none;" >
+	<input type="text" name="catOrPro" placeholder="Search category" id="search" style="display: none;" >
 	<ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
 			
 	</ul>

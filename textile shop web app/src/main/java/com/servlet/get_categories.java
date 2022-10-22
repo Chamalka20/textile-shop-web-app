@@ -29,10 +29,10 @@ public class get_categories extends HttpServlet {
 			if(i==lasteli) {
 				
 				out.print(names.get(i));
-				System.out.println(names.get(i));
+				
 			}else {
 				out.print(names.get(i)+" ");
-				System.out.println(names.get(i));
+				
 			}
 			
 			
