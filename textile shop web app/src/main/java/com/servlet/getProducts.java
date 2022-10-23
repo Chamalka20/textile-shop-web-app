@@ -21,7 +21,7 @@ public class getProducts extends HttpServlet {
 		
 		product_DB pro = new product_DB(); 
 		
-		ArrayList<String> nameList = pro.getProducts();
+		ArrayList<String> nameList = pro.getProductsNames();
 		
 		PrintWriter out = res.getWriter();
 		

@@ -19,7 +19,7 @@ public class product_DB {
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"');";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`,`in_stock`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"','true');";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES ('"+quantity+"');";
 		String sql3 ="SELECT * FROM textile.product_category WHERE name='"+category+"'";
 		try {
@@ -47,7 +47,7 @@ public class product_DB {
 			if(generateKey.next()) {
 				
 				inven_id = generateKey.getInt(1);
-				System.out.println(inven_id);
+				System.out.println("inventory id is "+inven_id);
 				stmt1.setInt(2,inven_id );
 			}else {
 				
@@ -222,7 +222,7 @@ public class product_DB {
 		return isSuccess;
 	}
 	
-	public ArrayList<String> getProducts(){
+	public ArrayList<String> getProductsNames(){
 		ArrayList<String> proNames = new ArrayList<String>();
 		
 		DB_connect db = new DB_connect();
