@@ -31,8 +31,8 @@
 			<div class="tableContainer">
 				
 					<div class="header"><div class="line"></div>Id</div>
-					<div class="header"><div class="line"></div>Name</div>
-					<div class="header"><div class="line"></div>description</div>
+					<div class="header"><div class="line"></div>Product</div>
+					<div class="header"><div class="line"></div>Description</div>
 					<div class="header"><div class="line"></div>Price</div>
 					<div class="header"><div class="line"></div>Stock</div>
 					<div class="header"><div class="line"></div>Action</div><%			  
@@ -41,10 +41,10 @@
 					
 					
 					<div class="data"><%=rs.getInt(1) %></div>
-					<div class="data"><%=rs.getString(2) %></div>
+					<div class="data"><img class="proImage"src="../Images/<%=rs.getString(7)%>"><%=rs.getString(2) %></div>
 					<div class="data"><%=rs.getString(3) %></div>
 					<div class="data"><%=rs.getInt(6) %></div>
-					<div class="data"><%=rs.getString(8) %></div>
+					<div class="data"><%=rs.getString(9) %></div>
 					<div class="data"><button>Edit</button></div><%
 					
 				}while(rs.next());%>
