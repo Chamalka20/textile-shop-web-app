@@ -6,60 +6,67 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/products.css">
 </head>
 <body>
-<%
-
-try{
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/textile","root","root");
-	String sql= "SELECT * FROM textile.product;";
+<div class="outerContainer">
+	<div class="navBar">rtyret</div>
 	
-	PreparedStatement stmt1 = con.prepareStatement(sql);
+	<%
 	
-	ResultSet rs = stmt1.executeQuery();
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/textile","root","root");
+		String sql= "SELECT * FROM textile.product;";
 		
-	if(rs.next()==false){
+		PreparedStatement stmt1 = con.prepareStatement(sql);
 		
-		out.println("no table records found");
-	}else{%>
-	
-		<table border="1" cellspacing="0" width="500px" height="200px">
-			<tr bgcolor="">
-			<th>Id</th>
-			<th>Name</th>
-			<th>description</th>
-			<th>Price</th>
-			<th>Stock</th>
-			<th>Action</th>			  
-			</tr><%
-			do{%>
+		ResultSet rs = stmt1.executeQuery();
+			
+		if(rs.next()==false){
+			
+			out.println("no table records found");
+		}else{%>
+		
+			<div class="tableContainer">
 				
-				<tr>
-				<td><%=rs.getInt(1) %></td>
-				<td><%=rs.getString(2) %></td>
-				<td><%=rs.getString(3) %></td>
-				<td><%=rs.getInt(6) %></td>
-				<td><%=rs.getString(8) %></td>
-				<td><button>Edit</button></td>
-				</tr><% 
-			}while(rs.next());%>
+					<div class="header"><div class="line"></div>Id</div>
+					<div class="header"><div class="line"></div>Name</div>
+					<div class="header"><div class="line"></div>description</div>
+					<div class="header"><div class="line"></div>Price</div>
+					<div class="header"><div class="line"></div>Stock</div>
+					<div class="header"><div class="line"></div>Action</div><%			  
+				
+				do{%>
+					
+					
+					<div class="data"><%=rs.getInt(1) %></div>
+					<div class="data"><%=rs.getString(2) %></div>
+					<div class="data"><%=rs.getString(3) %></div>
+					<div class="data"><%=rs.getInt(6) %></div>
+					<div class="data"><%=rs.getString(8) %></div>
+					<div class="data"><button>Edit</button></div><%
+					
+				}while(rs.next());%>
+				
+				
+			</div><% 
+			
+			
+			
+			
+		}
 			
 		
-		</table><% 
+	}catch(Exception e){
 		
-		
-		
-		
+		e.getStackTrace();
 	}
+	
+	
+	%>
+	
 		
-	
-}catch(Exception e){
-	
-	e.getStackTrace();
-}
-
-
-%>
+</div>
 </body>
 </html>

@@ -17,10 +17,11 @@
 		Price<input type="text" name="price"><br>
 		quantity<input type="text" name="quan"><br>
 		category<input type="text" name="cate" id="search"onclick="search_category()"><br>
+		
 			<ul id="catnames" style="display:none; list-style-type: none; cursor: context-menu;">
 				
 			</ul>
-		
+		Image<input type="file" name="imageUp"><br>
 		<input type="submit">
 	
 	

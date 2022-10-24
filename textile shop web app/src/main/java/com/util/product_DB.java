@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class product_DB {
 
-	public  boolean insert_pro(String name,String desc,String price,String quantity,String category ) {
+	public  boolean insert_pro(String name,String desc,String price,String image,String quantity,String category ) {
 		boolean isSuccess = false;
 		int cat_id;
 		ResultSet generateKey=null;
@@ -19,7 +19,7 @@ public class product_DB {
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`,`in_stock`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"','true');";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`,`image`,`in_stock`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"','"+image+"','true');";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES ('"+quantity+"');";
 		String sql3 ="SELECT * FROM textile.product_category WHERE name='"+category+"'";
 		try {
