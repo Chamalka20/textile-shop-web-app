@@ -33,8 +33,6 @@
 
 
 
-
-
 <script>
 var bar = document.getElementById("search");
 var ullist =document.getElementById("someul");
@@ -45,15 +43,16 @@ var catadd = "false";
 //list items showing load data------------------------------
 function loadData(data){
 	
-	ullist.innerHTML ="";		
-	 data.sort();
+	ullist.innerHTML ="";
+	data.sort();
 	 
 	 $("#someul").append(data.map(function (el) {
-		   	return $('<li class="liitems">').text(el);
+		   	
+		 	return $('<li class="liitems">').text(el);
 		   	
 		}));
 	 liitems = document.querySelectorAll('.liitems');
-	
+	 
 	 //When one is selected from the list---------------------------------------
 	 liitems.forEach((x)=>{
 			x.addEventListener('click',function(e){
@@ -115,9 +114,22 @@ function search_product(){
 	ullist.style.display = "none";
 	bar.value = "";
 	ArrayList =[];
-	$.get("../getPro", function(arraylist) {   
-		ArrayList = arraylist.split(" ");   
-		loadData(ArrayList);	
+	//get json data from servlet-------------------------------
+	$.getJSON("../getPro", function(getData) {   
+		 
+		getData.map(function(ele){
+			
+			for(var i=0; i<1; i++){
+				
+				ArrayList.push(ele.name);
+				
+			}
+			
+		})
+		
+		console.log(ArrayList);
+		loadData(getData );
+		
 			
 	   });
 	 
@@ -152,7 +164,8 @@ bar.addEventListener('input',function(e){
 	
 })
 
- 
+
+
 </script>
 
 

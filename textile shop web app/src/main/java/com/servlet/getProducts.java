@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,18 +22,12 @@ public class getProducts extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		product_DB pro = new product_DB(); 
-		
-		ArrayList<String> nameList = pro.getProductsNames();
-		
+		JsonArray jsonpro = (JsonArray) pro.getProducts();
 		PrintWriter out = res.getWriter();
 		
-		for(int i=0; i<nameList.size();i++) {
-			
-			out.print(nameList.get(i)+" ");
-			
-		}
+		out.print(jsonpro);
 		
-		
+
 	}
 
 	

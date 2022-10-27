@@ -18,5 +18,7 @@
 	<classpathentry kind="lib" path="C:/Users/User/Downloads/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/User/Downloads/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/User/Downloads/javax.servlet-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Downloads/javax.json-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/User/Downloads/jakarta.servlet.jsp.jstl-api-2.0.0-RC1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

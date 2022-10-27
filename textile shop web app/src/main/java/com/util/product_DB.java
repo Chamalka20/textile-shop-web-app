@@ -6,9 +6,12 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 
 
-
+;
 public class product_DB {
 
 	public  boolean insert_pro(String name,String desc,String price,String image,String quantity,String category ) {
@@ -222,9 +225,10 @@ public class product_DB {
 		return isSuccess;
 	}
 	
-	public ArrayList<String> getProductsNames(){
-		ArrayList<String> proNames = new ArrayList<String>();
+	public JsonArray getProducts(){
 		
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		JsonArray jarr = null;
 		DB_connect db = new DB_connect();
 		Connection con = null;
 		String sql1 = "SELECT * FROM textile.product;";
@@ -238,8 +242,18 @@ public class product_DB {
 			
 			while(rs.next()) {
 				
-				 proNames.add(rs.getString("name"));
+				builder.add(Json.createObjectBuilder()
+				 	.add("id",rs.getInt(1))
+				 	.add("name",rs.getString(2))
+				 	.add("desc",rs.getString(3))
+					.add("price",rs.getInt(6))
+					.add("image",rs.getString(7))
+					.add("stock",rs.getString(9)).build());
+				
+				 
 			}
+			
+			jarr = builder.build();
 			
 			
 			
@@ -250,7 +264,39 @@ public class product_DB {
 		
 		
 		
-		return proNames;
+		
+		return jarr;
+	}
+	
+	public boolean deleteProduct(String id) {
+		boolean isSuccess=false;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		String sql= "DELETE FROM `textile`.`product` WHERE (`pro_id` = '"+id+"');";
+		
+		try {
+			
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql);
+			int rs =stmt1.executeUpdate();
+			
+			if(rs==1) {
+				
+				isSuccess=true;
+			}else {
+				
+				System.out.println("product delete is not success");
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return isSuccess;
 	}
 	
 }
