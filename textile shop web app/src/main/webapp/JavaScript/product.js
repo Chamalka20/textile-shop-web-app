@@ -31,12 +31,12 @@ let loadData= () =>{
 		return`
 		<div class="subContainer" id="items-${x.id}">
 		 	
-			<div class="data">${x.id}</div>
-			<div class="data"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
-			<div class="data">${x.desc}</div>
-			<div class="data">${x.price}</div>
-			<div class="data">${x.stock}</div>
-			<div class="data"><button >Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
+			<div class="id">${x.id}</div>
+			<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
+			<div class="desc">${x.desc}</div>
+			<div class="price">${x.price}</div>
+			<div class="stock">${x.stock}</div>
+			<div class="action"><button >Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
 		</div>
 		
 	`}).join(" "));

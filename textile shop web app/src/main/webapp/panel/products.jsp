@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>hnsert title here</title>
-<link rel="stylesheet" href="../css/productsStyle.css">
+<link rel="stylesheet" href="../css/productStyle.css">
 <link href='../icons/icon list/all.css' rel='stylesheet'>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>

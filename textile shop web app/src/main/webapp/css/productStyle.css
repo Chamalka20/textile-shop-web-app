@@ -1,0 +1,101 @@
+@charset "ISO-8859-1";
+
+.outerContainer{
+	display:flex;
+}
+.navBar{
+	flex:30%;
+	
+}
+
+.tableContainer{
+
+	flex:70%;	
+	
+}
+
+.headerContainer{
+	
+	display:flex;
+	gap:105px;
+	border: 1px solid;
+	height:50px;
+	align-items:center;
+
+	
+	
+	
+}
+
+.subContainer{
+	
+	display:flex;
+	gap:80px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	height:50px;
+	align-items:center;
+	
+	
+	
+}
+.header{
+	border-left:1px solid;
+	padding-left:15px;
+	
+}
+.id{
+	
+	width:50px;
+	
+	
+}
+.name{
+	
+	width:120px;
+	
+}
+.proImage{
+	width:30px;
+	height:40px;
+	margin-right:20px;
+	
+}
+
+.desc{
+	
+	width:150px;
+	
+}
+
+.price{
+	width:60px;
+	
+	
+}
+.stock{
+	
+	width:60px;
+	
+}
+
+.action{
+	display:flex;
+	gap:15px;
+	width:80px;
+	
+	
+}
+
+
+
+
+.subContainer:hover{
+	background-color:#f0f2f5;
+}
+
+i:hover{
+	color:red;
+	
+}
