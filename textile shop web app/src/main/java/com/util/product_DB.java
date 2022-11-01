@@ -21,11 +21,13 @@ public class product_DB {
 		ResultSet generateKey2=null;
 		int inven_id;
 		int size_id;
+		int proQuantity;
+		
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
 		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`in_stock`,`salles`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"','true',0);";
-		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (45665);";
+		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (?);";
 		String sql3 ="SELECT * FROM textile.product_category WHERE name='"+category+"'";
 		String sql4 = "INSERT INTO `textile`.`product_sizes` (`small`, `medium`, `large`, `XL`) VALUES ('"+small+"', '"+ medium+"', '"+large+"', '"+xl+"');";
 		try {
@@ -63,7 +65,11 @@ public class product_DB {
 				
 				System.out.println("category id not get");
 			}
-			//Insert in to inventory------------------------------------------------------------
+			
+			//All sizes products are Insert in to inventory------------------------------------------------------------
+			
+			proQuantity =Integer.parseInt(small)+Integer.parseInt(medium)+Integer.parseInt(large)+Integer.parseInt(xl);
+			stmt2.setInt(1, proQuantity);
 			int rs2 = stmt2.executeUpdate();
 			generateKey2 = stmt2.getGeneratedKeys();
 			if(generateKey2.next()) {

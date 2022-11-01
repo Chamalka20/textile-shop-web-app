@@ -24,12 +24,20 @@
 	
 		<div class="editPro">
 		
-			<form action="" method="post">
+			Product Name<input type="text"><br>
+			Product Descreiption<input type="text"><br><br>
+			In Stock<br>
+				Small<input type="text"><br>
+				Medium<input type="text"><br>
+				Large<input type="text"><br>
+				XL<input type="text"><br><br>
+				
+			Categorie<input type="text"> 
 				
 			
 			
 			
-			</form>
+			
 		</div>
 	
 	</div>
