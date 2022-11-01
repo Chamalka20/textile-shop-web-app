@@ -14,8 +14,13 @@
 	<div>
 		Name<input type="text" id="name" value=""><br>
 		Description<input type="text" id="desc"><br>
-		Price<input type="text" id="price"><br>
-		quantity<input type="text" id="quan"><br>
+		Price<input type="text" id="price"><br><br>
+		Product Size:<br>
+		
+		Small<input type="text" id="small" placeHolder="Enter quantity"><br>
+		Medium<input type="text" id="medium"  placeHolder="Enter quantity"><br>
+		large<input type="text" id="large"  placeHolder="Enter quantity"><br>
+		XL<input type="text" id="xl"  placeHolder="Enter quantity"><br><br>
 		category<input type="text"  id="searchCate"onclick="search_category()"><br>
 		
 			<ul id="catnames" style="display:none; list-style-type: none; cursor: context-menu;">
@@ -48,7 +53,10 @@ var liitems = [];
 var name;
 var desc; 
 var price;
-var quan;
+var small;
+var medium;
+var large;
+var xl;;
 var cate;
 var img;
 
@@ -115,11 +123,14 @@ function productAdd(){
 	name = document.getElementById('name').value;
 	desc = document.getElementById('desc').value;
 	price = document.getElementById('price').value;
-	quan = document.getElementById('quan').value;
+	small = document.getElementById('small').value;
+	medium = document.getElementById('medium').value;
+	large = document.getElementById('large').value;
+	xl = document.getElementById('xl').value;
 	img = document.getElementById('imageUp').value;
 	cate = document.getElementById("searchCate").value;
 	console.log(img);
-	$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:img,quan:quan,cate:cate},function(){
+	$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:img,small:small,medium:medium,large:large,xl:xl,cate:cate},function(){
 		
 		alert("add");
 		
