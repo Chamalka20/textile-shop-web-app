@@ -10,22 +10,22 @@
 </head>
 <body>
 	<h2>add products</h2>
-	<form action="../pro_add" method="post">
 	
-		Name<input type="text" name="name"><br>
-		Description<input type="text" name="desc"><br>
-		Price<input type="text" name="price"><br>
-		quantity<input type="text" name="quan"><br>
-		category<input type="text" name="cate" id="search"onclick="search_category()"><br>
+	<div>
+		Name<input type="text" id="name" value=""><br>
+		Description<input type="text" id="desc"><br>
+		Price<input type="text" id="price"><br>
+		quantity<input type="text" id="quan"><br>
+		category<input type="text"  id="searchCate"onclick="search_category()"><br>
 		
 			<ul id="catnames" style="display:none; list-style-type: none; cursor: context-menu;">
 				
 			</ul>
-		Image<input type="file" name="imageUp"><br>
-		<input type="submit">
+		Image<input type="file" id="imageUp"><br>
+		<button onClick="productAdd()" >Add</button>
+	</div>
 	
 	
-	</form>
 	<h2>create Products categorys</h2>
 		
 	<form action="../pro_cat" method="post">	
@@ -39,10 +39,19 @@
 
 
 <script>
-var bar = document.getElementById("search")
+var bar = document.getElementById("searchCate");
 var ullist =document.getElementById("catnames");
 var split_string = []
 var liitems = [];
+
+
+var name;
+var desc; 
+var price;
+var quan;
+var cate;
+var img;
+
 
 function loadData(data){
 	
@@ -70,7 +79,7 @@ function loadData(data){
 
 function search_category(){
 	
-	
+	var name = document.getElementById('name').value;
 	//get categorys from database---------------------------------
 	$.get("../getCate", function(arraylist) {   
 		 split_string = arraylist.split(" ");   
@@ -78,8 +87,7 @@ function search_category(){
 			
 	    });
 	
-	
-}
+};
 
 //filter data from user input------------------
 function filterdata(data,searchText){
@@ -98,7 +106,26 @@ bar.addEventListener('input',function(e){
 	}
 	
 	
-})
+});
+
+//pass new product to the database--------------------------------------
+function productAdd(){
+	
+	//get user input and add to variables-----------------------------
+	name = document.getElementById('name').value;
+	desc = document.getElementById('desc').value;
+	price = document.getElementById('price').value;
+	quan = document.getElementById('quan').value;
+	img = document.getElementById('imageUp').value;
+	cate = document.getElementById("searchCate").value;
+	console.log(img);
+	$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:img,quan:quan,cate:cate},function(){
+		
+		alert("add");
+		
+	});
+	
+};
 
 
 </script>

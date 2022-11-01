@@ -12,22 +12,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.util.product_DB;
 
-@WebServlet("/getProducts")
-public class getProducts extends HttpServlet {
+
+@WebServlet("/getProductDetails")
+public class getProductDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		product_DB pro = new product_DB(); 
-		JsonArray jsonpro = (JsonArray) pro.getProducts();
+		String id = req.getParameter("id");
+		
+		product_DB pro = new product_DB();
+		
+		JsonArray proDetails = (JsonArray) pro.editProduct(id);
+		
 		PrintWriter out = res.getWriter();
+		out.print(proDetails);
 		
-		out.print(jsonpro);
 		
-
+		
+		
+		
 	}
-	
 
+	
 
 }

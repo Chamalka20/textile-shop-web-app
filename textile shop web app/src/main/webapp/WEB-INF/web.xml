@@ -121,6 +121,20 @@
 	
 	</servlet-mapping>
 	
+	<servlet>
+		
+		<servlet-name>edit_product</servlet-name>
+		<servlet-class>com.servlet.getProductDetails</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>edit_product</servlet-name>
+		<url-pattern>/editPro</url-pattern>
+	
+	</servlet-mapping>
+	
 	
 
 </web-app>

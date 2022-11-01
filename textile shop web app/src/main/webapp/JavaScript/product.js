@@ -1,9 +1,9 @@
 	
 var basket = document.getElementById('dataHolder');
 var proList = [];
-
+console.log("ytfguytguytguy");
 function getDatalist(){
-	$(document).ready(function(){
+	
 		$.getJSON("../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
@@ -12,11 +12,10 @@ function getDatalist(){
 			}
 					
 			loadData();
-				
-					
+						
 			});
-	});
-}		
+
+};		
 getDatalist();
 console.log(proList);
 
@@ -26,20 +25,30 @@ console.log(proList);
 
 let loadData= () =>{
 
-	return(basket.innerHTML= proList.map((x)=>{
+	if(proList.length != 0){
 		
-		return`
-		<div class="subContainer" id="items-${x.id}">
-		 	
-			<div class="id">${x.id}</div>
-			<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
-			<div class="desc">${x.desc}</div>
-			<div class="price">${x.price}</div>
-			<div class="stock">${x.stock}</div>
-			<div class="action"><button >Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
-		</div>
+		return(basket.innerHTML= proList.map((x)=>{
+			
+			return`
+			<div class="subContainer" id="items-${x.id}">
+			 	
+				<div class="id">${x.id}</div>
+				<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
+				<div class="desc">${x.desc}</div>
+				<div class="price">Rs ${x.price}.00</div>
+				<div class="stock">${x.stock}</div>
+				<div class="action"><button  onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
+			</div>
+			
+		`}).join(" "));
 		
-	`}).join(" "));
+		
+	}else{
+		
+		return(basket.innerHTML=`<div class="no-records"><p>No records found</p></div>`);
+		
+	};
+		
 	
 	
 	
@@ -51,7 +60,7 @@ function deleteItem(id){
 		
 		$.post("../deleteProduct",{id:id},function(){
 			
-			alert("done"+id)
+			alert("one iten is delete\n id="+id);
 			proList=[];
 			getDatalist(); 
 			
@@ -61,7 +70,14 @@ function deleteItem(id){
 	
 }
 
-
+//edit user select items--------------------------------
+function editProduct(id){
+	
+	localStorage.setItem("id",id);
+    window.location='editProduct.jsp';
+	
+	
+}
 
 
 

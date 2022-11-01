@@ -22,7 +22,7 @@ public class product_DB {
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`,`image`,`in_stock`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"','"+image+"','true');";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`, `price`,`image`,`in_stock`,`salles`) VALUES ('"+name+"', '"+desc+"',?,?, '"+price+"','"+image+"','true',0);";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES ('"+quantity+"');";
 		String sql3 ="SELECT * FROM textile.product_category WHERE name='"+category+"'";
 		try {
@@ -297,6 +297,69 @@ public class product_DB {
 		
 		
 		return isSuccess;
+	}
+	
+	
+	public JsonArray editProduct (String id) {
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		JsonArray jarr = null;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		int invenId;
+		
+		String sql1 = "SELECT * FROM `textile`.`product`,`textile`.`discount` WHERE (`pro_id` = '"+id+"');";
+		String sql2 = "SELECT * FROM textile.inventory WHERE (`inven_id`=?);";
+		try {
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			ResultSet rs1 =stmt1.executeQuery();
+			
+			
+			if(rs1.next()) {
+				
+				builder.add(Json.createObjectBuilder()
+					.add("id",rs1.getString("pro_id"))
+					.add("name",rs1.getString("name"))
+					.add("desc",rs1.getString("desc"))
+					.add("price",rs1.getString("price"))
+					.add("image",rs1.getString("image"))
+					.add("salles",rs1.getString("salles"))
+					.add("disActive",rs1.getString("disActive"))
+					.build());
+				
+				invenId = rs1.getInt(5);
+				stmt2.setInt(1, invenId);
+				
+				
+			}
+			
+			ResultSet rs2 =stmt2.executeQuery();
+			
+			//finding the quantity of the product by the id number of the respective product-------------------------
+			if(rs2.next()) {
+				
+				builder.add(Json.createObjectBuilder()
+					.add("quantity",rs2.getString("quantity"))	
+						
+						.build());
+				
+			}
+			
+			jarr = builder.build();
+			
+			System.out.println(jarr);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		return jarr;
 	}
 	
 }
