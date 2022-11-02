@@ -331,13 +331,20 @@ public class product_DB {
 		DB_connect db = new DB_connect();
 		Connection con = null;
 		int invenId;
+		int sizeId;
+		int catId;
 		
 		String sql1 = "SELECT * FROM `textile`.`product`,`textile`.`discount` WHERE (`pro_id` = '"+id+"');";
-		String sql2 = "SELECT * FROM textile.inventory WHERE (`inven_id`=?);";
+		String sql2 = "SELECT * FROM `textile`.`inventory` WHERE (`inven_id`=?);";
+		String sql3 = "SELECT * FROM `textile`.`product_sizes` WHERE (`siz_id`=?);";
+		String sql4 = "SELECT * FROM `textile`.`product_category` WHERE (`id`=?);";
+		
 		try {
 			con=db.getConnection();
 			PreparedStatement stmt1 = con.prepareStatement(sql1);
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			PreparedStatement stmt3 = con.prepareStatement(sql3);
+			PreparedStatement stmt4 = con.prepareStatement(sql4);
 			ResultSet rs1 =stmt1.executeQuery();
 			
 			
@@ -354,8 +361,11 @@ public class product_DB {
 					.build());
 				
 				invenId = rs1.getInt(5);
+				sizeId = rs1.getInt(6);
+				catId = rs1.getInt(4);
 				stmt2.setInt(1, invenId);
-				
+				stmt3.setInt(1, sizeId);
+				stmt4.setInt(1, catId);
 				
 			}
 			
@@ -369,6 +379,27 @@ public class product_DB {
 						
 						.build());
 				
+			}
+			
+			ResultSet rs3 =stmt3.executeQuery();
+			
+			//finding the sizes and its quantity-----------------------------------------------
+			if(rs3.next()) {
+				builder.add(Json.createObjectBuilder()
+					.add("small",rs3.getString("small"))
+					.add("medium",rs3.getString("medium"))
+					.add("large",rs3.getString("large"))
+					.add("xl",rs3.getString("xl"))
+						.build());
+				
+			}
+			ResultSet rs4 =stmt4.executeQuery();
+			//finding the categorie and its quantity-----------------------------------------------
+			if(rs4.next()) {
+				builder.add(Json.createObjectBuilder()
+					.add("categorie",rs4.getString("name"))	
+						
+						.build());
 			}
 			
 			jarr = builder.build();

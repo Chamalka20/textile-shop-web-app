@@ -24,15 +24,15 @@
 	
 		<div class="editPro">
 		
-			Product Name<input type="text"><br>
-			Product Descreiption<input type="text"><br><br>
+			Product Name<input type="text" id="name"><br>
+			Product Descreiption<input type="text" id="desc"><br><br>
 			In Stock<br>
-				Small<input type="text"><br>
-				Medium<input type="text"><br>
-				Large<input type="text"><br>
-				XL<input type="text"><br><br>
+				Small<input type="text" id="small"><br>
+				Medium<input type="text" id="medium" value="cakhg"><br>
+				Large<input type="text" id="large"><br>
+				XL<input type="text" id="xl"><br><br>
 				
-			Categorie<input type="text"> 
+			Categorie<input type="text" id="categorie"> 
 				
 			
 			
