@@ -32,7 +32,12 @@
 				Large<input type="text" id="large"><br>
 				XL<input type="text" id="xl"><br><br>
 				
-			Categorie<input type="text" id="categorie"> 
+			Categorie<input type="text" id="categorie" onclick="search_category()"> <br>
+						<ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
+						
+						</ul>
+						
+						
 				
 			
 			

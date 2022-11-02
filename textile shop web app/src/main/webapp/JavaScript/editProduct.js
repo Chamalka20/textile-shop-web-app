@@ -2,6 +2,9 @@
 var proDetails = [];
 var id = localStorage.getItem("id");
 var detailsHolder = document.getElementById('container');
+var ArrayList =[];
+var liitems = [];
+var ullist =document.getElementById("someul");
 
 var namei= document.getElementById("name");
 var desc = document.getElementById("desc");
@@ -49,14 +52,58 @@ function loadProDetails(data){
 		
 	);
 	
-	
-	
-	
-	
+		
 };
 
 
+//user edit product category---------------------------------------
+function search_category(){
+	
+	 $.get("../getCate", function(arraylist) {   
+		 ArrayList = arraylist.split(" ");   
+		 loadData(ArrayList);	
+		console.log(ArrayList);
+	    });
+	    
+	    
+	    
+	    
+	 categorie.addEventListener('input',function(e){
+	
+		if(categorie.value==""){
+		ullist.style.display = "none";
+		}else{
+			ullist.style.display = "block";
+			const data =filterdata(ArrayList, categorie.value);
+			loadData(data);
+		};
+	})
+};
 
+// filter data from user input------------------
+function filterdata(data,searchText){
+	return data.filter((x)=>x.toLowerCase().includes(searchText.toLowerCase()));
+}
 
+function loadData(data){
+	 ullist.innerHTML ="";
+	 $("#someul").append(data.map(function (el) {
+		   	
+		 	return $('<li class="liitems">').text(el);
+		   	
+		}));
+		
+		liitems = document.querySelectorAll('.liitems');
+	
+	//When one is selected from the list---------------------------------------
+	 liitems.forEach((x)=>{
+			x.addEventListener('click',function(e){
+				
+				categorie.value = x.innerHTML;
+				
+			})
+		})
+	
+};
 
 
