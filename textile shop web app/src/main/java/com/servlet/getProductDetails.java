@@ -24,7 +24,7 @@ public class getProductDetails extends HttpServlet {
 		
 		product_DB pro = new product_DB();
 		
-		JsonArray proDetails = (JsonArray) pro.editProduct(id);
+		JsonArray proDetails = (JsonArray) pro.getSelectedProduct(id);
 		
 		PrintWriter out = res.getWriter();
 		out.print(proDetails);

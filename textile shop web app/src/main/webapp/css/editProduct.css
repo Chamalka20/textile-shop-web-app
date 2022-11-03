@@ -46,3 +46,24 @@
 	height:50px;
 	
 }
+
+.editPro{
+	
+	background-color:yellow;
+	width:600px;
+	height:400px;
+	
+}
+.ImageWrapper2{
+	position:absolute;
+	top:360px;
+	left:800px;
+	height:200px;
+	width:200px;
+	background-color:red;
+	
+}
+.secondImg{
+	height:110px;
+	width:90px;
+}

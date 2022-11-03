@@ -271,9 +271,9 @@ public class product_DB {
 				 	.add("id",rs.getInt(1))
 				 	.add("name",rs.getString(2))
 				 	.add("desc",rs.getString(3))
-					.add("price",rs.getInt(6))
-					.add("image",rs.getString(7))
-					.add("stock",rs.getString(9)).build());
+					.add("price",rs.getInt(7))
+					.add("image",rs.getString(8))
+					.add("stock",rs.getString(10)).build());
 				
 				 
 			}
@@ -325,7 +325,7 @@ public class product_DB {
 	}
 	
 	
-	public JsonArray editProduct (String id) {
+	public JsonArray getSelectedProduct (String id) {
 		JsonArrayBuilder builder = Json.createArrayBuilder();
 		JsonArray jarr = null;
 		DB_connect db = new DB_connect();
@@ -418,4 +418,26 @@ public class product_DB {
 		return jarr;
 	}
 	
+
+//------------------------------------------------------------------------------------------
+	public boolean editProduct() {
+		boolean isSuccess=false;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return isSuccess;
+	}
+
+
+
 }

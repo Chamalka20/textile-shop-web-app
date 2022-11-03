@@ -2,6 +2,7 @@
 var proDetails = [];
 var id = localStorage.getItem("id");
 var detailsHolder = document.getElementById('container');
+var imgHolder = document.getElementById('img');
 var ArrayList =[];
 var liitems = [];
 var ullist =document.getElementById("someul");
@@ -29,18 +30,18 @@ $(document).ready(function(){
 	
 });	
 
-	
+
 
 function loadProDetails(data){
 	
 	//set values to placeHolders-------------------------------
-	namei.value = data[0].name;
-	desc.value = data[0].desc;
-	small.value = data[2].small;
-	medium.value = data[2].medium;
-	large.value = data[2].large;
-	xl.value = data[2].xl;
-	categorie.value = data[3].categorie;
+	namei.value = proDetails[0].name;
+	desc.value =proDetails[0].desc;
+	small.value = proDetails[2].small;
+	medium.value = proDetails[2].medium;
+	large.value = proDetails[2].large;
+	xl.value  = proDetails[2].xl;
+	categorie.value = proDetails[3].categorie;	
 	
 	return(detailsHolder.innerHTML= 
 		
@@ -50,7 +51,7 @@ function loadProDetails(data){
 		 <div class="wrapper"><h5>Sales:</h5><p>${data[0].salles}</p></div>
 		 <div class="wrapper"><h5>Quantity: </h5><p>${data[1].quantity}</p></div>`
 		
-	);
+	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg"><input type="file" id="imageUp">`);
 	
 		
 };
@@ -68,7 +69,7 @@ function search_category(){
 	    
 	    
 	    
-	 categorie.addEventListener('input',function(e){
+	 categorie.addEventListener('input',function(){
 	
 		if(categorie.value==""){
 		ullist.style.display = "none";
@@ -97,13 +98,46 @@ function loadData(data){
 	
 	//When one is selected from the list---------------------------------------
 	 liitems.forEach((x)=>{
-			x.addEventListener('click',function(e){
+			x.addEventListener('click',function(){
 				
 				categorie.value = x.innerHTML;
 				
 			})
 		})
+
+	
 	
 };
+//---------------------------------------------------------
+//---------------------------------------------------------
+
+//send data to servlet----------------------------
+function updateProduct(){
+	var editName= namei.value;
+	var editDesc = desc.value;
+	var editSmall = small.value;
+	var editMedium = medium.value;
+	var editLarge = large.value; 
+	var editXl = xl.value;
+	var editCategorie = categorie.value;
+	var image = document.getElementById('imageUp').value;
+	
+	$.post("../sendEditPro",{name:editName,desc: editDesc,image:image,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+		
+		alert("uptade");
+		console.log("hiiiiiii");
+		
+	}) 
+	
+	
+	
+};
+
+
+
+
+
+
+
 
 

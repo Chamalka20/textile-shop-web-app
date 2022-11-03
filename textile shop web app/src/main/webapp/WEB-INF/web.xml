@@ -135,6 +135,19 @@
 	
 	</servlet-mapping>
 	
+	<servlet>
+		
+		<servlet-name>sendEdit_product</servlet-name>
+		<servlet-class>com.servlet.Edit_product</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>sendEdit_product</servlet-name>
+		<url-pattern>/sendEditPro</url-pattern>
+	
+	</servlet-mapping>
 	
 
 </web-app>
