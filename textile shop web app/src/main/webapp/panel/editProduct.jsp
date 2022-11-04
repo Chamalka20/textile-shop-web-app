@@ -25,7 +25,8 @@
 		<div class="editPro">
 						<div class="ImageWrapper2" id="img"></div>
 			Product Name<input type="text" id="name"><br>
-			Product Descreiption<input type="text" id="desc"><br><br>
+			Product Descreiption<input type="text" id="desc"><br>
+			price<input type="text" id="price"><br><br>
 			In Stock<br>
 				Small<input type="text" id="small"><br>
 				Medium<input type="text" id="medium" value=""><br>

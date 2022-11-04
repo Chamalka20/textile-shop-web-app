@@ -9,6 +9,7 @@ var ullist =document.getElementById("someul");
 
 var namei= document.getElementById("name");
 var desc = document.getElementById("desc");
+var price = document.getElementById("price");
 var small = document.getElementById("small");
 var medium = document.getElementById('medium');
 var large = document.getElementById('large');
@@ -37,11 +38,12 @@ function loadProDetails(data){
 	//set values to placeHolders-------------------------------
 	namei.value = proDetails[0].name;
 	desc.value =proDetails[0].desc;
-	small.value = proDetails[2].small;
-	medium.value = proDetails[2].medium;
-	large.value = proDetails[2].large;
-	xl.value  = proDetails[2].xl;
-	categorie.value = proDetails[3].categorie;	
+	price.value = proDetails[0].price;
+	small.value = proDetails[0].small;
+	medium.value = proDetails[0].medium;
+	large.value = proDetails[0].large;
+	xl.value  = proDetails[0].xl;
+	categorie.value = proDetails[0].categorie;	
 	
 	return(detailsHolder.innerHTML= 
 		
@@ -49,7 +51,7 @@ function loadProDetails(data){
 		 <div class="ImageWrapper"><img class="firstImg" src="../Images/${data[0].image}"><h4>${data[0].name}</<h4></div>
 		 <div class="wrapper"><h5>Id:</h5><p>${data[0].id}</p></div>
 		 <div class="wrapper"><h5>Sales:</h5><p>${data[0].salles}</p></div>
-		 <div class="wrapper"><h5>Quantity: </h5><p>${data[1].quantity}</p></div>`
+		 <div class="wrapper"><h5>Quantity: </h5><p>${data[0].quantity}</p></div>`
 		
 	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg"><input type="file" id="imageUp">`);
 	
@@ -115,6 +117,7 @@ function loadData(data){
 function updateProduct(){
 	var editName= namei.value;
 	var editDesc = desc.value;
+	var editPrice = price.value;
 	var editSmall = small.value;
 	var editMedium = medium.value;
 	var editLarge = large.value; 
@@ -122,10 +125,10 @@ function updateProduct(){
 	var editCategorie = categorie.value;
 	var image = document.getElementById('imageUp').value;
 	
-	$.post("../sendEditPro",{name:editName,desc: editDesc,image:image,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+	$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:image,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
 		
 		alert("uptade");
-		console.log("hiiiiiii");
+		console.log("gttttt");
 		
 	}) 
 	

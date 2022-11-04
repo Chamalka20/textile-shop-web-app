@@ -28,7 +28,7 @@ public class product_DB {
 		Connection con = null; 
 		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`in_stock`,`salles`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"','true',0);";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (?);";
-		String sql3 ="SELECT * FROM textile.product_category WHERE name='"+category+"'";
+		String sql3 ="SELECT * FROM textile.product_category WHERE cat_name='"+category+"'";
 		String sql4 = "INSERT INTO `textile`.`product_sizes` (`small`, `medium`, `large`, `XL`) VALUES ('"+small+"', '"+ medium+"', '"+large+"', '"+xl+"');";
 		try {
 			
@@ -111,7 +111,7 @@ public class product_DB {
 		DB_connect db = new DB_connect();
 		Connection con = null;
 		
-		String sql ="INSERT INTO `textile`.`product_category` (`name`, `desc`) VALUES ('"+name+"', '"+desc+"');";
+		String sql ="INSERT INTO `textile`.`product_category` (`cat_name`, `desc`) VALUES ('"+name+"', '"+desc+"');";
 		
 		try {
 			
@@ -176,7 +176,7 @@ public class product_DB {
 		Connection con = null;
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
 		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
-		String sql3 = "UPDATE `textile`.`product_category` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
+		String sql3 = "UPDATE `textile`.`product_category` SET `discount_id` = ? WHERE (`cat_name` = '"+userSelect+"');";
 		String sql4 = "UPDATE `textile`.`product` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
 		try {
 			
@@ -330,21 +330,24 @@ public class product_DB {
 		JsonArray jarr = null;
 		DB_connect db = new DB_connect();
 		Connection con = null;
-		int invenId;
-		int sizeId;
-		int catId;
 		
-		String sql1 = "SELECT * FROM `textile`.`product`,`textile`.`discount` WHERE (`pro_id` = '"+id+"');";
-		String sql2 = "SELECT * FROM `textile`.`inventory` WHERE (`inven_id`=?);";
-		String sql3 = "SELECT * FROM `textile`.`product_sizes` WHERE (`siz_id`=?);";
-		String sql4 = "SELECT * FROM `textile`.`product_category` WHERE (`id`=?);";
+		String sql1 = "SELECT * FROM `textile`.`product`,"
+				+ "			`textile`.`discount`,\r\n"
+				+ "			`textile`.`product_sizes`,\r\n"
+				+ "         `textile`.`product_category`,\r\n"
+				+ "            `textile`.`inventory` WHERE\r\n"
+				+ "					`product`.`discount_id`=`discount`.`disid` AND\r\n"
+				+ "					`product`.`size_id`=`product_sizes`.`siz_id`  AND \r\n"
+				+ "                 `product`.`category_id`=`product_category`.`id` AND  \r\n"
+				+ "                 `product`.`inventory_id`=`inventory`.`inven_id` AND\r\n"
+				+ "				    `pro_id` = '"+id+"';";
+		
+		
 		
 		try {
 			con=db.getConnection();
 			PreparedStatement stmt1 = con.prepareStatement(sql1);
-			PreparedStatement stmt2 = con.prepareStatement(sql2);
-			PreparedStatement stmt3 = con.prepareStatement(sql3);
-			PreparedStatement stmt4 = con.prepareStatement(sql4);
+			
 			ResultSet rs1 =stmt1.executeQuery();
 			
 			
@@ -358,50 +361,18 @@ public class product_DB {
 					.add("image",rs1.getString("image"))
 					.add("salles",rs1.getString("salles"))
 					.add("disActive",rs1.getString("disActive"))
+					.add("quantity",rs1.getString("quantity"))
+					.add("categorie",rs1.getString("cat_name"))
+					.add("small",rs1.getString("small"))
+					.add("medium",rs1.getString("medium"))
+					.add("large",rs1.getString("large"))
+					.add("xl",rs1.getString("XL"))
 					.build());
 				
-				invenId = rs1.getInt(5);
-				sizeId = rs1.getInt(6);
-				catId = rs1.getInt(4);
-				stmt2.setInt(1, invenId);
-				stmt3.setInt(1, sizeId);
-				stmt4.setInt(1, catId);
 				
 			}
 			
-			ResultSet rs2 =stmt2.executeQuery();
-			
-			//finding the quantity of the product by the id number of the respective product-------------------------
-			if(rs2.next()) {
-				
-				builder.add(Json.createObjectBuilder()
-					.add("quantity",rs2.getString("quantity"))	
-						
-						.build());
-				
-			}
-			
-			ResultSet rs3 =stmt3.executeQuery();
-			
-			//finding the sizes and its quantity-----------------------------------------------
-			if(rs3.next()) {
-				builder.add(Json.createObjectBuilder()
-					.add("small",rs3.getString("small"))
-					.add("medium",rs3.getString("medium"))
-					.add("large",rs3.getString("large"))
-					.add("xl",rs3.getString("xl"))
-						.build());
-				
-			}
-			ResultSet rs4 =stmt4.executeQuery();
-			//finding the categorie and its quantity-----------------------------------------------
-			if(rs4.next()) {
-				builder.add(Json.createObjectBuilder()
-					.add("categorie",rs4.getString("name"))	
-						
-						.build());
-			}
-			
+		
 			jarr = builder.build();
 			
 			System.out.println(jarr);
@@ -420,10 +391,29 @@ public class product_DB {
 	
 
 //------------------------------------------------------------------------------------------
-	public boolean editProduct() {
+	public boolean editProduct(String id, String name, String desc,String price, String image, String small, String medium, String large, String xl, String categorie) {
 		boolean isSuccess=false;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		String sql1 = "UPDATE `textile`.`product` SET `name` = '"+name+"', `desc` = '"+desc+"',`image`='"+image+"' WHERE (`pro_id` = '"+id+"');";
+		String sql2 = "SELECT id FROM textile.product_category WHERE cat_name='"+categorie+"'";
 		
-		
+		try {
+			
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			int rs =stmt1.executeUpdate();
+			
+			if(rs>0) {
+				
+				isSuccess=true;
+			}
+			
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
 		
 		
 		
