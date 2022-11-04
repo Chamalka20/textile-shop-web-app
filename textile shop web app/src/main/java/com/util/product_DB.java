@@ -140,7 +140,7 @@ public class product_DB {
 		
 		DB_connect db = new DB_connect();
 		Connection con = null;
-		String sql1 = "SELECT name FROM textile.product_category;";
+		String sql1 = "SELECT cat_name FROM textile.product_category;";
 		
 		try {
 			
@@ -151,10 +151,10 @@ public class product_DB {
 			
 			while(rs.next()) {
 				
-				 names.add(rs.getString("name"));
+				 names.add(rs.getString("cat_name"));
 			}
 			
-			
+			System.out.println(names );
 			
 		}catch(Exception e) {
 			
@@ -395,18 +395,60 @@ public class product_DB {
 		boolean isSuccess=false;
 		DB_connect db = new DB_connect();
 		Connection con = null;
-		String sql1 = "UPDATE `textile`.`product` SET `name` = '"+name+"', `desc` = '"+desc+"',`image`='"+image+"' WHERE (`pro_id` = '"+id+"');";
+		int cat_id = 0;
+		int quantity = 0;
+		
+		String sql1 = "UPDATE `textile`.`product` SET `name` = '"+name+"', `desc` = '"+desc+"',`category_id`=?,`image`='"+image+"' WHERE (`pro_id` = '"+id+"');";
 		String sql2 = "SELECT id FROM textile.product_category WHERE cat_name='"+categorie+"'";
+		String sql3 = "UPDATE `textile`.`product_sizes`,`textile`.`product`\r\n"
+						+ "SET `small`='"+small+"',`medium`='"+medium+"',`large`='"+large+"',`XL`='"+xl+"' \r\n"
+						+ "WHERE `siz_id`=`product`.`size_id` AND`product`.`pro_id` = '"+id+"';";
+		
+		String sql4 = "UPDATE `textile`.`inventory`,`textile`.`product` \r\n"
+							+ "		SET `quantity` = ? \r\n"
+							+ "		WHERE `inven_id` = `product`.`inventory_id` AND `product`.`pro_id` ='"+id+"';";
 		
 		try {
-			
 			con=db.getConnection();
 			PreparedStatement stmt1 = con.prepareStatement(sql1);
-			int rs =stmt1.executeUpdate();
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			PreparedStatement stmt3 = con.prepareStatement(sql3);
+			PreparedStatement stmt4 = con.prepareStatement(sql4);
 			
-			if(rs>0) {
+			//find category id from category table-----------------------------
+			ResultSet rs1 =stmt2.executeQuery();
+			if(rs1.next()) {
+				
+				cat_id = rs1.getInt(1);
+			}	
+			stmt1.setInt(1, cat_id);
+			
+
+			//update product table----------------------------------------
+			int rs2 =stmt1.executeUpdate();
+			
+			if(rs2>0) {
 				
 				isSuccess=true;
+			}
+			
+			//update product_sizes table-------------------------------------------
+			int rs3 =stmt3.executeUpdate();
+			
+			if(rs3>0) {
+				
+				System.out.println("update product_sizes table");
+			}
+			
+			//add all sizes nto the inventory-----------------------------------------
+			quantity =Integer.parseInt(small)+Integer.parseInt(medium)+Integer.parseInt(large)+Integer.parseInt(xl); 
+			stmt4.setInt(1, quantity);
+			
+			//update inventory table----------------------------------------------
+			int rs4 =stmt4.executeUpdate();
+			if(rs4>0) {
+				
+				System.out.println("update inventory table");
 			}
 			
 			

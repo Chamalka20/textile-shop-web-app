@@ -128,7 +128,7 @@ function updateProduct(){
 	$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:image,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
 		
 		alert("uptade");
-		console.log("gttttt");
+		
 		
 	}) 
 	
