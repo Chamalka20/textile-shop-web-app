@@ -6,6 +6,8 @@ var imgHolder = document.getElementById('img');
 var ArrayList =[];
 var liitems = [];
 var ullist =document.getElementById("someul");
+var onlyImgUp= false;
+var newImage ='';
 
 var namei= document.getElementById("name");
 var desc = document.getElementById("desc");
@@ -18,20 +20,23 @@ var categorie = document.getElementById('categorie');
 
 
 //get product details from servlet------------------------------------
-$(document).ready(function(){
-	$.getJSON("../editPro",{id:id},function(getData){
-			
-		for(var i=0;i<getData.length;i++){
-			proDetails.push(getData[i]);
-				
-		}
-		loadProDetails(proDetails);
-		console.log(proDetails);
-	});
+function getProDetails(){
 	
-});	
+	$(document).ready(function(){
+		$.getJSON("../editPro",{id:id},function(getData){
+				
+			for(var i=0;i<getData.length;i++){
+				proDetails.push(getData[i]);
+					
+			}
+			loadProDetails(proDetails);
+			console.log(proDetails);
+		});
+		
+	});	
 
-
+}
+getProDetails();
 
 function loadProDetails(data){
 	
@@ -44,16 +49,17 @@ function loadProDetails(data){
 	large.value = proDetails[0].large;
 	xl.value  = proDetails[0].xl;
 	categorie.value = proDetails[0].categorie;	
+	newImage = proDetails[0].image;
 	
 	return(detailsHolder.innerHTML= 
 		
 		`
 		 <div class="ImageWrapper"><img class="firstImg" src="../Images/${data[0].image}"><h4>${data[0].name}</<h4></div>
-		 <div class="wrapper"><h5>Id:</h5><p>${data[0].id}</p></div>
-		 <div class="wrapper"><h5>Sales:</h5><p>${data[0].salles}</p></div>
-		 <div class="wrapper"><h5>Quantity: </h5><p>${data[0].quantity}</p></div>
-		 <div class="wrapper"><h5>Add date: </h5><p>${data[0].addDate}</p></div>`
-	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" ><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+		 <div class="wrapper"><h6>Id:</h6><p>${data[0].id}</p></div>
+		 <div class="wrapper"><h6>Sales:</h6><p>${data[0].salles}</p></div>
+		 <div class="wrapper"><h6>Quantity: </h6><p>${data[0].quantity}</p></div>
+		 <div class="wrapper"><h6>Add date: </h6><p>${data[0].addDate}</p></div>`
+	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 		
 };
@@ -111,6 +117,18 @@ function loadData(data){
 	
 	
 };
+//load the user add new image--------------------------------------------------
+function RefreshImage(){
+	var image = document.getElementById('imageUp').value;
+	console.log(image);
+	//remove image path and get image name---------------
+	 newImage = image.replace(/C:\\fakepath\\/, '');
+	
+	onlyImgUp= true;
+	updateProduct()
+	
+}
+
 //---------------------------------------------------------
 //---------------------------------------------------------
 
@@ -124,18 +142,30 @@ function updateProduct(){
 	var editLarge = large.value; 
 	var editXl = xl.value;
 	var editCategorie = categorie.value;
-	var image = document.getElementById('imageUp').value;
 	
-	$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:image,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+
+	$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:newImage,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
 		
-		alert("uptade");
-		
+		if(onlyImgUp== true){
+			
+			console.log("image up");
+			proDetails=[];
+			getProDetails();
+			
+			onlyImgUp=false;
+		}else{
+			
+			alert("product is update");
+			
+		}
 		
 	}) 
 	
 	
 	
 };
+//------------------------------------------------------------------------------
+// add discounts to the product-------------------------------------------------
 
 
 

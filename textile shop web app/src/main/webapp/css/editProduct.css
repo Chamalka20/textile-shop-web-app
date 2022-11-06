@@ -12,13 +12,16 @@
 	flex:80%;
 }
 
-
+.update-container{
+	
+	display:flex;
+	
+}
 .proDetails{
 	
 	height:160px;
 	width:400px;
 	padding-top:16px;
-	margin-left: 230px;
 	margin-bottom: 20px;
 	border-radius:7px;
 	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;

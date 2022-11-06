@@ -23,68 +23,86 @@
 		<div class="proDetails" id="container">
 			
 		</div>
-	
-		<div class="editPro">
-						<div class="ImageWrapper2" id="img"></div>
-			<table>
-			<tr>
-				<td>Product Name</td>
-				<td><input type="text" id="name"></td>
-			</tr>		
-			<tr>
-				<td>Product Descreiption</td>
-				<td><input type="text" id="desc"></td>
-			</tr>		
-			<tr>
-				<td>price</td>
-				<td><input type="text" id="price"></td>
-			</tr>
-			<tr>
-				<td>In Stock:</td>
+		<div class="update-container">
+			<div class="editPro">
+							<div class="ImageWrapper2" id="img"></div>
+				<table>
+				<tr>
+					<td>Product Name</td>
+					<td><input type="text" id="name"></td>
+				</tr>		
+				<tr>
+					<td>Product Descreiption</td>
+					<td><input type="text" id="desc"></td>
+				</tr>		
+				<tr>
+					<td>price</td>
+					<td><input type="text" id="price"></td>
+				</tr>
+				<tr>
+					<td>In Stock:</td>
+					
+				</tr>
+				<tr>
+					<td>Small</td>
+					<td><input type="text" id="small"></td>
+					
+				</tr>
+				<tr>
+					<td>Medium</td>
+					<td><input type="text" id="medium" value=""></td>
+					
+				</tr>
+				<tr>
+					<td>Large</td>
+					<td><input type="text" id="large"></td>
+					
+				</tr>
+				<tr>
+					<td>XL</td>
+					<td><input type="text" id="xl"></td>
+					
+				</tr>
+				<tr></tr>
+				<tr>
+					<td>Categorie</td>
+					<td><div><input type="text" id="categorie" onclick="search_category()"><ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
+							
+							</ul></div></td>
+				</tr>
 				
-			</tr>
-			<tr>
-				<td>Small</td>
-				<td><input type="text" id="small"></td>
+				<tr>
+					<td></td>
+					<td><button type="button" class="btn btn-success" style="margin-top:20px"onClick="updateProduct()">Update</button></td>
+					
+				</tr>
 				
-			</tr>
-			<tr>
-				<td>Medium</td>
-				<td><input type="text" id="medium" value=""></td>
-				
-			</tr>
-			<tr>
-				<td>Large</td>
-				<td><input type="text" id="large"></td>
-				
-			</tr>
-			<tr>
-				<td>XL</td>
-				<td><input type="text" id="xl"></td>
-				
-			</tr>
-			<tr></tr>
-			<tr>
-				<td>Categorie</td>
-				<td><div><input type="text" id="categorie" onclick="search_category()"><ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
+			
+				</table>			
 						
-						</ul></div></td>
-			</tr>
-			
-			<tr>
-				<td></td>
-				<td><button type="button" class="btn btn-success" style="margin-top:20px">Update</button></td>
 				
-			</tr>
+			</div>
 			
-		
-			</table>			
+			<div class="discountAdd">
+			
+				<table>
+					<tr>
+						<td><h6>Add Discount</h6></td>
+					
+					</tr>
+				
 					
 				
+				
+				</table>	
+				
+				
+				
+				
 			
 			
 			
-			
+			</div>
 		</div>
 	
 	</div>
