@@ -4,12 +4,12 @@
 	display:flex;
 }
 .navBar{
-	flex:30%;
+	flex:20%;
 	
 }
 .productContainer{
 	
-	flex:70%;
+	flex:80%;
 }
 
 
@@ -18,8 +18,10 @@
 	height:160px;
 	width:400px;
 	padding-top:16px;
+	margin-left: 230px;
+	margin-bottom: 20px;
 	border-radius:7px;
-	box-shadow:rgba(99,99,99,0.2) 0px 2px 8px 0px;
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 .wrapper{
 	
@@ -49,21 +51,86 @@
 
 .editPro{
 	
-	background-color:yellow;
 	width:600px;
 	height:400px;
+	padding-left:12px;
+	padding-top:16px;
+	border-radius:7px;
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 	
 }
 .ImageWrapper2{
 	position:absolute;
-	top:360px;
-	left:800px;
-	height:200px;
-	width:200px;
-	background-color:red;
+	top:320px;
+	left:680px;
+	height:150px;
+	width:100px;
+	
+}
+.button_outer {
+	
+	text-align: center;
+	height: 50px;
+	width: 130px;
+	display: inline-block;
+ 	transition: .2s;
+  	position: relative;
+  	overflow: hidden;
+}
+.btn_upload {
+	
+	color: #fff;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	z-index: 3;
+	white-space: nowrap;
+}
+.btn_upload input {
+	position: absolute;
+ 	width: 100%;
+  	left: 0;
+  	top: 0;
+    width: 100%;
+    height: 105%;
+    cursor: pointer;
+    opacity: 0;
+}
+#upload-icon{
+	
+	padding-top:6px;
+	font-size:25px;
+	color:black;
+	
+}
+
+i:hover{
+	
+	color:red;
 	
 }
 .secondImg{
-	height:110px;
-	width:90px;
+	height:165px;
+	width:127px;
+	
 }
+
+#someul{
+	position: absolute;
+	z-index:2;
+	padding:0px;
+	width:206px;
+	height:60px;
+	overflow-y: scroll;
+	background-color:#ffffff;
+	
+	
+}
+.liitems:hover{
+	background-color:gray;
+	margin-bottom:2px;
+}
+
+
+

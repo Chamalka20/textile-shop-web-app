@@ -1,7 +1,7 @@
 	
 var basket = document.getElementById('dataHolder');
 var proList = [];
-console.log("ytfguytguytguy");
+
 function getDatalist(){
 	
 		$.getJSON("../getPro", function(getData) {

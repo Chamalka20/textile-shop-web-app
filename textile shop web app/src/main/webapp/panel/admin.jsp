@@ -77,6 +77,7 @@ function loadData(data){
 			x.addEventListener('click',function(e){
 				
 				bar.value = x.innerHTML;
+				ullist.style.display = "none";
 				
 			})
 		})

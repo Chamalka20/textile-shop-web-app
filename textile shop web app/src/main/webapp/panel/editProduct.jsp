@@ -6,6 +6,8 @@
 <meta charset="ISO-8859-1">
 <title>Edit Product</title>
 <link rel="stylesheet" href="../css/editProduct.css">
+<link href='../icons/icon list/all.css' rel='stylesheet'>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
@@ -24,22 +26,60 @@
 	
 		<div class="editPro">
 						<div class="ImageWrapper2" id="img"></div>
-			Product Name<input type="text" id="name"><br>
-			Product Descreiption<input type="text" id="desc"><br>
-			price<input type="text" id="price"><br><br>
-			In Stock<br>
-				Small<input type="text" id="small"><br>
-				Medium<input type="text" id="medium" value=""><br>
-				Large<input type="text" id="large"><br>
-				XL<input type="text" id="xl"><br><br>
+			<table>
+			<tr>
+				<td>Product Name</td>
+				<td><input type="text" id="name"></td>
+			</tr>		
+			<tr>
+				<td>Product Descreiption</td>
+				<td><input type="text" id="desc"></td>
+			</tr>		
+			<tr>
+				<td>price</td>
+				<td><input type="text" id="price"></td>
+			</tr>
+			<tr>
+				<td>In Stock:</td>
 				
-			Categorie<input type="text" id="categorie" onclick="search_category()"> <br>
-						<ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
+			</tr>
+			<tr>
+				<td>Small</td>
+				<td><input type="text" id="small"></td>
+				
+			</tr>
+			<tr>
+				<td>Medium</td>
+				<td><input type="text" id="medium" value=""></td>
+				
+			</tr>
+			<tr>
+				<td>Large</td>
+				<td><input type="text" id="large"></td>
+				
+			</tr>
+			<tr>
+				<td>XL</td>
+				<td><input type="text" id="xl"></td>
+				
+			</tr>
+			<tr></tr>
+			<tr>
+				<td>Categorie</td>
+				<td><div><input type="text" id="categorie" onclick="search_category()"><ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;">
 						
-						</ul>
-						<br><br>
-						
-					<button type="submit" onclick="updateProduct()" >Update</button>	
+						</ul></div></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td><button type="button" class="btn btn-success" style="margin-top:20px">Update</button></td>
+				
+			</tr>
+			
+		
+			</table>			
+					
 				
 			
 			

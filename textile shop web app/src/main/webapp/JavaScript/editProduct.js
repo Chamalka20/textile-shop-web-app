@@ -51,9 +51,9 @@ function loadProDetails(data){
 		 <div class="ImageWrapper"><img class="firstImg" src="../Images/${data[0].image}"><h4>${data[0].name}</<h4></div>
 		 <div class="wrapper"><h5>Id:</h5><p>${data[0].id}</p></div>
 		 <div class="wrapper"><h5>Sales:</h5><p>${data[0].salles}</p></div>
-		 <div class="wrapper"><h5>Quantity: </h5><p>${data[0].quantity}</p></div>`
-		
-	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg"><input type="file" id="imageUp">`);
+		 <div class="wrapper"><h5>Quantity: </h5><p>${data[0].quantity}</p></div>
+		 <div class="wrapper"><h5>Add date: </h5><p>${data[0].addDate}</p></div>`
+	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" ><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 		
 };
@@ -103,6 +103,7 @@ function loadData(data){
 			x.addEventListener('click',function(){
 				
 				categorie.value = x.innerHTML;
+				ullist.style.display = "none";
 				
 			})
 		})

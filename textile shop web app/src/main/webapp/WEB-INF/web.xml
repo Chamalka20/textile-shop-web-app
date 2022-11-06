@@ -67,20 +67,6 @@
 	
 	<servlet>
 		
-		<servlet-name>add_discount</servlet-name>
-		<servlet-class>com.servlet.add_discount</servlet-class>
-	
-	</servlet>
-
-	<servlet-mapping>
-		
-		<servlet-name>add_discount</servlet-name>
-		<url-pattern>/dis_add</url-pattern>
-	
-	</servlet-mapping>
-	
-	<servlet>
-		
 		<servlet-name>get_categories</servlet-name>
 		<servlet-class>com.servlet.get_categories</servlet-class>
 	

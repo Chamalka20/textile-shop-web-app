@@ -23,10 +23,15 @@ public class product_DB {
 		int size_id;
 		int proQuantity;
 		
+		java.util.Date today = new java.util.Date();
+		java.sql.Timestamp timesta = new java.sql.Timestamp(today.getTime());
+		String date = timesta.toString();
+		System.out.println(date);
+		
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`in_stock`,`salles`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"','true',0);";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`in_stock`,`salles`,`add_date`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"','true',0,?);";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (?);";
 		String sql3 ="SELECT * FROM textile.product_category WHERE cat_name='"+category+"'";
 		String sql4 = "INSERT INTO `textile`.`product_sizes` (`small`, `medium`, `large`, `XL`) VALUES ('"+small+"', '"+ medium+"', '"+large+"', '"+xl+"');";
@@ -37,6 +42,9 @@ public class product_DB {
 			PreparedStatement stmt2 = con.prepareStatement(sql2,Statement.RETURN_GENERATED_KEYS);
 			Statement stmt3 = con.createStatement();
 			PreparedStatement stmt4 = con.prepareStatement(sql4,Statement.RETURN_GENERATED_KEYS);
+			
+			//set date product add-------------------------------------------------------------------------
+			stmt1.setString(4, date);
 			
 			
 			//Insert in to product_sizes table------------------------------------------------------------
@@ -105,6 +113,8 @@ public class product_DB {
 		return isSuccess;
 	}
 	
+
+
 	public static boolean setpro_category(String name,String desc ) {
 		boolean isSuccess = false;
 		
@@ -167,7 +177,7 @@ public class product_DB {
 	}
 	
 	
-	public boolean add_discount(String disname,String disvalue,String disapply,String userSelect,String miniperamount,String startdate,String enddate) {
+	public boolean add_discount(String disname,String disvalue,String userSelect,String disapply,String miniperamount,String startdate,String enddate) {
 		boolean isSuccess=false;
 		ResultSet generateKey=null;
 		int disid = 0;
@@ -175,17 +185,13 @@ public class product_DB {
 		DB_connect db = new DB_connect();
 		Connection con = null;
 		String sql1 = "INSERT INTO `textile`.`discount` (`name`, `discount percent`, `start_date`, `end_date`, `minimum_order_value`) VALUES ('"+disname+"', '"+disvalue+"', '"+startdate+"', '"+enddate+"', '"+miniperamount+"');";
-		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? ;";
-		String sql3 = "UPDATE `textile`.`product_category` SET `discount_id` = ? WHERE (`cat_name` = '"+userSelect+"');";
-		String sql4 = "UPDATE `textile`.`product` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
+		String sql2 = "UPDATE `textile`.`product` SET `discount_id` = ? WHERE (`name` = '"+userSelect+"');";
 		try {
 			
 			con=db.getConnection();
 			//insert discount table------------------
 			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
 			PreparedStatement stmt2 = con.prepareStatement(sql2);
-			PreparedStatement stmt3 = con.prepareStatement(sql3);
-			PreparedStatement stmt4 = con.prepareStatement(sql4);
 			
 			int rs =stmt1.executeUpdate();
 			generateKey = stmt1.getGeneratedKeys();
@@ -207,31 +213,12 @@ public class product_DB {
 				System.out.println("Not generatekeys");
 			}
 			
-			//set discount to all products-------------
-			if(disapply.equals("all")) {
-				
-				stmt2.setInt(1,disid);
-				stmt2.executeUpdate();
-				
-			}else {
-				System.out.println("not equal all");
-			}
 			
-			//set discount to specific category----------------
-			if(disapply.equals("category")) {
-				
-				stmt3.setInt(1, disid);
-				stmt3.executeUpdate();
-			
-				
-			}else {
-				System.out.println("not equal category");
-			}
 			
 			//set discount to specific product------------------------
 			if(disapply.equals("product")) {
-				stmt4.setInt(1, disid);
-				stmt4.executeUpdate();
+				stmt2.setInt(1, disid);
+				stmt2.executeUpdate();
 				
 			}else {
 				
@@ -273,7 +260,10 @@ public class product_DB {
 				 	.add("desc",rs.getString(3))
 					.add("price",rs.getInt(7))
 					.add("image",rs.getString(8))
-					.add("stock",rs.getString(10)).build());
+					.add("stock",rs.getString(10))
+					.add("salles",rs.getString(11))
+					.add("add_date",rs.getString(12))
+					.build());
 				
 				 
 			}
@@ -367,6 +357,7 @@ public class product_DB {
 					.add("medium",rs1.getString("medium"))
 					.add("large",rs1.getString("large"))
 					.add("xl",rs1.getString("XL"))
+					.add("addDate",rs1.getString("add_date"))
 					.build());
 				
 				
@@ -389,6 +380,7 @@ public class product_DB {
 		return jarr;
 	}
 	
+
 
 //------------------------------------------------------------------------------------------
 	public boolean editProduct(String id, String name, String desc,String price, String image, String small, String medium, String large, String xl, String categorie) {
@@ -459,13 +451,7 @@ public class product_DB {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
+	
 		
 		return isSuccess;
 	}
