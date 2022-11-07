@@ -117,7 +117,7 @@
 	<servlet-mapping>
 		
 		<servlet-name>edit_product</servlet-name>
-		<url-pattern>/editPro</url-pattern>
+		<url-pattern>/ProDetails</url-pattern>
 	
 	</servlet-mapping>
 	

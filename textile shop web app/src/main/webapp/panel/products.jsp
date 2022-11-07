@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>hnsert title here</title>
-<link rel="stylesheet" href="../css/productStyle.css">
+<link rel="stylesheet" href="../css/admin/productStyle.css">
 <link href='../icons/icon list/all.css' rel='stylesheet'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -35,7 +35,7 @@
 </div>		
 			
 			
-<script src="../JavaScript/product.js"></script>			
+<script src="../JavaScript/admin/product.js"></script>			
 
 
 </body>

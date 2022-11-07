@@ -31,7 +31,7 @@ public class product_DB {
 		
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`in_stock`,`salles`,`add_date`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"','true',0,?);";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`sale_id`,`in_stock`,`salles`,`add_date`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"',0,'true',0,?);";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (?);";
 		String sql3 ="SELECT * FROM textile.product_category WHERE cat_name='"+category+"'";
 		String sql4 = "INSERT INTO `textile`.`product_sizes` (`small`, `medium`, `large`, `XL`) VALUES ('"+small+"', '"+ medium+"', '"+large+"', '"+xl+"');";
@@ -322,11 +322,11 @@ public class product_DB {
 		Connection con = null;
 		
 		String sql1 = "SELECT * FROM `textile`.`product`,"
-				+ "			`textile`.`discount`,\r\n"
+				+ "			`textile`.`sale`,\r\n"
 				+ "			`textile`.`product_sizes`,\r\n"
 				+ "         `textile`.`product_category`,\r\n"
 				+ "            `textile`.`inventory` WHERE\r\n"
-				+ "					`product`.`discount_id`=`discount`.`disid` AND\r\n"
+				+ "					`product`.`sale_id`=`sale`.`saleid` AND\r\n"
 				+ "					`product`.`size_id`=`product_sizes`.`siz_id`  AND \r\n"
 				+ "                 `product`.`category_id`=`product_category`.`id` AND  \r\n"
 				+ "                 `product`.`inventory_id`=`inventory`.`inven_id` AND\r\n"
@@ -350,7 +350,9 @@ public class product_DB {
 					.add("price",rs1.getString("price"))
 					.add("image",rs1.getString("image"))
 					.add("salles",rs1.getString("salles"))
-					.add("disActive",rs1.getString("disActive"))
+					.add("saleActive",rs1.getString("saleActive"))
+					.add("saleName",rs1.getString("saleName"))
+					.add("salePercentage",rs1.getString("salePercentage"))
 					.add("quantity",rs1.getString("quantity"))
 					.add("categorie",rs1.getString("cat_name"))
 					.add("small",rs1.getString("small"))

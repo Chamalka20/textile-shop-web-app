@@ -23,7 +23,7 @@ var categorie = document.getElementById('categorie');
 function getProDetails(){
 	
 	$(document).ready(function(){
-		$.getJSON("../editPro",{id:id},function(getData){
+		$.getJSON("../ProDetails",{id:id},function(getData){
 				
 			for(var i=0;i<getData.length;i++){
 				proDetails.push(getData[i]);
@@ -167,6 +167,12 @@ function updateProduct(){
 //------------------------------------------------------------------------------
 // add discounts to the product-------------------------------------------------
 
+
+function addDiscount(){
+	
+	
+	
+}
 
 
 

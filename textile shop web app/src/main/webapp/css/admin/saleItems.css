@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+.outerContainer{
+	display:flex;
+}
+.navBar{
+	flex:20%;
+	
+}
+#saleItems{
+	
+	flex:40%;
+}
+
+
+/*------------------------------------------------------------*/
+/* add new products to the sale---------------------------------*/
+
+.add-item-main-container{
+	
+	flex:40%;
+}
+.subContainer{
+	background-color:yellow;
+	display:flex;
+	align-items:center;
+	
+	gap:13px;
+}
+.wrapper{
+	
+	display:flex;
+	margin-bottom:8px;
+	
+}
+.newProImage{
+	
+	width:40px;
+	height:50px;
+}

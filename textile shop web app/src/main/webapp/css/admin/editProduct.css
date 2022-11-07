@@ -15,6 +15,7 @@
 .update-container{
 	
 	display:flex;
+	gap:25px;
 	
 }
 .proDetails{
@@ -44,11 +45,13 @@
 	margin-bottom:10px;
 	height:50px;
 	
+	
 }
 .firstImg{
 	
 	width:40px;
 	height:50px;
+	border-radius:7px;
 	
 }
 
@@ -115,7 +118,7 @@ i:hover{
 }
 .secondImg{
 	height:165px;
-	width:127px;
+	width:120px;
 	
 }
 
@@ -135,5 +138,25 @@ i:hover{
 	margin-bottom:2px;
 }
 
+/*discount add --------------------------------------------------*/
 
+.discountAdd{
+	
+	height:400px;
+	width:400px;
+	padding-left:12px;
+	padding-top:16px;
+	border-radius:7px;
+	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+	
+}
 
+.no-discount{
+	
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	align-items:center;
+	height:400px;
+	
+}

@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet" href="../css/admin.css">
+<link rel="stylesheet" href="../css/admin/admin.css">
 </head>
 <body>
 	<h2>add products</h2>
