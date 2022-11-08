@@ -14,7 +14,7 @@ import javax.json.JsonArrayBuilder;
 ;
 public class product_DB {
 
-	public  boolean insert_pro(String name,String desc,String price,String image,String small,String medium,String large,String xl,String category ) {
+	public  boolean insert_pro(String name,String desc,String price,String image,String date,String small,String medium,String large,String xl,String category ) {
 		boolean isSuccess = false;
 		int cat_id;
 		ResultSet generateKey1=null;
@@ -23,15 +23,10 @@ public class product_DB {
 		int size_id;
 		int proQuantity;
 		
-		java.util.Date today = new java.util.Date();
-		java.sql.Timestamp timesta = new java.sql.Timestamp(today.getTime());
-		String date = timesta.toString();
-		System.out.println(date);
-		
-		
+	
 		DB_connect db = new DB_connect();
 		Connection con = null; 
-		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`sale_id`,`in_stock`,`salles`,`add_date`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"',0,'true',0,?);";
+		String sql1 ="INSERT INTO `textile`.`product` (`name`, `desc`,`category_id`,`inventory_id`,`size_id`, `price`,`image`,`sale_id`,`in_stock`,`salles`,`add_date`) VALUES ('"+name+"', '"+desc+"',?,?,?, '"+price+"','"+image+"',0,'true',0,'"+date+"');";
 		String sql2 ="INSERT INTO `textile`.`inventory` (`quantity`) VALUES (?);";
 		String sql3 ="SELECT * FROM textile.product_category WHERE cat_name='"+category+"'";
 		String sql4 = "INSERT INTO `textile`.`product_sizes` (`small`, `medium`, `large`, `XL`) VALUES ('"+small+"', '"+ medium+"', '"+large+"', '"+xl+"');";
@@ -43,10 +38,7 @@ public class product_DB {
 			Statement stmt3 = con.createStatement();
 			PreparedStatement stmt4 = con.prepareStatement(sql4,Statement.RETURN_GENERATED_KEYS);
 			
-			//set date product add-------------------------------------------------------------------------
-			stmt1.setString(4, date);
-			
-			
+	
 			//Insert in to product_sizes table------------------------------------------------------------
 			int rs3 = stmt4.executeUpdate();
 				if(rs3>0) {

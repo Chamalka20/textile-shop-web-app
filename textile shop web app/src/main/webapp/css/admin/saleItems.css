@@ -38,3 +38,70 @@
 	width:40px;
 	height:50px;
 }
+
+/*-----------------------------------------------------------------------*/
+/* pop up window--------------------------------------------------------*/
+
+#popup1{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	visibility: hidden;
+	
+}
+#close{
+	position:absolute;
+	top:4px;
+	right:25px;
+	cursor: pointer;
+	color:#ffffff;
+	font-size:40px;
+	
+}
+
+#popUp-sub-container{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:900px;
+	height:800px;
+	
+	
+}
+.popUp-image-wrapper{
+	flex:50%;
+	
+}
+.popUp-product-details{
+	flex:50%;
+	background-color:#ffffff;
+	width:455px;
+	height:657px;
+	padding-top:13px;
+	padding-left:17px;
+}
+.popUp-image{
+	
+	width:455px;
+	height:657px;
+	object-fit: cover;
+}
+
+
+.pop_warapper h6,.pop_warapper p{
+	display: inline;
+    
+}
+
+
+
+
+
+
+

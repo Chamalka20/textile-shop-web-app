@@ -59,8 +59,17 @@ var large;
 var xl;;
 var cate;
 var img;
+var today;
 
+//get the current date------------------------------------------
+today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+var yyyy = today.getFullYear();
 
+today = yyyy + '-' + mm + '-' + dd;
+
+//---------------------------------------------------------------
 function loadData(data){
 	
 	ullist.innerHTML ="";		
@@ -131,7 +140,7 @@ function productAdd(){
 	img = document.getElementById('imageUp').value;
 	cate = document.getElementById("searchCate").value;
 	console.log(img);
-	$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:img,small:small,medium:medium,large:large,xl:xl,cate:cate},function(){
+	$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:img,date:today,small:small,medium:medium,large:large,xl:xl,cate:cate},function(){
 		
 		alert("add");
 		

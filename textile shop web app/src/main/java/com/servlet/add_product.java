@@ -21,6 +21,7 @@ public class add_product extends HttpServlet {
 		String desc = req.getParameter("desc");
 		String price = req.getParameter("price");
 		String image = req.getParameter("imageUp");
+		String date = req.getParameter("date");
 		String small = req.getParameter("small");
 		String medium = req.getParameter("medium");
 		String large = req.getParameter("large");
@@ -28,7 +29,7 @@ public class add_product extends HttpServlet {
 		String category = req.getParameter("cate");
 		product_DB pro = new product_DB();
 		
-		boolean isSuccess = pro.insert_pro(name, desc, price,image,small,medium,large,xl,category); 
+		boolean isSuccess = pro.insert_pro(name, desc, price,image,date,small,medium,large,xl,category); 
 		
 		if(isSuccess==true) {
 			
