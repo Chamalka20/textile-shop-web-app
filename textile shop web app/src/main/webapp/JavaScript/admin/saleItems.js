@@ -1,5 +1,6 @@
 var saleBasket = document.getElementById('saleItems');
-proList =[];
+var proList =[];
+
 
 function getDatalist(){
 	
@@ -9,22 +10,7 @@ function getDatalist(){
 					proList.push(getData[i]);
 					
 		}
-		var startDate = new Date("2022-09-7");
-		var endDate = new Date("2022-11-12");
-		console.log(startDate);
-		var resultProductData = proList.filter(function (a) {
-			 var hitDates =[];
-            hitDates.push(a.add_date);
-           
-            // convert strings to Date objcts
-            hitDates = hitDates.map(function(date) { return new Date(date); });
-            // filter this dates by startDate and endDate
-            var hitDateMatches = hitDates.filter(function(date) { return date >= startDate && date <= endDate});
-            	
-            // if there is more than 0 results keep it. if 0 then filter it away
-            return hitDateMatches.length>0;
-        });
-        console.log(resultProductData);		
+				
 		loadData();
 						
 		});
@@ -32,6 +18,8 @@ function getDatalist(){
 };
 
 getDatalist()
+
+
 // sale items------------------------------------------------------------------
 let loadData= () =>{
 	
@@ -66,12 +54,89 @@ let loadData= () =>{
 //add new item to sale--------------------------------------------------------------------------
 var addNewHolder = document.getElementById('add-new');
 var mainSubHolder = document.getElementById('mainHolder');
-var title = document.getElementById('title');
+var hideHeader = document.getElementById('hideHeader');
 var popUpHolder = document.getElementById('popup1');
 var popUpSubHolder = document.getElementById('popUp-sub-container');
 var checkbox = document.getElementById('flexCheckDefault');
 
 var proDetails =[];
+var resultProductData =[];
+
+function filterByDate(){
+	var selectBox = document.getElementById("selectMonth");
+	var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	
+	
+	//get today date-----------------------------------------
+	var today = new Date();
+	var mm = String(today.getMonth() + 1); 
+	var yyyy = today.getFullYear();
+	
+	//identify this month,last month and Previous Month-------------------------
+	var thisMonth = new Date(yyyy + '-' + mm + '-' + 01);
+	var lastMonth = new Date(yyyy + '-' +( mm-1) + '-' + 01);
+	var previousMonth = new Date(yyyy + '-' +( mm-2) + '-' + 01);
+	
+	//filter this month data----------------------------------------- 
+	if(selectedValue ==="thisMonth"){
+		 resultProductData = proList.filter(function (a) {
+			 var hitDates =[];
+            hitDates.push(a.add_date);
+           
+            // convert strings to Date objcts
+            hitDates = hitDates.map(function(date) { return new Date(date); });
+            // filter this dates by startDate and endDate
+            var hitDateMatches = hitDates.filter(function(date) { return date >= thisMonth });
+            	
+            // if there is more than 0 results keep it. if 0 then filter it away
+            return hitDateMatches.length>0;
+        });
+        
+        console.log(resultProductData);
+		
+		showProductList()	
+	}
+	//filter last month data----------------------------------------- 
+	if(selectedValue ==="lastMonth"){
+		 resultProductData = proList.filter(function (a) {
+			 var hitDates =[];
+            hitDates.push(a.add_date);
+           
+            // convert strings to Date objcts
+            hitDates = hitDates.map(function(date) { return new Date(date); });
+            // filter this dates by startDate and endDate
+            var hitDateMatches = hitDates.filter(function(date) { return date >= lastMonth && date <= thisMonth });
+            	
+            // if there is more than 0 results keep it. if 0 then filter it away
+            return hitDateMatches.length>0;
+        });
+        
+        console.log(resultProductData);
+		
+		showProductList()	
+	}
+	//filter previous month data----------------------------------------- 
+	if(selectedValue ==="previousMonth"){
+		 resultProductData = proList.filter(function (a) {
+			 var hitDates =[];
+            hitDates.push(a.add_date);
+           
+            // convert strings to Date objcts
+            hitDates = hitDates.map(function(date) { return new Date(date); });
+            // filter this dates by startDate and endDate
+            var hitDateMatches = hitDates.filter(function(date) { return date >= previousMonth && date <= lastMonth });
+            	
+            // if there is more than 0 results keep it. if 0 then filter it away
+            return hitDateMatches.length>0;
+        });
+        
+        console.log(resultProductData);
+		
+		showProductList()	
+	}			
+		
+	
+}
 
 function showProductList(){
 	addNewHolder.style.display ="block";
@@ -79,9 +144,9 @@ function showProductList(){
 	if(addNewHolder.style.display ==="block"){
 		
 		addNewHolder.style.display ="none";
-		title.style.display ="block";
+		hideHeader.style.display ="block";
 		
-		return(mainSubHolder.innerHTML= proList.map((x)=>{
+		return(mainSubHolder.innerHTML= resultProductData.map((x)=>{
 			
 		if(x.saleActive!="true"){
 		
@@ -173,10 +238,6 @@ function closePop(){
 }
 
 
-var today = new Date();
-var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-var yyyy = today.getFullYear();
 
-lastMonth = mm-1 + '/' + 00 + '/' + yyyy;
 
 

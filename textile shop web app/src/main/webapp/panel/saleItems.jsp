@@ -18,8 +18,22 @@
 	<div id="saleItems">
 	</div>
 	<div class="add-item-main-container" id="add-main-container">
-		<h6 id="title" style="display:none;">Select items</h6>
 		
+		<div id="hideHeader" style="display:none;">
+			<h6 id="title" >Select items</h6>
+			<label for="selectMonth">Choose by Month</label>
+			<select id="selectMonth" onchange="filterByDate()">
+	  			<option value="thisMonth">This Month</option>
+	  			<option value="lastMonth"selected="selected">Last Month</option>
+	  			<option value="previousMonth">Previous Month</option>
+			</select>
+			
+			<label for="cars">Choose by Salles</label>
+			<select id="selectSalles">
+	  			<option value="less10">Less than 10</option>
+	  			<option value="less20">Less than 20</option>
+			</select>
+		</div>
 		<div class="addNewHolder" id="mainHolder">
 			
 			<div id="add-new">
