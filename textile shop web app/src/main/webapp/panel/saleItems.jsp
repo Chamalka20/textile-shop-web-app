@@ -23,13 +23,15 @@
 			<h6 id="title" >Select items</h6>
 			<label for="selectMonth">Choose by Month</label>
 			<select id="selectMonth" onchange="filterByDate()">
+				<option>Select</option>
 	  			<option value="thisMonth">This Month</option>
-	  			<option value="lastMonth"selected="selected">Last Month</option>
+	  			<option value="lastMonth">Last Month</option>
 	  			<option value="previousMonth">Previous Month</option>
 			</select>
 			
-			<label for="cars">Choose by Salles</label>
-			<select id="selectSalles">
+			<label for="selectSalles">Choose by Salles</label>
+			<select id="selectSalles" onchange="filterBySalles()">
+				<option>Select</option>
 	  			<option value="less10">Less than 10</option>
 	  			<option value="less20">Less than 20</option>
 			</select>
@@ -42,7 +44,9 @@
 			</div>
 			
 		</div>
-		
+		<div id="pro-Sale-Details-Holder" style="display:none;">
+			
+		</div>
 	</div>
 		
 		
