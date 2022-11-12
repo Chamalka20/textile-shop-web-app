@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -235,7 +236,7 @@ public class product_DB {
 		JsonArray jarr = null;
 		DB_connect db = new DB_connect();
 		Connection con = null;
-		String sql1 = "SELECT * FROM textile.product;";
+		String sql1 = "SELECT * FROM textile.product,textile.sale WHERE product.sale_id=sale.saleid;";
 		
 		try {
 			
@@ -255,6 +256,7 @@ public class product_DB {
 					.add("stock",rs.getString(10))
 					.add("salles",rs.getString(11))
 					.add("add_date",rs.getString(12))
+					.add("saleActive",rs.getString("saleActive"))
 					.build());
 				
 				 
@@ -445,11 +447,76 @@ public class product_DB {
 		
 		
 		
-	
 		
 		return isSuccess;
 	}
-
-
+	
+//-------------------------------------------------------------------------------------------------------------
+	public boolean addToSale(String [] productIds,String percentage) {
+		
+		boolean isSuccess=false;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		ResultSet generateKey = null;
+		int proId = 0;
+		int saleId = 0;
+		
+		String sql1 ="INSERT INTO `textile`.`sale` (`saleName`,`salePercentage`,`saleActive`) VALUES ('','"+percentage+"','true');";
+		String sql2 = "UPDATE `textile`.`product` SET `sale_id` = ? WHERE (`pro_id` = ?);";
+		
+		
+		try {
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			
+			int rs=stmt1.executeUpdate();
+			
+			if(rs>0) {
+				
+				System.out.println("sale table uptade");
+				
+			}
+			//get sale table generatekey--------------------------------------- 
+			generateKey = stmt1.getGeneratedKeys();
+			
+			if(generateKey.next()) {
+				 saleId = generateKey.getInt(1);
+				 System.out.println(saleId);
+			}else {
+				
+				System.out.println("Not generatekeys");
+			}
+			
+			//add one by one products to sale------------------------------------
+			for(int i=0; i<productIds.length;i++) {
+				
+				
+				stmt2.setInt(1,saleId );
+				proId =Integer.parseInt(productIds[i]);
+				stmt2.setInt(2,proId );
+				int rs2=stmt2.executeUpdate();
+				
+				if(rs2>0) {
+					
+					System.out.println("true");
+				}else {
+					
+					System.out.println("not");
+				}
+			}
+			
+			
+			
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return isSuccess;
+	}
 
 }

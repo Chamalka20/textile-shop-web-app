@@ -134,6 +134,17 @@
 		<url-pattern>/sendEditPro</url-pattern>
 	
 	</servlet-mapping>
+	<servlet>
+		
+		<servlet-name>addToSale</servlet-name>
+		<servlet-class>com.servlet.addToSale</servlet-class>
 	
+	</servlet>
+	<servlet-mapping>
+		
+		<servlet-name>addToSale</servlet-name>
+		<url-pattern>/ToSale</url-pattern>
+	
+	</servlet-mapping>
 
 </web-app>

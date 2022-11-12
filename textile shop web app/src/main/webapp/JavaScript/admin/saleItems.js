@@ -9,7 +9,9 @@ function getDatalist(){
 	$.getJSON("../getPro", function(getData) {
 		resultProductData =[];
 		proList =[];
+		collectId=[];
 		proCount=0;
+		console.log(getData);
 		for(var i=0;i<getData.length;i++){
 					
 			proList.push(getData[i]);
@@ -21,10 +23,11 @@ function getDatalist(){
 		loadData();
 		
 		});
-
+		
+	
 };
 
- getDatalist()
+ getDatalist();
  
 
 
@@ -68,7 +71,7 @@ var popUpHolder = document.getElementById('popup1');
 var proSaleDetailsHolder = document.getElementById('pro-Sale-Details-Holder');
 var popUpSubHolder = document.getElementById('popUp-sub-container');
 
-var InputPresentage = document.getElementById('salePresentage');
+
 var resultProductData =[];
 
 
@@ -215,7 +218,7 @@ function showProductList(resultProductData){
 		
 		return`
 			<div class="subContainer" id="items-${x.id}">
-			 	<div class="wrapper"><input class="form-check-input" onClick="addToSale(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/${x.image}"></div>
+			 	<div class="wrapper"><input class="form-check-input" onClick="checktheproducts(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/${x.image}"></div>
 			 	<div class="wrapper">Salles: ${x.salles}</div>
 			 	<div class="wrapper">Add date: ${x.add_date}</div>
 			 	<div class="wrapper"><a href="#" onclick="productInfor(${x.id})">More info</a></div>
@@ -261,6 +264,7 @@ function popUpWindow(data){
 		
 		<div class="popUp-image-wrapper"><img class="popUp-image"src="../Images/${data[0].image}"></div>
 		<div class="popUp-product-details">
+			<div class="pop_warapper"><h6>Id: </h6><p>${data[0].id}</p></div>
 			<div class="pop_warapper"><h6>Name: </h6><p>${data[0].name}</p></div>
 			<div class="pop_warapper"><h6>price: </h6><p>Rs ${data[0].price}.00</p></div>
 			<br><br>
@@ -290,7 +294,7 @@ function closePop(){
 	
 }
 
-function addToSale(id){
+function checktheproducts(id){
 	
 	var checkBox = document.getElementById("flexCheckDefault"+id);
 	
@@ -326,6 +330,7 @@ function addToSale(id){
 			<label for="salePresentage">Sale Presentage</label>
 			<input type="text" id="salePresentage" onClick="validated()"></input>
 			<div id="input-error">Please select products from the list above</div>
+			<button type="button" class="btn btn-success" onClick="addtosale()">Add to sale</button>
 		`)
 		
 	
@@ -337,13 +342,20 @@ function validated(){
 	if(proCount==0){
 		
 		userInputError.style.display = "block";
-	}else{
-		
-		
 	}
 	
 }
 
-
+function addtosale(){
+	var InputPresentage = document.getElementById('salePresentage').value;
+	
+	$.post("../ToSale",{saleIds:collectId,percentage:InputPresentage},function(){
+		
+		alert("ok");
+		getDatalist();
+	})
+	
+	
+}
 
 

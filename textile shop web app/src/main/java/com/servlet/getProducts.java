@@ -22,7 +22,7 @@ public class getProducts extends HttpServlet {
 		product_DB pro = new product_DB(); 
 		JsonArray jsonpro = (JsonArray) pro.getProducts();
 		PrintWriter out = res.getWriter();
-		
+		System.out.println(jsonpro);
 		out.print(jsonpro);
 		
 
