@@ -34,30 +34,44 @@ function getDatalist(){
 
 // sale items------------------------------------------------------------------
 let loadData= () =>{
+	var saleItems=[];
 	
-	return(saleBasket.innerHTML= proList.map((x)=>{
-	
-		if(x.saleActive=="true"){
+	saleItems=proList.filter(function (a) {
 		
-		return`
-			<div class="subContainer" id="items-${x.id}">
-			 	
-				<div class="id">${x.id}</div>
-				<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
-				<div class="desc">${x.desc}</div>
-				<div class="price">Rs ${x.price}.00</div>
-				<div class="stock">${x.stock}</div>
-				<div class="action"><button  onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
-			</div>
+		var saleInOrOut=[];
+		saleInOrOut.push(a.saleActive);
+		var saletrueMatches = saleInOrOut.filter(function(x) { return x == "true" });
+		
+		return saletrueMatches.length>0;
+		
+	})
 	
+	//--------------------------------------------
+	if(saleItems.length != 0){
+		
+		return(saleBasket.innerHTML= saleItems.map((x)=>{
+		
+			return`
+				<div class="subContainer" id="items-${x.id}">
+				 	
+					<div class="id">${x.id}</div>
+					<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
+					<div class="desc">${x.desc}</div>
+					<div class="price">Rs ${x.price}.00</div>
+					<div class="stock">${x.stock}</div>
+					<div class="action"><i class="fas fa-trash" id="delete" OnClick="deleteFromSale(${x.id})"" onClick="deleteItem(${x.id})"></i></div>
+				</div>
+		
+	
+	
+		`}).join(" "));
+	
+	}else{
+		
+		return`<div>No Products have been added for sale</div>`
+	}
 	
 		
-		`}else{
-			
-			return`<div>none</div>`
-		}
-	
-	}).join(" "));
 		
 }
 
@@ -212,27 +226,43 @@ function showProductList(resultProductData){
 		proSaleDetailsHolder.style.display ="block";
 		mainSubHolder.style.background ="#E7E9EB";
 		
-		return(mainSubHolder.innerHTML= resultProductData.map((x)=>{
-			
-		if(x.saleActive!="true"){
+		//-----------------------------------------------------------------------
+		var notSaleItems=[];
 		
-		return`
-			<div class="subContainer" id="items-${x.id}">
-			 	<div class="wrapper"><input class="form-check-input" onClick="checktheproducts(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/${x.image}"></div>
-			 	<div class="wrapper">Salles: ${x.salles}</div>
-			 	<div class="wrapper">Add date: ${x.add_date}</div>
-			 	<div class="wrapper"><a href="#" onclick="productInfor(${x.id})">More info</a></div>
-			</div>
-	
-	
-		
-		`}else{
+		notSaleItems=resultProductData.filter(function (a) {
 			
-			return`<div>none</div>`
+		var saleInOrOut=[];
+		saleInOrOut.push(a.saleActive);
+		var saleFalseMatches = saleInOrOut.filter(function(x) { return x == "false" });
+		
+		return saleFalseMatches.length>0;
+		
+	})
+		
+		if(notSaleItems.length != 0){
+			return(mainSubHolder.innerHTML= notSaleItems.map((x)=>{
+				
+			
+			
+			return`
+				<div class="subContaineradd" id="items-${x.id}">
+				 	<div class="wrapper"><input class="form-check-input" onClick="checktheproducts(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/${x.image}"></div>
+				 	<div class="wrapper">Salles: ${x.salles}</div>
+				 	<div class="wrapper">Add date: ${x.add_date}</div>
+				 	<div class="wrapper"><a href="#" onclick="productInfor(${x.id})">More info</a></div>
+				</div>
+		
+		
+			
+		
+		
+			`}).join(" "));
+		
+		}else{
+			
+			return(mainSubHolder.innerHTML=`<div>No Products</div>`)
+			
 		}
-	
-	}).join(" "));
-		
 		
 	}
 	
@@ -358,4 +388,12 @@ function addtosale(){
 	
 }
 
-
+function deleteFromSale(id){
+	
+	$.post("../deleteSale",{id:id},function(){
+		
+		alert("delete from sale");
+		getDatalist();
+	})
+	
+}

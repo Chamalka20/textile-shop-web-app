@@ -11,7 +11,11 @@
 	
 	flex:40%;
 }
-
+#delete:hover{
+	
+	color:red;
+	cursor:pointer;
+}
 
 /*------------------------------------------------------------*/
 /* add new products to the sale---------------------------------*/

@@ -146,5 +146,17 @@
 		<url-pattern>/ToSale</url-pattern>
 	
 	</servlet-mapping>
+	<servlet>
+		
+		<servlet-name>deleteFromSale</servlet-name>
+		<servlet-class>com.servlet.deleteFromSale</servlet-class>
+	
+	</servlet>
+	<servlet-mapping>
+		
+		<servlet-name>deleteFromSale</servlet-name>
+		<url-pattern>/deleteSale</url-pattern>
+	
+	</servlet-mapping>
 
 </web-app>

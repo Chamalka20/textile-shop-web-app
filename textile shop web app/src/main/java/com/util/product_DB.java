@@ -518,5 +518,33 @@ public class product_DB {
 		
 		return isSuccess;
 	}
-
+	
+	public boolean deletefromsale(String id) {
+		boolean isSuccess=false;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		
+		String sql1 = "UPDATE `textile`.`product` SET `sale_id` = 0 WHERE (`pro_id` = '"+id+"');";
+		
+		try {
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			
+			int rs=stmt1.executeUpdate();
+			if(rs>0) {
+				
+				System.out.println("remove product from sale");
+				isSuccess= true;
+			}
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return isSuccess;
+	}
 }
+
