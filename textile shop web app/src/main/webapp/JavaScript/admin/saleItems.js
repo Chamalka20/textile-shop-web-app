@@ -57,10 +57,10 @@ let loadData= () =>{
 				<div class="subContainer" id="items-${x.id}">
 				 	
 					<div class="id">${x.id}</div>
-					<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
-					<div class="desc">${x.desc}</div>
+					<div class="name"><img class="proImage" src="../Images/${x.image}"></div>
+					<div class="desc">${x.name}</div>
 					<div class="price">Rs ${x.price}.00</div>
-					<div class="stock">${x.stock}</div>
+					<div class="stock">${x.salePercentage}%</div>
 					<div class="action"><i class="fas fa-trash" id="delete" OnClick="deleteFromSale(${x.id})"" onClick="deleteItem(${x.id})"></i></div>
 				</div>
 		

@@ -9,15 +9,23 @@
 	flex:20%;
 	
 }
+
+/*sale products-----------------------------------------------------*/
 #saleItems{
 	
 	flex:40%;
 	display: grid;
   	grid-template-columns: auto auto auto;
 	row-gap: 40px;
+	margin-top:60px;
 }
 
-/*sale products-----------------------------------------------------*/
+.sale-header{
+	position:absolute;
+	top:20px;
+	left:470px;
+	
+}
 .subContainer .proImage{
 	
 	height: 98px;

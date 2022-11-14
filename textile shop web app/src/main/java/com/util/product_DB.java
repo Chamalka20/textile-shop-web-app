@@ -257,6 +257,7 @@ public class product_DB {
 					.add("salles",rs.getString(11))
 					.add("add_date",rs.getString(12))
 					.add("saleActive",rs.getString("saleActive"))
+					.add("salePercentage",rs.getString("salePercentage"))
 					.build());
 				
 				 

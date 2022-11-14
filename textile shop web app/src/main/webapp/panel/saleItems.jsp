@@ -15,7 +15,9 @@
 <div class="outerContainer">
 	<div class="navBar">rtyret</div>
 	
+	<h6 class="sale-header">Sale Items</h6>
 	<div id="saleItems">
+		
 	</div>
 	<div class="margin"></div>
 	<div class="add-item-main-container" id="add-main-container">
