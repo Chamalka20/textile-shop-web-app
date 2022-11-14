@@ -3,6 +3,8 @@ var proList =[];
 var resultProductData =[];
 var collectId=[];
 var proCount=0;
+var isSaleSuccess = false;
+var error = "";
 
 function getDatalist(){
 	 	
@@ -68,7 +70,7 @@ let loadData= () =>{
 	
 	}else{
 		
-		return`<div>No Products have been added for sale</div>`
+		return(saleBasket.innerHTML=`<div>No Products have been added for sale</div>`)
 	}
 	
 		
@@ -228,7 +230,6 @@ function showProductList(resultProductData){
 		
 		//-----------------------------------------------------------------------
 		var notSaleItems=[];
-		
 		notSaleItems=resultProductData.filter(function (a) {
 			
 		var saleInOrOut=[];
@@ -359,31 +360,65 @@ function checktheproducts(id){
 			<p>${proCount} products select</p>
 			<label for="salePresentage">Sale Presentage</label>
 			<input type="text" id="salePresentage" onClick="validated()"></input>
-			<div id="input-error">Please select products from the list above</div>
+			<div id="input-error"></div><br><br>
 			<button type="button" class="btn btn-success" onClick="addtosale()">Add to sale</button>
+			
 		`)
 		
 	
 }
 
 
-function validated(){
+function validated(inputValue){
 	var userInputError = document.getElementById('input-error');
-	if(proCount==0){
+	userInputError.style.display = "none";
+	if(isNaN(inputValue)){
 		
+		isSaleSuccess=false
+		error = "Must input numbers";
+		userInputError.innerHTML = error;
+		2
+	}else{
+		isSaleSuccess=true;
+	}
+	if(proCount==0){
+		error="";
+		error = "Please select products from the list above";
+		userInputError.innerHTML = error;
 		userInputError.style.display = "block";
+		
 	}
 	
 }
 
 function addtosale(){
 	var InputPresentage = document.getElementById('salePresentage').value;
+	var userInputError = document.getElementById('input-error');
 	
-	$.post("../ToSale",{saleIds:collectId,percentage:InputPresentage},function(){
+	
+	validated(InputPresentage);
+	
+	if(isSaleSuccess){
 		
-		alert("ok");
-		getDatalist();
-	})
+		$.post("../ToSale",{saleIds:collectId,percentage:InputPresentage},function(){
+			
+			alert("ok");
+			getDatalist();
+			
+			//disappeared user selected items-------------------------------
+			for(var i=0; i<collectId.length; i++){
+				
+				var item = collectId[i];
+				document.getElementById("items-"+item).style.display="none";
+				
+			}	
+		})
+		
+	}else{
+		userInputError.style.display = "block";
+		
+	}
+		
 	
 	
 }

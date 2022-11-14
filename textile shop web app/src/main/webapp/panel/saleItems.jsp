@@ -17,6 +17,7 @@
 	
 	<div id="saleItems">
 	</div>
+	<div class="margin"></div>
 	<div class="add-item-main-container" id="add-main-container">
 		
 		<div id="hideHeader" style="display:none;">

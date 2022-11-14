@@ -2,6 +2,8 @@
 
 .outerContainer{
 	display:flex;
+	align-items:center;
+	
 }
 .navBar{
 	flex:20%;
@@ -10,6 +12,18 @@
 #saleItems{
 	
 	flex:40%;
+	display: grid;
+  	grid-template-columns: auto auto auto;
+	row-gap: 40px;
+}
+
+/*sale products-----------------------------------------------------*/
+.subContainer .proImage{
+	
+	height: 98px;
+	width:70px;
+	
+	
 }
 #delete:hover{
 	
@@ -18,8 +32,26 @@
 }
 
 /*------------------------------------------------------------*/
-/* add new products to the sale---------------------------------*/
+.margin{
+	
+	border-left: 4px solid #959695;
+  	height: 500px;
+  	border-radius:15px;
+  	margin-top:60px;
+	margin-right:10px;
+}
 
+
+/* add new products to the sale---------------------------------*/
+#add-new{
+	
+	display:flex;
+	flex-direction: column;
+	align-items:center;	
+	margin-top:px;
+	
+	
+}
 .add-item-main-container{
 	
 	flex:40%;
@@ -126,7 +158,10 @@
 	display:none;
 	
 }
-
+#pro-Sale-Details-Holder .btn btn-success{
+	
+	margin-left:10px;
+}
 
 
 
