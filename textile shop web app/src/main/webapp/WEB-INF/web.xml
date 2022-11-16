@@ -158,5 +158,18 @@
 		<url-pattern>/deleteSale</url-pattern>
 	
 	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>admin_login</servlet-name>
+		<servlet-class>com.servlet.admin_login</servlet-class>
+	
+	</servlet>
 
+	<servlet-mapping>
+		
+		<servlet-name>admin_login</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	
+	</servlet-mapping>
 </web-app>

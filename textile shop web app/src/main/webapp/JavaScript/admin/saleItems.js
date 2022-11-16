@@ -56,8 +56,8 @@ let loadData= () =>{
 			return`
 				<div class="subContainer" id="items-${x.id}">
 				 	
-					<div class="id">${x.id}</div>
 					<div class="name"><img class="proImage" src="../Images/${x.image}"></div>
+					<div class="id">${x.id}</div>
 					<div class="desc">${x.name}</div>
 					<div class="price">Rs ${x.price}.00</div>
 					<div class="stock">${x.salePercentage}%</div>
@@ -371,23 +371,33 @@ function checktheproducts(id){
 
 function validated(inputValue){
 	var userInputError = document.getElementById('input-error');
+	var InputPresentage = document.getElementById('salePresentage')
 	userInputError.style.display = "none";
-	if(isNaN(inputValue)){
+	if(isNaN(inputValue) ){
 		
-		isSaleSuccess=false
+		isSaleSuccess=false;
 		error = "Must input numbers";
-		userInputError.innerHTML = error;
-		2
-	}else{
-		isSaleSuccess=true;
-	}
-	if(proCount==0){
+		userInputError.innerHTML = error;	
+	}else if(proCount==0){
 		error="";
+		isSaleSuccess=false;
 		error = "Please select products from the list above";
 		userInputError.innerHTML = error;
 		userInputError.style.display = "block";
 		
+	}else if(InputPresentage.value===""){
+		error="";
+		isSaleSuccess=false;
+		error = "Input Value is empty";
+		userInputError.innerHTML = error;
+	
+	}else{
+		
+		isSaleSuccess=true;
+		
 	}
+		
+	
 	
 }
 
