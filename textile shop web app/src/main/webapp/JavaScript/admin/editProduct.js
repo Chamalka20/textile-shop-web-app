@@ -19,6 +19,7 @@ var xl = document.getElementById('xl');
 var categorie = document.getElementById('categorie');
 
 
+
 //get product details from servlet------------------------------------
 function getProDetails(){
 	
@@ -90,7 +91,7 @@ function search_category(){
 };
 
 // filter data from user input------------------
-function filterdata(data,searchText){
+ function filterdata(data,searchText){
 	return data.filter((x)=>x.toLowerCase().includes(searchText.toLowerCase()));
 }
 

@@ -77,6 +77,7 @@ function login(){
 			
 			if(isSuccess=="true"){
 				
+				localStorage.setItem("auth", 1);
 			    window.location='adminhome.jsp';
 				
 			}else{
