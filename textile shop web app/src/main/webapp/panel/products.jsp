@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>hnsert title here</title>
-<link rel="stylesheet" href="../css/admin/productStyle.css">
+
 
 	<!-- jquary  -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
+	<link rel="stylesheet" href="../css/admin/productStyle.css">
     <link href='../icons/icon list/all.css' rel='stylesheet'>
     <!-- user validation -->
    <script defer src="../JavaScript/admin/auth.js"></script>
@@ -73,17 +74,18 @@
       </aside>
       <!-- end Sidebar -->
 	  <!-- Main -->
-     	<div class="outerContainer">
-			
+     	<main class="main-container">
+			<div class="main-title">
+          		<p class="font-weight-bold">Products</p>
+        	</div>
 			<div class="tableContainer">
 					
 				<div class="headerContainer">	
-					<div class="header">Id</div>
-					<div class="header">Product</div>
-					<div class="header">Description</div>
-					<div class="header">Price</div>
-					<div class="header">Stock</div>
-					<div class="header">Action</div>		  
+					<div class="headerdata">Id</div>
+					<div class="headerdata">Product</div>
+					<div class="headerdata">Price</div>
+					<div class="headerdata">Stock</div>
+					<div class="headerdata">Action</div>		  
 				</div>
 				
 				<div class="dataContainer" id="dataHolder">	</div>	
@@ -91,9 +93,8 @@
 				
 			</div>	
 	
-	
 		
-		</div>
+		</main>
       <!-- End Main -->
 	
 	</div>

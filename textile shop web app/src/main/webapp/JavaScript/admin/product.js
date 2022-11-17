@@ -1,4 +1,27 @@
 	
+
+//---------------show admin details------------------------
+const adminName = localStorage.getItem("adminName");
+
+function showAccount(){
+	
+	document.getElementById("acc-name").innerHTML = adminName;
+	
+}
+
+showAccount();
+
+
+//--------logOut------------------------
+
+function logOut(){
+	const auth = new Auth();
+	auth.logOut();
+}
+
+
+
+//----------gat products data--------------------------------------
 var basket = document.getElementById('dataHolder');
 var proList = [];
 
@@ -34,7 +57,6 @@ let loadData= () =>{
 			 	
 				<div class="id">${x.id}</div>
 				<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
-				<div class="desc">${x.desc}</div>
 				<div class="price">Rs ${x.price}.00</div>
 				<div class="stock">${x.stock}</div>
 				<div class="action"><button  onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
