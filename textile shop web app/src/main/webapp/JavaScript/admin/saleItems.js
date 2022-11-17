@@ -6,6 +6,28 @@ var proCount=0;
 var isSaleSuccess = false;
 var error = "";
 
+//---------------show admin details------------------------
+const adminName = localStorage.getItem("adminName");
+
+function showAccount(){
+	
+	document.getElementById("acc-name").innerHTML = adminName;
+	
+}
+
+showAccount();
+
+
+//--------logOut------------------------
+
+function logOut(){
+	const auth = new Auth();
+	auth.logOut();
+}
+
+
+
+//----------------------------------------------------------------
 function getDatalist(){
 	 	
 	$.getJSON("../getPro", function(getData) {

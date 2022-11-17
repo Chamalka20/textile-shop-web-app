@@ -19,6 +19,26 @@ var xl = document.getElementById('xl');
 var categorie = document.getElementById('categorie');
 
 
+//---------------show admin details------------------------
+const adminName = localStorage.getItem("adminName");
+
+function showAccount(){
+	
+	document.getElementById("acc-name").innerHTML = adminName;
+	
+}
+
+showAccount();
+
+
+//--------logOut------------------------
+
+function logOut(){
+	const auth = new Auth();
+	auth.logOut();
+}
+
+
 
 //get product details from servlet------------------------------------
 function getProDetails(){

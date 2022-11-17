@@ -215,7 +215,7 @@ body {
 }
 
 .editPro{
-	
+	position: relative;
 	width:600px;
 	height:400px;
 	padding-left:12px;
@@ -225,7 +225,9 @@ body {
 	
 }
 .ImageWrapper2{
-	
+	position:absolute;
+	top:110px;
+	left:430px;
 	height:150px;
 	width:100px;
 	
@@ -275,7 +277,7 @@ i:hover{
 }
 .secondImg{
 	height:165px;
-	width:120px;
+	width:116px;
 	
 }
 

@@ -30,7 +30,7 @@
 
 	<div class="grid-container">
 
-			<!-- Header -->
+		<!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
@@ -47,7 +47,7 @@
       </header>
       <!-- End Header -->
       
-		<!-- Sidebar -->
+	<!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
@@ -89,7 +89,7 @@
 				</div>
 				<div class="update-container">
 					<div class="editPro">
-									<div class="ImageWrapper2" id="img"></div>
+							<div class="ImageWrapper2" id="img"></div>
 						<table>
 						<tr>
 							<td><h6>Edit product</h6></td>
