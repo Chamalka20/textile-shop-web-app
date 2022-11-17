@@ -1,5 +1,7 @@
-//import {Auth} from './auth';
+
 
 //validation user loging or not-------------------------------------
+var authNum = localStorage.getItem("auth");
 const auth = new Auth();
-auth.validateAuth();
+console.log("hit");
+auth.validateAuth(authNum);

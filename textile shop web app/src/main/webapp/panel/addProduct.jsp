@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="../css/admin/admin.css">
+
+<script defer src="../JavaScript/admin/auth.js"></script>
+<script defer src="../JavaScript/admin/initialize.js"></script>
 </head>
 <body>
 	<h2>add products</h2>

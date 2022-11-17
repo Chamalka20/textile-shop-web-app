@@ -3,6 +3,7 @@ package com.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.json.JsonArray;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,16 +19,18 @@ public class admin_login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		String name = req.getParameter("username");
 		String password = req.getParameter("password");
 		
+	
 		admin_DB adm = new admin_DB();
 		PrintWriter out = res.getWriter();
 		
-		boolean isSuccess = adm.admin_validation(name, password);
-		out.print(isSuccess);
+		JsonArray jarr = (JsonArray) adm.admin_validation(name, password);
+		
+		out.print(jarr);
 	
 		
 	}
