@@ -147,12 +147,12 @@ body {
 /* ---------- MAIN ----------------------------------------------- */
 
 .main-container {
-	 display:flex;
+	display:flex;
 }
 
 .main-title {
-  display: flex;
-  justify-content: space-between;
+  	position: absolute;
+ 
 }
 
 .main-title > p {
@@ -160,14 +160,16 @@ body {
 }
 
 
-
 /*sale products-----------------------------------------------------*/
 #saleItems{
+	
 	display: grid;
-  	grid-template-columns: auto auto auto;
+  	grid-template-columns: auto auto auto auto;
+  	padding-left:20px;
 	row-gap: 40px;
-	width:450px;
+	width:470px;
 	margin-top:60px;
+	overflow-y: scroll;
 }
 
 .sale-header{
@@ -201,30 +203,33 @@ body {
 
 
 /* add new products to the sale---------------------------------*/
+.add-item-main-container{
+	
+	width:580px;
+	padding-left:14px;
+	
+}
 #add-new{
 	
 	display:flex;
 	flex-direction: column;
 	align-items:center;	
 	margin-top:px;
-	
+	width:520px;
 	
 }
 
 #hideHeader{
-	margin-top:35px;
+	margin-top:10px;
 	
 }
-.add-item-main-container{
-	width:510px;
-	
-}
+
 .addNewHolder{
 	display:flex;
 	flex-direction: column;
 	align-items:center;
 	margin-top:40px;
-	padding-top:100px;
+	padding-top:20px;
 	padding-left:8px;
 	border-radius:7px;
 	width:550px;
@@ -237,7 +242,7 @@ body {
 	width:450px;
 	padding-left:10px;
 	border-radius:6px;
-	background-color:#ffffff;
+	background-color:#E7E9EB;
 	align-items:center;
 	margin-bottom:10px;
 	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;

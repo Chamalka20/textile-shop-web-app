@@ -232,6 +232,11 @@ body {
 	width:100px;
 	
 }
+.secondImg{
+	height:165px;
+	width:116px;
+	
+}
 .button_outer {
 	
 	text-align: center;
@@ -275,11 +280,7 @@ i:hover{
 	color:red;
 	
 }
-.secondImg{
-	height:165px;
-	width:116px;
-	
-}
+
 
 #someul{
 	position: absolute;

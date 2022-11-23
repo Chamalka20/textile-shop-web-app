@@ -248,7 +248,7 @@ function showProductList(resultProductData){
 		addNewHolder.style.display ="none";
 		hideHeader.style.display ="block";
 		proSaleDetailsHolder.style.display ="block";
-		mainSubHolder.style.background ="#E7E9EB";
+		mainSubHolder.style.background ="#ffff";
 		
 		//-----------------------------------------------------------------------
 		var notSaleItems=[];

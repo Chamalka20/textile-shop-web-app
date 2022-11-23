@@ -75,24 +75,76 @@
       <!-- end Sidebar -->
 	  <!-- Main -->
      	<main class="main-container">
-			<div class="main-title">
+			<div class="main-title1">
           		<p class="font-weight-bold">Products</p>
         	</div>
-			<div class="tableContainer">
+			<div class="products-Container">
 					
 				<div class="headerContainer">	
 					<div class="headerdata">Id</div>
 					<div class="headerdata">Product</div>
 					<div class="headerdata">Price</div>
-					<div class="headerdata">Stock</div>
 					<div class="headerdata">Action</div>		  
 				</div>
 				
 				<div class="dataContainer" id="dataHolder">	</div>	
 						
-				
-			</div>	
-	
+			</div>
+			<div class="main-title2">
+          		<p class="font-weight-bold">New Product</p>
+        	</div>	
+			<div class="new-product-container">
+				<div class="table-container">
+					<div class="ImageWrapper" id="img"></div>
+					<table>
+						<tr>
+							<td>Name</td>
+							<td><input type="text" id="name" value=""></td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td><input type="text" id="desc" value=""></td>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td><input type="text" id="price" value=""></td>
+						</tr>
+						<tr>
+							<td>Product Size:</td>
+							
+						</tr>
+						<tr>
+							<td>Small</td>
+							<td><input type="text" id="small" placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Medium</td>
+							<td><input type="text" id="medium"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Large</td>
+							<td><input type="text" id="large"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>XL</td>
+							<td><input type="text" id="xl"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Category</td>
+							<td><input type="text"  id="searchCate"onclick="search_category()"><ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;"></ul></td>
+						</tr>
+						<tr>
+							<td><div id="loginFailure" style="color:red; position:absolute;"><p></p></div></td>
+							
+						</tr>
+					
+					</table>
+					
+					<button class="btn2" onClick="productAdd()">Add</button>
+					
+					
+				</div>	
+			</div>
 		
 		</main>
       <!-- End Main -->
