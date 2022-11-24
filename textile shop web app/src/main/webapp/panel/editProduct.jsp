@@ -138,7 +138,10 @@
 									
 									</ul></div></td>
 						</tr>
-						
+						<tr>
+							<td><div id="loginFailure" style="color:red; position:absolute;"><p></p></div></td>
+							
+						</tr>
 						<tr>
 							<td></td>
 							<td><button type="button" class="btn btn-success" style="margin-top:20px"onClick="updateProduct()">Update</button></td>

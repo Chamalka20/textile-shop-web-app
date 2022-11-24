@@ -145,8 +145,9 @@ function RefreshImage(){
 	//remove image path and get image name---------------
 	 newImage = image.replace(/C:\\fakepath\\/, '');
 	
-	onlyImgUp= true;
-	updateProduct()
+	
+	
+	return(imgHolder.innerHTML=`<img src="../Images/${newImage}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 }
 
@@ -164,23 +165,26 @@ function updateProduct(){
 	var editXl = xl.value;
 	var editCategorie = categorie.value;
 	
-
-	$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:newImage,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+	
+	
+	if(editName ===""|| editDesc===""|| editPrice==="" || editSmall===""|| editMedium===""|| editLarge===""||editXl===""||editCategorie===""||newImage===""){
 		
-		if(onlyImgUp== true){
-			
-			console.log("image up");
+		document.getElementById("loginFailure").innerHTML = "Please fill out fields";
+		
+	}else{
+		
+		$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:newImage,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+	
+			alert("product is update");
 			proDetails=[];
 			getProDetails();
 			
-			onlyImgUp=false;
-		}else{
-			
-			alert("product is update");
-			
-		}
+	
+		}) 
 		
-	}) 
+	}
+	
+	
 	
 	
 	

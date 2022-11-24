@@ -305,7 +305,7 @@ i:hover{
 .ImageWrapper{
 	position:absolute;
 	top:150px;
-	left:1200px;
+	left:1220px;
 	height:150px;
 	width:100px;
 	
@@ -319,7 +319,7 @@ i:hover{
 }
 .secondImg{
 	height:145px;
-	width:116px;
+	width:107px;
 	
 }
 .button_outer {
@@ -359,7 +359,7 @@ i:hover{
 	color:black;
 	
 }
-.btn2{
+.btn-primary{
 	margin-top:25px;
 	margin-left:150px;
 }

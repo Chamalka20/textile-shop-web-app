@@ -39,6 +39,33 @@ function logOut(){
 }
 
 
+//--------------main-cards---------------------------------
+
+function getDatalist(){
+	
+	$.getJSON("../getPro", function(getData) {
+			
+			document.getElementById('products-count').innerHTML = getData.length;
+						
+	});
+
+};	
+
+getDatalist();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ---------- CHARTS ----------
 
