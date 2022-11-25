@@ -876,7 +876,17 @@ ol {
 	padding-top: 0;
 	padding-bottom: 60px;
 }
-
+.Bestproduct__filter{
+	
+	display: grid;
+  	grid-template-columns: auto auto auto auto;
+	
+}
+.Newproduct__filter{
+	display: grid;
+  	grid-template-columns: auto auto auto auto;
+	
+}
 .filter__controls {
 	text-align: center;
 	margin-bottom: 45px;
@@ -904,10 +914,18 @@ ol {
 	overflow: hidden;
 	margin-bottom: 40px;
 }
-
+.product__item__text{
+	
+	margin-left:35px;
+}
+.label{
+	
+	margin-left:34px;
+}
 .product__item.sale .product__item__pic .label {
 	color: #ffffff;
 	background: #111111;
+	
 }
 
 .product__item.sale .product__item__text .rating i {
@@ -919,7 +937,7 @@ ol {
 }
 
 .product__item:hover .product__item__pic .product__hover {
-	right: 20px;
+	right: 34px;
 	opacity: 1;
 }
 
@@ -938,8 +956,10 @@ ol {
 }
 
 .product__item__pic {
-	height: 260px;
+	height: 300px;
 	position: relative;
+	background-size: 217px 310px;
+	background-repeat: no-repeat;
 	background-position: center center;
 }
 

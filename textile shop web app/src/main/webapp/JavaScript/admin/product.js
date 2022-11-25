@@ -21,7 +21,7 @@ function logOut(){
 
 
 
-//----------gat products data--------------------------------------
+//----------get products data--------------------------------------
 var basket = document.getElementById('dataHolder');
 var imgHolder = document.getElementById('img');
 var proList = [];
@@ -57,7 +57,7 @@ let loadData= () =>{
 			<div class="subContainer" id="items-${x.id}">
 			 	
 				<div class="id">${x.id}</div>
-				<div class="name"><img class="proImage" src="../Images/${x.image}">${x.name}</div>
+				<div class="name"><img class="proImage" src="../Images/product/${x.image}">${x.name}</div>
 				<div class="price">Rs ${x.price}.00</div>
 				<div class="action"><button class="btn1" onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
 			</div>

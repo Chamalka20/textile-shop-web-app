@@ -75,12 +75,12 @@ function loadProDetails(data){
 	return(detailsHolder.innerHTML= 
 		
 		`
-		 <div class="ImageWrapper"><img class="firstImg" src="../Images/${data[0].image}"><h4>${data[0].name}</<h4></div>
+		 <div class="ImageWrapper"><img class="firstImg" src="../Images/product/${data[0].image}"><h4>${data[0].name}</<h4></div>
 		 <div class="wrapper"><h6>Id:</h6><p>${data[0].id}</p></div>
 		 <div class="wrapper"><h6>Sales:</h6><p>${data[0].salles}</p></div>
 		 <div class="wrapper"><h6>Quantity: </h6><p>${data[0].quantity}</p></div>
 		 <div class="wrapper"><h6>Add date: </h6><p>${data[0].addDate}</p></div>`
-	),(imgHolder.innerHTML=`<img src="../Images/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+	),(imgHolder.innerHTML=`<img src="../Images/product/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 		
 };
@@ -147,7 +147,7 @@ function RefreshImage(){
 	
 	
 	
-	return(imgHolder.innerHTML=`<img src="../Images/${newImage}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+	return(imgHolder.innerHTML=`<img src="../Images/product/${newImage}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 }
 
