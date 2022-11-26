@@ -2,12 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html >
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="description" content="">
+    <meta name="keywords" content="nawara_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nawara-Fashion</title>
@@ -15,16 +15,17 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
     rel="stylesheet">
+    
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/style.css" type="text/css">
 </head>
 
 <body>
@@ -57,25 +58,25 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./home.html"><img src="img/logo.png" alt=""></a>
+                       <a href="../shop/home.jsp"><img src="../Images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./home.html">Home</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li ><a href="../shop/home.jsp">Home</a></li>
+                            <li class="active"><a href="../shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="../shop/about.jsp">About Us</a></li>
+                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
+                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a href="../shop/blog.jsp">Blog</a></li>
+                            <li><a href="../shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -100,10 +101,11 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <h4>Shop</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./home.html">Home</a>
+                        
+                            <a href="../shop/home.jsp">Home</a>
+                          	>
                             <span>Shop</span>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -128,20 +130,13 @@
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                     </div>
                                     <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="#">Men (20)</a></li>
-                                                    <li><a href="#">Women (20)</a></li>
-                                                    <li><a href="#">Bags (20)</a></li>
-                                                    <li><a href="#">Clothing (20)</a></li>
-                                                    <li><a href="#">Shoes (20)</a></li>
-                                                    <li><a href="#">Accessories (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
-                                                    <li><a href="#">Kids (20)</a></li>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -150,6 +145,7 @@
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseThree">Filter Price</a>
+                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
                                     </div>
                                     <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                                         <div class="card-body">
@@ -176,7 +172,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
+                                    <p>Showing 1-of 126 results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -641,7 +637,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                           <a href="#"><img src="../Images/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
@@ -710,16 +706,16 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../JavaScript/shop/jquery-3.3.1.min.js"></script>
+    <script src="../JavaScript/shop/bootstrap.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nice-select.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nicescroll.min.js"></script>
+    <script src="../JavaScript/shop/jquery.magnific-popup.min.js"></script>
+    <script src="../JavaScript/shop/jquery.countdown.min.js"></script>
+    <script src="../JavaScript/shop/jquery.slicknav.js"></script>
+    <script src="../JavaScript/shop/mixitup.min.js"></script>
+    <script src="../JavaScript/shop/owl.carousel.min.js"></script>
+    <script src="../JavaScript/shop/shop.js"></script>
 </body>
 
 </html>

@@ -184,7 +184,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <h5>Rs ${x.price}.00</h5>
+                            <div class="price-con"><h5>Rs ${x.price}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
                             
                         </div>
                     </div>
@@ -216,7 +216,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <h5>Rs ${x.price}.00</h5>
+                             <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
                             
                         </div>
                     </div>
@@ -244,7 +244,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <h5>Rs ${x.price}.00</h5>
+                            <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
                             
                         </div>
                     </div>
@@ -298,14 +298,16 @@ function loadNewArrivals(){
 //------------------------get New Arrivals----------------------------------------------
 
 function NewArrivals(){
-	
+	document.querySelector('#new').style.color="black";
+	document.querySelector('#best').style.color="#b7b7b7";
 	Bestproduct.style.display = "none";
 	Newproduct.style.display = "grid";
 	loadNewArrivals();
 }
 //------------------------get Best Sellers----------------------------------------------
 function BestSellers(){
-	
+    document.querySelector('#best').style.color="black";
+    document.querySelector('#new').style.color="#b7b7b7";
 	Bestproduct.style.display = "grid";
 	Newproduct.style.display = "none";
 }

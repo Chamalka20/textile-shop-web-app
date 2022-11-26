@@ -872,10 +872,6 @@ ol {
   Product
 -----------------------*/
 
-.product {
-	padding-top: 0;
-	padding-bottom: 60px;
-}
 .Bestproduct__filter{
 	
 	display: grid;
@@ -887,12 +883,27 @@ ol {
   	grid-template-columns: auto auto auto auto;
 	
 }
+.product__item {
+	width:260px;
+	height:410px;
+	padding-top: 0;
+	padding-bottom: 60px;
+}
 .filter__controls {
 	text-align: center;
 	margin-bottom: 45px;
 }
 
-.filter__controls li {
+.filter__controls #best {
+	color: black;
+	font-size: 24px;
+	font-weight: 700;
+	list-style: none;
+	display: inline-block;
+	margin-right: 88px;
+	cursor: pointer;
+}
+.filter__controls #new {
 	color: #b7b7b7;
 	font-size: 24px;
 	font-weight: 700;
@@ -906,17 +917,13 @@ ol {
 	margin-right: 0;
 }
 
-.filter__controls li.active {
-	color: #111111;
-}
-
 .product__item {
 	overflow: hidden;
 	margin-bottom: 40px;
 }
 .product__item__text{
 	
-	margin-left:35px;
+	margin-left:22px;
 }
 .label{
 	
@@ -935,6 +942,7 @@ ol {
 .product__item.sale .product__item__text .rating i:nth-last-child(1) {
 	color: #b7b7b7;
 }
+
 
 .product__item:hover .product__item__pic .product__hover {
 	right: 34px;
@@ -1039,6 +1047,12 @@ ol {
 	position: relative;
 }
 
+.price-con{
+	
+	display:flex;
+	
+	gap:6px;
+}
 .product__item__text a {
 	font-size: 15px;
 	color: #e53637;
@@ -1376,29 +1390,13 @@ ol {
 	color: #ffffff;
 }
 
-.shop__sidebar__accordion .card-heading a:after,
-.shop__sidebar__accordion .card-heading>a.active[aria-expanded=false]:after {
-	content: "";
-	font-family: "FontAwesome";
-	font-size: 24px;
-	font-weight: 700;
-	color: #111111;
-	position: absolute;
-	right: 0;
-	top: 2px;
-	line-height: 20px;
-}
 
-.shop__sidebar__accordion .card-heading.active a:after {
-	content: "";
-	font-family: "FontAwesome";
-	font-size: 24px;
-	font-weight: 700;
-	color: #111111;
-	position: absolute;
-	right: 0;
-	top: 2px;
-	line-height: 20px;
+.card-heading{
+	display:flex;
+}
+.card-heading a{
+	
+	flex:1;
 }
 
 .shop__product__option {
@@ -1555,13 +1553,7 @@ ol {
 	position: relative;
 }
 
-.product__details__breadcrumb a:after {
-	position: absolute;
-	right: -14px;
-	top: 0;
-	content: "";
-	font-family: "FontAwesome";
-}
+
 
 .product__details__breadcrumb span {
 	font-size: 15px;

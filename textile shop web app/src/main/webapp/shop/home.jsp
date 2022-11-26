@@ -6,8 +6,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="description" content="">
+    <meta name="keywords" content="nawara_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nawara-Fashion</title>
@@ -60,25 +60,25 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../Images/logo.png" alt=""></a>
+                        <a href="../shop/home.jsp"><img src="../Images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="./home.html">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li class="active"><a href="../shop/home.jsp">Home</a></li>
+                            <li><a href="../shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="../shop/about.jsp">About Us</a></li>
+                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
+                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a href="../shop/blog.jsp">Blog</a></li>
+                            <li><a href="../shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -193,8 +193,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="filter__controls">
-                        <li class="active"  onClick="BestSellers()">Best Sellers</li>
-                        <li  onClick="NewArrivals()">New Arrivals</li>
+                        <li id="best" onClick="BestSellers()">Best Sellers</li>
+                        <li id="new" onClick="NewArrivals()">New Arrivals</li>
                     </ul>
                 </div>
             </div>
