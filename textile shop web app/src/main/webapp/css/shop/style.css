@@ -1445,6 +1445,67 @@ ol {
 	border-radius: 0;
 }
 
+/*---price-filter--------------------------------*/
+.shop__sidebar__price{
+	
+	height:200px;
+}
+.slider{
+	
+	height:5px;
+	border-radius:5px;
+	margin-top:20px;
+	background-color:#ddd;
+}
+.slider .progress{
+	height:5px;
+	position:absolute;
+	left:25%;
+	right:25%;
+	border-radius:5px;
+	background-color:#17A288;
+}
+
+.rage-input{
+	
+	position:relative;
+}
+.rage-input input{
+	
+	position:absolute;
+	top:-5px;
+	height:7px;
+	width:100%;
+	pointer-events:none;
+	background:none;
+	-webkit-appearance:none;
+	
+}
+
+input[type="range"]::-webkit-slider-thumb{
+	
+	height:17px;
+	width:17px;
+	border-radius:50%;
+	pointer-events:auto;
+	-webkit-appearance:none;
+	background-color: #17A288;
+}
+
+.show-price-range{
+	margin-top:15px;
+	height:150px;
+	
+}
+
+#products-holder{
+	
+	display: grid;
+  	grid-template-columns: auto auto auto ;
+	
+}
+
+/*------------------------------------*/
 .product__pagination {
 	padding-top: 25px;
 	text-align: center;

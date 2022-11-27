@@ -62,7 +62,7 @@ let loadData= () =>{
 				<div class="action"><button class="btn1" onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
 			</div>
 			
-		`}).join(" ")),(imgHolder.innerHTML=`<div id="not-up">Upload Image</div><img src="../Images/${newImage}" class="secondImg" id="showImage" style="display:none;"><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+		`}).join(" ")),(imgHolder.innerHTML=`<div id="not-up">Upload Image</div><img src="../Images/product/${newImage}" class="secondImg" id="showImage" style="display:none;"><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 		
 		
 	}else{
