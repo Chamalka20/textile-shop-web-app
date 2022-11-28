@@ -138,10 +138,8 @@ function getDatalist(){
 					proList.push(getData[i]);
 					
 			}
-			
-			DisplayList(proList, list_element, rows, current_page);
-			SetupPagination(proList, pagination_element, rows);	
-					
+			defaultSelect(proList);
+				
 		});
 
 };		
@@ -199,6 +197,10 @@ function loadCat(data){
 	
 	input.addEventListener("click",(e)=>{
 		
+		//default select active class color change-------------------------
+		
+		document.querySelector('.nice-scroll li a.active').style.color="#b7b7b7";
+		
 		if(isCatFilterActive !== true){
 			
 			for(var i=0;i<data.length;i++){
@@ -218,9 +220,19 @@ function loadCat(data){
 				
 	})
 	
-})
+ })
 }   
-	  
+
+//------set default Categorie -------------------------
+
+function defaultSelect(data){
+	
+	filterbyCategories(data,"All")
+	
+	
+}
+
+  
 //--------------filter by Categories----------------------
 	  
 function filterbyCategories(data,categorie){
@@ -345,6 +357,9 @@ function closeFilter(){
 	catlistItem.classList.remove('active');
 	document.querySelector('.filter-history-item').style.display="none";
 	isCatFilterActive = false;
+	proList = [];
+	resultProductData = [];
+	getDatalist();
 	
 }
 
