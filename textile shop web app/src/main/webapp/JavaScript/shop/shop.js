@@ -1,6 +1,3 @@
-
- 
-
 (function ($) {
 
     /*------------------
@@ -98,7 +95,6 @@
 
     /*-------------------
 	
-
     /*-------------------
 		Scroll
 	--------------------- */
@@ -115,9 +111,48 @@
 
 })(jQuery)
 
+
+//get today date-----------------------------------------
+	var today = new Date();
+	var mm = String(today.getMonth() + 1); 
+	var yyyy = today.getFullYear();
+	
+	//----------identify this month-------------------------
+	var thisMonth = new Date(yyyy + '-' + mm + '-' + 01);
+
+
+//----------get products data--------------------------------------
+var isCatFilterActive = false;
+var proList = [];
+var resultProductData = [];
+const list_element = document.getElementById('products-holder');
+const pagination_element = document.getElementById('pagination');
+let current_page = 1;
+let rows = 6;
+
+function getDatalist(){
+	
+		$.getJSON("../getPro", function(getData) {
+			
+			for(var i=0;i<getData.length;i++){
+					proList.push(getData[i]);
+					
+			}
+			
+			DisplayList(proList, list_element, rows, current_page);
+			SetupPagination(proList, pagination_element, rows);	
+					
+		});
+
+};		
+getDatalist();
+
+
+
 //--------------- get categorie names-------------------------
 var catList = document.querySelector('.nice-scroll');
 var split_string = []
+
 
 $.get("../getCate", function(arraylist) {   
 		
@@ -129,15 +164,94 @@ $.get("../getCate", function(arraylist) {
 	    
 function loadCat(data){
 	
-	return(catList.innerHTML=data.map((x)=>{
-		
-		return`	 
-			 <li><a href="#">${x}</a></li>`
-		
-	}).join(" "))
 	
+	$(".nice-scroll ").append(data.map(function (el) {
+		   	
+		  if(el==="All"){
+			
+				return $('<li >').append(
+				
+					$('<a href="#" class="active">').text(el))
+			
+			}else{
+				
+				return $('<li >').append(
+				
+					$('<a href="#" >').text(el))
+				
+			} 	
+		   	
+			
+		   	
+		}));
+	
+ var catlistItems = document.querySelectorAll('.nice-scroll li a');
+ 
+ 
+//user click one by one category names------------------------------------ 
+ catlistItems.forEach(input=>{
+	
+	if(input.className ==="active"){
+		
+		input.style.color ="black";
+		
+	}
+	
+	input.addEventListener("click",(e)=>{
+		
+		if(isCatFilterActive !== true){
+			
+			for(var i=0;i<data.length;i++){
+				
+				if(e.target.innerHTML===data[i]){
+					
+					
+					e.target.classList.add('active');
+					e.target.style.color ="black";
+					filterbyCategories(proList,e.target.innerHTML);
+					
+				}
+				
+			}
+			
+		}
+				
+	})
+	
+})
 }   
-	    
+	  
+//--------------filter by Categories----------------------
+	  
+function filterbyCategories(data,categorie){
+	
+	if(categorie !== "All"){
+		
+		resultProductData= data.filter(function (a) {
+				var hitCategory =[];
+	            hitCategory.push(a.categorie);
+	
+				// filter this salles by less than 10
+	            var hitCategoryMatches = hitCategory.filter(function(cat) { return cat === categorie });
+	            
+				return hitCategoryMatches.length>0;
+			})
+		isCatFilterActive=true
+		activeFilters(categorie);
+	}else{
+		
+		for(var i=0;i<data.length;i++){
+					resultProductData.push(data[i]);
+					
+			}
+		
+	}
+		
+		
+	DisplayList(resultProductData, list_element, rows, current_page);
+	SetupPagination(resultProductData, pagination_element, rows);	
+		
+}	    
 	    
 //------------------Price Range--------------------------------------
 
@@ -156,13 +270,16 @@ showPrice[1].innerHTML="Maximum price: Rs "+ maxVal;
 progress.style.left = (minVal/rangeInput[0].max)*100+"%";
 progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
 
-rangeInput.forEach(input=>{
+
+function PriceRange(){
+	
+	rangeInput.forEach(input=>{
 		//after user change the price-----------------------
 		input.addEventListener("input",(e)=>{
 			
 			var minVal = parseInt(rangeInput[0].value);
 			var maxVal = parseInt(rangeInput[1].value);
-			
+		
 			if(maxVal-minVal < priceGap){
 				//if active slider---------------
 				if(e.target.className ==="range-min"){
@@ -182,60 +299,73 @@ rangeInput.forEach(input=>{
 				progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
 			}
 			
-		
+			resultProductData= resultProductData.filter(function (a) {
+				var hitprice =[];
+	            hitprice.push(a.price);
+	
+				// filter this salles by less than 10
+	            var hitpriceMatches = hitprice.filter(function(val) { return val >= minVal && val <= maxVal });
+	            
+				return hitpriceMatches.length>0;
+			})
+			
+			
+			DisplayList(resultProductData, list_element, rows, current_page);
+			SetupPagination(resultProductData, pagination_element, rows);	
 		})
 		
-})
+	})
+	
+	
+	
+}
+PriceRange()
+
+//-----------------set-filter-history------------------------------
+function activeFilters(data){
+	
+const filterList = document.getElementById('filterList');	
+	
+	if(isCatFilterActive===true){
+		
+		return(filterList.innerHTML=`
+			
+			<div class="filter-history-item" onClick="closeFilter()"><span>${data}</span><span class="material-symbols-outlined">close</span></div>
+
+
+		`)
+		
+	}
+	
+}
+
+function closeFilter(){
+	var catlistItem = document.querySelector('.nice-scroll li a.active');
+	catlistItem.style.color="#b7b7b7";
+	catlistItem.classList.remove('active');
+	document.querySelector('.filter-history-item').style.display="none";
+	isCatFilterActive = false;
+	
+}
 
 
 //---------------------------------------------------------------
-//----------get products data--------------------------------------
-var productsHolder = document.querySelector('#products-holder');
-var pagination_element = document.getElementById('pagination');
-var current_page = 1;
-var rows = 6;
-var proList = [];
 
-function getDatalist(){
-	
-		$.getJSON("../getPro", function(getData) {
-			
-			for(var i=0;i<getData.length;i++){
-					proList.push(getData[i]);
-					
-			}
-			
-			DisplayList(proList, productsHolder, rows, current_page);
-			SetupPagination(proList, pagination_element, rows);			
-		});
+//--------------display resuls------------------------------------------------
 
-};		
-getDatalist();
-console.log(proList);
-
-//get today date-----------------------------------------
-	var today = new Date();
-	var mm = String(today.getMonth() + 1); 
-	var yyyy = today.getFullYear();
-	
-	//----------identify this month-------------------------
-	var thisMonth = new Date(yyyy + '-' + mm + '-' + 01);
-	
-
-
-//------------------------------------------------------------------------------------
-
-//-----------display products-----------------------------------------
 function DisplayList (items, wrapper, rows_per_page, page) {
-	
 	wrapper.innerHTML = "";
 	page--;
-	
+
 	let start = rows_per_page * page;
 	let end = start + rows_per_page;
 	let paginatedItems = items.slice(start, end);
-		
-	return(productsHolder.innerHTML= paginatedItems.map((x)=>{
+	
+	//total results-----------------------------------------------------------
+	var results =document.querySelector('.shop__product__option__left  p');
+    results.innerHTML ="Showing 1-"+rows+" of 126 results";
+
+	return(list_element.innerHTML= paginatedItems.map((x)=>{
 		if(x.saleActive==="true"){
 			
 			return`
@@ -326,11 +456,8 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 			
 			
 		}}).join(" "))
-	
-	
 }
 
-//---------------- Pagination  --------------------------------------------------------------
 function SetupPagination (items, wrapper, rows_per_page) {
 	wrapper.innerHTML = "";
 
@@ -342,22 +469,17 @@ function SetupPagination (items, wrapper, rows_per_page) {
 }
 
 function PaginationButton (page, items) {
-	let button = document.createElement('button');
+	let button = document.createElement('a');
 	button.innerText = page;
 
-	if (current_page == page){
-		
-		button.classList.add('active');
-		
-	} 
+	if (current_page == page) button.classList.add('active');
 
 	button.addEventListener('click', function () {
 		current_page = page;
-		console.log(current_page);
-		DisplayList(items, pagination_element, rows, current_page);
+		DisplayList(items, list_element, rows, current_page);
 
-		let current_btn = document.querySelector('.product__pagination button.active');
-		console.log(current_btn);
+		let current_btn = document.querySelector('.product__pagination a.active');
+		
 		current_btn.classList.remove('active');
 
 		button.classList.add('active');
@@ -365,8 +487,4 @@ function PaginationButton (page, items) {
 
 	return button;
 }
-
-
-
-
 

@@ -15,7 +15,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
     rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
@@ -122,14 +122,19 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
-                        <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><span class="icon_search"></span></button>
-                            </form>
-                        </div>
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
+                            	<div class="card">
+                                    <div class="card-heading">
+                                        <a data-toggle="collapse" data-target="#collapseOne">Active Filters</a>
+                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div class="card-body" id="filterList">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
@@ -179,7 +184,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1-of 126 results</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -194,17 +199,10 @@
                             </div>
                         </div>
                     </div>
-                    <div id="products-holder">
-                        
-         <!-- ------------------------------------- products ---------------------------------------------------------->           
-                    </div>
-                    <div class="row-count">
-                        <div class="col-lg-12">
-                            <div class="product__pagination" id="pagination">
-                                
-                            </div>
-                        </div>
-                    </div>
+                    <main>
+						<div class="list" id="products-holder"></div>
+						<div class="product__pagination" id="pagination"></div>
+					</main>
                 </div>
             </div>
         </div>

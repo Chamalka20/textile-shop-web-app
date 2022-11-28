@@ -236,7 +236,7 @@ public class product_DB {
 		JsonArray jarr = null;
 		DB_connect db = new DB_connect();
 		Connection con = null;
-		String sql1 = "SELECT * FROM textile.product,textile.sale WHERE product.sale_id=sale.saleid;";
+		String sql1 = "SELECT * FROM textile.product,textile.sale,textile.product_category WHERE product.sale_id=sale.saleid AND product.category_id = product_category.id";
 		
 		try {
 			
@@ -258,6 +258,7 @@ public class product_DB {
 					.add("add_date",rs.getString(12))
 					.add("saleActive",rs.getString("saleActive"))
 					.add("salePercentage",rs.getString("salePercentage"))
+					.add("categorie",rs.getString("cat_name"))
 					.build());
 				
 				 
