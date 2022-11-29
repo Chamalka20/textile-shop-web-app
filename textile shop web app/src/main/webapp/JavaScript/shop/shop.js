@@ -112,6 +112,8 @@
 })(jQuery)
 
 
+
+//--------------------------------------------------------------------------------------------
 //get today date-----------------------------------------
 	var today = new Date();
 	var mm = String(today.getMonth() + 1); 
@@ -123,6 +125,7 @@
 
 //----------get products data--------------------------------------
 var isCatFilterActive = false;
+var isPriceFilterActive = false;
 var proList = [];
 var resultProductData = [];
 const list_element = document.getElementById('products-holder');
@@ -150,7 +153,9 @@ getDatalist();
 //--------------- get categorie names-------------------------
 var catList = document.querySelector('.nice-scroll');
 var split_string = []
-
+var activeCat = "";
+var storePriceChangetype = "";
+var storePriceChangevalue = 0;
 
 $.get("../getCate", function(arraylist) {   
 		
@@ -212,6 +217,7 @@ function loadCat(data){
 					e.target.style.color ="black";
 					filterbyCategories(proList,e.target.innerHTML);
 					
+					
 				}
 				
 			}
@@ -221,6 +227,8 @@ function loadCat(data){
 	})
 	
  })
+ 
+ 
 }   
 
 //------set default Categorie -------------------------
@@ -249,7 +257,9 @@ function filterbyCategories(data,categorie){
 				return hitCategoryMatches.length>0;
 			})
 		isCatFilterActive=true
-		activeFilters(categorie);
+		
+		activeFilters(categorie,storePriceChangetype,storePriceChangevalue);
+		activeCat = categorie;
 	}else{
 		
 		for(var i=0;i<data.length;i++){
@@ -259,7 +269,7 @@ function filterbyCategories(data,categorie){
 		
 	}
 		
-		
+	PriceRange(resultProductData);	
 	DisplayList(resultProductData, list_element, rows, current_page);
 	SetupPagination(resultProductData, pagination_element, rows);	
 		
@@ -269,7 +279,7 @@ function filterbyCategories(data,categorie){
 
 var rangeInput = document.querySelectorAll('.rage-input input');
 var progress = document.querySelector('.slider .progress');
-var showPrice = document.querySelectorAll('.show-price-range p');
+var showPrice = document.querySelectorAll('.show-price-range div');
 var priceGap =500;
 //default values------------------------------------
 var minVal = parseInt(rangeInput[0].value);
@@ -282,8 +292,31 @@ showPrice[1].innerHTML="Maximum price: Rs "+ maxVal;
 progress.style.left = (minVal/rangeInput[0].max)*100+"%";
 progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
 
+//-------------------------------------------------------
+function priceChange(type,value){
 
-function PriceRange(){
+	isPriceFilterActive= true;
+	if(type==="range-max"){
+		
+		storePriceChangetype = "MaxPrice";
+		storePriceChangevalue = value;
+		activeFilters(activeCat,"MaxPrice",value);
+		
+	}
+	
+	if(type==="range-min"){
+		
+		storePriceChangetype = "MinPrice";
+		storePriceChangevalue = value;
+		activeFilters(activeCat,"MinPrice",value);
+		
+	}
+}
+
+//-------------------------------------------------------------
+function PriceRange(data){
+	
+	//-----------------------------------
 	
 	rangeInput.forEach(input=>{
 		//after user change the price-----------------------
@@ -311,13 +344,13 @@ function PriceRange(){
 				progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
 			}
 			
-			resultProductData= resultProductData.filter(function (a) {
+			resultProductData= data.filter(function (a) {
 				var hitprice =[];
 	            hitprice.push(a.price);
 	
-				// filter this salles by less than 10
+				
 	            var hitpriceMatches = hitprice.filter(function(val) { return val >= minVal && val <= maxVal });
-	            
+	           
 				return hitpriceMatches.length>0;
 			})
 			
@@ -334,32 +367,83 @@ function PriceRange(){
 PriceRange()
 
 //-----------------set-filter-history------------------------------
-function activeFilters(data){
+function activeFilters(cat,priceRage,priceValue){
 	
 const filterList = document.getElementById('filterList');	
 	
 	if(isCatFilterActive===true){
 		
+		//if user price and category both are filter----------------------
+		if(isPriceFilterActive === true){
+			
+			return(filterList.innerHTML=`
+			
+			<div class="filter-history-item-cat" onClick="closeFilter(className)"><span>${cat}</span><span class="material-symbols-outlined">close</span></div>
+			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue}</span><span class="material-symbols-outlined">close</span></div>
+
+			`)
+			
+		}else{
+			
+				
+			return(filterList.innerHTML=`
+			
+			<div class="filter-history-item-cat" onClick="closeFilter(className)"><span>${cat}</span><span class="material-symbols-outlined">close</span></div>
+
+
+			`)
+
+			
+			
+		}
+			
+		
+	}
+	
+	if(isPriceFilterActive === true){
+		console.log(priceRage);
 		return(filterList.innerHTML=`
 			
-			<div class="filter-history-item" onClick="closeFilter()"><span>${data}</span><span class="material-symbols-outlined">close</span></div>
+			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue}</span><span class="material-symbols-outlined">close</span></div>
 
 
 		`)
-		
 	}
 	
 }
 
-function closeFilter(){
-	var catlistItem = document.querySelector('.nice-scroll li a.active');
-	catlistItem.style.color="#b7b7b7";
-	catlistItem.classList.remove('active');
-	document.querySelector('.filter-history-item').style.display="none";
-	isCatFilterActive = false;
-	proList = [];
-	resultProductData = [];
-	getDatalist();
+function closeFilter(name){
+	
+	if(name==="filter-history-item-cat"){
+		
+		var catlistItem = document.querySelector('.nice-scroll li a.active');
+		catlistItem.style.color="#b7b7b7";
+		catlistItem.classList.remove('active');
+		document.querySelector('.filter-history-item-cat').style.display="none";
+		isCatFilterActive = false;
+		proList = [];
+		resultProductData = [];
+		getDatalist();
+		
+	}
+	
+	if(name==="filter-history-item-price"){
+		
+		document.querySelector('.filter-history-item-price').style.display="none";
+		isPriceFilterActive = false;
+		
+		minVal = 0;
+        maxVal = 7000;
+        
+        // user remove the filters and reset defult values-------------------
+		progress.style.left = (minVal/rangeInput[0].max)*100+"%";
+		progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
+	
+		rangeInput[0].value = minVal;
+		rangeInput[1].value = maxVal;
+		
+	}
+	
 	
 }
 
@@ -379,98 +463,111 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	//total results-----------------------------------------------------------
 	var results =document.querySelector('.shop__product__option__left  p');
     results.innerHTML ="Showing 1-"+rows+" of 126 results";
-
-	return(list_element.innerHTML= paginatedItems.map((x)=>{
-		if(x.saleActive==="true"){
-			
-			return`
-                    <div class="product__item sale">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
-                            <span class="label">Sale</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>${x.name}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <div class="price-con"><h5>Rs ${x.price}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
-                            
-                        </div>
-                    </div>
-                `
+    
+	if(items.length != 0){//if product result is empty-------------------------
 		
-		}else {
-			
-			 // convert strings to Date objcts--------------
-			var proDate = new Date(x.add_date);
-			
-			if(proDate >= thisMonth){
+		return(list_element.innerHTML= paginatedItems.map((x)=>{
+			if(x.saleActive==="true"){
 				
 				return`
-                    <div class="product__item">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>${x.name}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                             <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
-                            
-                        </div>
-                    </div>
-                `
+	                    <div class="product__item sale" onClick="productDetails(${x.id})">
+	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+	                            <span class="label">Sale</span>
+	                            <ul class="product__hover">
+	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                            </ul>
+	                        </div>
+	                        <div class="product__item__text">
+	                            <h6>${x.name}</h6>
+	                           
+	                            <div class="rating">
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                            <div class="price-con"><h5>Rs ${x.price}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
+	                            
+	                        </div>
+	                    </div>
+	                `
 			
+			}else {
 				
-			}else{
+				 // convert strings to Date objcts--------------
+				var proDate = new Date(x.add_date);
 				
-				return`
-                    <div class="product__item">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
-                           
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>${x.name}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
-                            
-                        </div>
-                    </div>
-                `
-			}
-			
-			
-		}}).join(" "))
+				if(proDate >= thisMonth){
+					
+					return`
+	                    <div class="product__item" onClick="productDetails(${x.id})">
+	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+	                            <span class="label">New</span>
+	                            <ul class="product__hover">
+	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                            </ul>
+	                        </div>
+	                        <div class="product__item__text">
+	                            <h6>${x.name}</h6>
+	                           
+	                            <div class="rating">
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                             <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+	                            
+	                        </div>
+	                    </div>
+	                `
+				
+					
+				}else{
+					
+					return`
+	                    <div class="product__item" onClick="productDetails(${x.id})">
+	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+	                           
+	                            <ul class="product__hover">
+	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                            </ul>
+	                        </div>
+	                        <div class="product__item__text">
+	                            <h6>${x.name}</h6>
+	                            
+	                            <div class="rating">
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                            <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+	                            
+	                        </div>
+	                    </div>
+	                `
+				}
+				
+				
+			}}).join(" "))
+		
+		
+	}else{
+		
+		return(list_element.innerHTML= `<div class="empty-message"><h4>Sorry, No products match your search </h4></div>`)
+		
+	}
+		
+		
+
+	
 }
 
 function SetupPagination (items, wrapper, rows_per_page) {
@@ -502,4 +599,17 @@ function PaginationButton (page, items) {
 
 	return button;
 }
+
+
+//------------------------------------------------------
+//Derect product details page---------------------
+function productDetails(id){
+	
+	localStorage.setItem("id",id);
+    window.location='product-details.jsp';
+	
+}
+
+
+
 

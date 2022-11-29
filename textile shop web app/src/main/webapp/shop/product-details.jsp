@@ -6,8 +6,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="nawara_Fashion, unica, creative, html">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nawara-Fashion</title>
@@ -17,6 +17,8 @@
     rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
+	 
+	
     <!-- Css Styles -->
     <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
@@ -25,10 +27,7 @@
     <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
     <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/style.css" type="text/css">
-    
-     <!-- jquary  -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/shop/product-details.css" type="text/css">
 </head>
 
 <body>
@@ -36,9 +35,7 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
+       <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
@@ -97,119 +94,17 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Shop</h4>
-                        
-                            <a href="../shop/home.jsp">Home</a>
-                          	>
-                            <span>Shop</span>
-                        
-                    </div>
-                </div>
-            </div>
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container" id="product-details-holder">
+           
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
+    <!-- Product Details Section End -->
+    
 
-    <!-- Shop Section Begin -->
-    <section class="shop spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="shop__sidebar">
-                        <div class="shop__sidebar__accordion">
-                            <div class="accordion" id="accordionExample">
-                            	<div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">Active Filters</a>
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body" id="filterList">
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                    </div>
-                                    <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__categories">
-                                                <ul class="nice-scroll">
-                                                    
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-heading">
-                                        <a >Filter Price</a>
-                                        
-                                    </div>
-                                    <div  class="collapse show" >
-                                        <div class="card-body">
-                                            <div class="shop__sidebar__price">
-                                               <div class=slider>
-                                               		<div class="progress"></div>
-                                               
-                                               </div>
-                                               <div class="rage-input">
-                                               <input type="range" class="range-min" onChange="priceChange(className,value)" min="0" max="7000" value="0">
-                                               <input type="range" class="range-max" onChange="priceChange(className,value)" min="0" max="7000" value="7000">
-                                               </div>
-                                               <div class="show-price-range">
-                                               		<div></div>
-                                               		<div ></div>
-                                               </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="shop__product__option">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__left">
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="shop__product__option__right">
-                                    <p>Sort by Price:</p>
-                                    <select>
-                                        <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <main>
-						<div class="list" id="products-holder"></div>
-						<div class="product__pagination" id="pagination"></div>
-					</main>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Shop Section End -->
-
-    <!-- Footer Section Begin -->
+     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -294,7 +189,7 @@
     <script src="../JavaScript/shop/jquery.slicknav.js"></script>
     <script src="../JavaScript/shop/mixitup.min.js"></script>
     <script src="../JavaScript/shop/owl.carousel.min.js"></script>
-    <script src="../JavaScript/shop/shop.js"></script>
+    <script src="../JavaScript/shop/product-details.js"></script>
 </body>
 
 </html>

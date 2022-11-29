@@ -921,6 +921,10 @@ ol {
 	overflow: hidden;
 	margin-bottom: 40px;
 }
+
+.product__item :hover{
+	cursor: pointer;
+}
 .product__item__text{
 	
 	margin-left:22px;
@@ -949,15 +953,6 @@ ol {
 	opacity: 1;
 }
 
-.product__item:hover .product__item__text a {
-	top: 22px;
-	opacity: 1;
-	visibility: visible;
-}
-
-.product__item:hover .product__item__text h6 {
-	opacity: 0;
-}
 
 .product__item:hover .product__item__text .product__color__select {
 	opacity: 1;
@@ -1180,7 +1175,14 @@ ol {
 	cursor: pointer;
 }
 
-.filter-history-item{
+#filterList{
+	display:flex;
+	flex-direction: column;
+	gap:7px;
+	
+}
+
+.filter-history-item-cat{
 	
 	display:flex;
 	cursor:pointer;
@@ -1191,6 +1193,21 @@ ol {
 	border-radius:12px;
 	width:120px;
 	height:34px;
+}
+
+.filter-history-item-price{
+	
+	display:flex;
+	cursor:pointer;
+	align-items:center;
+	gap:4px;
+	justify-content:center;
+	background:rgba(0,0,0,.10);
+	border-radius:12px;
+	width:150px;
+	height:34px;
+	
+	
 }
 
 .filter-history-item span{
