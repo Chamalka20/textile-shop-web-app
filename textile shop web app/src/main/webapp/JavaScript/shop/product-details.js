@@ -241,7 +241,6 @@ function increment(){
 	
 	items+=1;
 	
-	
 	update();
 	
 }
