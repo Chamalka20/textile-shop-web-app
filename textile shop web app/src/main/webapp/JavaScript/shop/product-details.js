@@ -169,19 +169,19 @@ function loadProDetails(data){
                                     <span>Available size:</span>
                                     <div class="size__btn">
                                         <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
+                                            <input type="radio" id="xs-btn" onClick="selectSize(${data[0].xl})">
                                             xl
                                         </label>
                                         <label for="s-btn">
-                                            <input type="radio" id="s-btn">
+                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
                                             s
                                         </label>
                                         <label for="m-btn">
-                                            <input type="radio" id="m-btn">
+                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
                                             m
                                         </label>
                                         <label for="l-btn">
-                                            <input type="radio" id="l-btn">
+                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
                                             l
                                         </label>
                                     </div>
@@ -191,9 +191,10 @@ function loadProDetails(data){
                                     <div class="stock__checkbox">
                                         <label for="stockin">
                                             In Stock
-                                            <input type="checkbox" id="stockin">
+                                            <input type="checkbox" id="stockin" >
                                             <span class="checkmark"></span>
                                         </label>
+                                        <div class="size-alert" style="display:none;"><p></p></div>
                                     </div>
                                 </li>
                                 
@@ -210,7 +211,7 @@ function loadProDetails(data){
                                 <span>Quantity:</span>
                                 <div class="pro-qty">
                                 	<div onClick="decrement()"><span class="material-symbols-outlined" >remove</span></div>
-                                    <div class="quantity-value">0</div>
+                                    <div class="quantity-value">1</div>
                                     <div onClick="increment()"><span class="material-symbols-outlined" >add</span></div>
 									
                                 </div>
@@ -235,6 +236,29 @@ function loadProDetails(data){
 	
 }
 //----------------------------------------------------------
+
+//user select product size ---------------------------------
+
+function selectSize(data){
+	
+	document.querySelector('.size-alert').style.display = "none";
+	document.querySelector('#stockin').checked = false;
+	
+	if(data <= 10){
+		document.querySelector('#stockin').checked = true;
+		document.querySelector('.size-alert').innerHTML= data+" in stock";
+		document.querySelector('.size-alert').style.display = "block";
+		
+	}else{
+		
+		document.querySelector('#stockin').checked = true;
+		
+	}
+	
+}
+
+
+
 //------user select product quantity-------------------------
 var items = 0;
 function increment(){
@@ -247,7 +271,7 @@ function increment(){
 
 function decrement(){
 	
-	if(items !== 0){
+	if(items !== 1){
 		
 		items-=1;
 		
