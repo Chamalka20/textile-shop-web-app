@@ -15,16 +15,20 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/style.css" type="text/css">
+    
+     <!-- jquary  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -63,19 +67,19 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./home.html">Home</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li ><a href="../shop/home.jsp">Home</a></li>
+                            <li class="active"><a href="../shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="../shop/about.jsp">About Us</a></li>
+                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
+                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a href="../shop/blog.jsp">Blog</a></li>
+                            <li><a href="../shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -83,8 +87,8 @@
                     <div class="header__nav__option">
                          <a href="#" class="search-switch"><img src="../Images/icon/search.png" alt=""></a>
                         <a href="#"><img src="../Images/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="../Images/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="./shopping-cart.jsp"><img src="../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
+                        
                     </div>
                 </div>
             </div>
@@ -100,11 +104,11 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <h4>Shopping Cart</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
+                        
+                            <a href="./home.jsp">Home</a>>
+                            <a href="./shop.jsp">Shop</a>>
                             <span>Shopping Cart</span>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -323,16 +327,16 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../JavaScript/shop/jquery-3.3.1.min.js"></script>
+    <script src="../JavaScript/shop/bootstrap.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nice-select.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nicescroll.min.js"></script>
+    <script src="../JavaScript/shop/jquery.magnific-popup.min.js"></script>
+    <script src="../JavaScript/shop/jquery.countdown.min.js"></script>
+    <script src="../JavaScript/shop/jquery.slicknav.js"></script>
+    <script src="../JavaScript/shop/mixitup.min.js"></script>
+    <script src="../JavaScript/shop/owl.carousel.min.js"></script>
+    <script src="../JavaScript/shop/shopping-cart.js"></script>
 </body>
 
 </html>

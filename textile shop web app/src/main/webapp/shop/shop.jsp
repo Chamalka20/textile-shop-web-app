@@ -87,8 +87,8 @@
                     <div class="header__nav__option">
                          <a href="#" class="search-switch"><img src="../Images/icon/search.png" alt=""></a>
                         <a href="#"><img src="../Images/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="../Images/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="./shopping-cart.jsp"><img src="../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
+                        
                     </div>
                 </div>
             </div>

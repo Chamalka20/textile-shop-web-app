@@ -115,6 +115,7 @@
 //-----------------------------------------------------
 
 var id = localStorage.getItem("id");
+
 var proDetails = [];
 var proDetailsHolder=document.querySelector("#product-details-holder");
 //get product details from servlet------------------------------------
@@ -177,19 +178,19 @@ function loadProDetails(data){
 	                                    <span>Available size:</span>
 	                                    <div class="size__btn" >
 	                                        <label for="xl-btn" >
-	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl})">
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id})">
 	                                            xl
 	                                        </label>
 	                                        <label for="s-btn" >
-	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'Small',${data[0].id})">
 	                                            s
 	                                        </label>
 	                                        <label for="m-btn">
-	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'Medium',${data[0].id})">
 	                                            m
 	                                        </label>
 	                                        <label for="l-btn">
-	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
+	                                             <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'Large',${data[0].id})">
 	                                            l
 	                                        </label>
 	                                    </div>
@@ -273,19 +274,19 @@ function loadProDetails(data){
 	                                    <span>Available size:</span>
 	                                    <div class="size__btn" >
 	                                        <label for="xl-btn" >
-	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl})">
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id})">
 	                                            xl
 	                                        </label>
 	                                        <label for="s-btn" >
-	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'Small',${data[0].id})">
 	                                            s
 	                                        </label>
 	                                        <label for="m-btn">
-	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'Medium',${data[0].id})">
 	                                            m
 	                                        </label>
 	                                        <label for="l-btn">
-	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
+	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'Large',${data[0].id})">
 	                                            l
 	                                        </label>
 	                                    </div>
@@ -320,7 +321,7 @@ function loadProDetails(data){
 										
 	                                </div>
 	                            </div>
-	                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+	                            <a  class="cart-btn" onClick="addToCart()"><span class="icon_bag_alt"></span> Add to cart</a>
 	                            <ul>
 	                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
 	                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
@@ -344,13 +345,38 @@ function loadProDetails(data){
 	
 }
 //----------------------------------------------------------
+var basket= [];
+var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+
+//get localStorage data------------------------------------
+for(var i=0;i<localStrorage.length;i++){
+	
+	basket.push(localStrorage[i]);
+					
+}
+
+console.log(basket);
+
+if(localStrorage !== null){
+	
+	var cartIcon = document.querySelector('.cart-amount');
+	cartIcon.style.display = "block";
+	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
+	console.log("hghhf");
+	
+}
+//------------------------------------------------------------
 
 //user select product size ---------------------------------
 var limit = 0;
 var items = 0;
+var proId = 0;
+var size = "";
 
-function selectSize(data){
+function selectSize(data,proSize,id){
 	limit= data;
+	proId = id;
+	size = proSize;
 	//reset quantity------------------------------
 	items = 0;
 	update();
@@ -378,14 +404,14 @@ function selectSize(data){
 		document.querySelector('.size-alert').innerHTML= data+" in stock";
 		document.querySelector('.size-alert').style.display = "block";
 		
-		
-		
+			
 	}else{
 		
 		document.querySelector('#stockin').checked = true;
 		
 		
 	}
+	
 	
 }
 
@@ -401,6 +427,21 @@ function increment(){
 		
 		items+=1;
 		document.querySelector('#minus').style.color="black";
+		
+		var search = basket.find((x) => x.id === proId)
+		
+		//Reduce when the same piece of data is stored 
+		if(search === undefined){
+			
+			basket.push({id:proId ,size:size,item:1});
+		}else{
+			
+			search.item+=1;
+		}
+		
+		//---------------------------
+		
+		console.log(basket);
 		
 		}else{
 			
@@ -424,6 +465,16 @@ function decrement(){
 		
 		items-=1;
 		document.querySelector('#plus').style.color="black";
+		
+		var search = basket.find((x) => x.id === proId);
+		if(search === undefined){
+			console.log("gtttt")
+			basket.push({id:proId ,size:size,item:1});
+		}else{
+			
+			search.item-=1;
+		}
+		console.log(basket);
 	}else{
 		
 		document.querySelector('#minus').style.color="#cfcbca";
@@ -438,4 +489,23 @@ function update(){
 	
 	
 }
+
+//---------------add to  ADD TO CART --------------------------
+
+function addToCart(){
+	
+	var cartIcon = document.querySelector('.cart-amount');
+	var proAddAlert=document.querySelector(".product-add-alert");
+	
+	proAddAlert.style.display = "block";
+	proAddAlert.innerHTML=proDetails[0].name+" have been added to your cart.";
+	cartIcon.style.display = "block";
+    cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0)
+	
+   	localStorage.setItem("cartData",JSON.stringify(basket));
+    
+}
+
+
+
 

@@ -112,6 +112,28 @@
 })(jQuery)
 
 
+//----------------------------------------------------------
+var basket= [];
+var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+
+//get localStorage data------------------------------------
+for(var i=0;i<localStrorage.length;i++){
+	
+	basket.push(localStrorage[i]);
+					
+}
+
+console.log(basket);
+
+if(localStrorage !== null){
+	
+	var cartIcon = document.querySelector('.cart-amount');
+	cartIcon.style.display = "block";
+	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
+	console.log("hghhf");
+	
+}
+//------------------------------------------------------------
 
 //--------------------------------------------------------------------------------------------
 //get today date-----------------------------------------
@@ -174,13 +196,13 @@ function loadCat(data){
 			
 				return $('<li >').append(
 				
-					$('<a href="#" class="active">').text(el))
+					$('<a  class="active">').text(el))
 			
 			}else{
 				
 				return $('<li >').append(
 				
-					$('<a href="#" >').text(el))
+					$('<a>').text(el))
 				
 			} 	
 		   	
@@ -380,7 +402,6 @@ const filterList = document.getElementById('filterList');
 			
 			<div class="filter-history-item-cat" onClick="closeFilter(className)"><span>${cat}</span><span class="material-symbols-outlined">close</span></div>
 			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue}</span><span class="material-symbols-outlined">close</span></div>
-
 			`)
 			
 		}else{
@@ -389,8 +410,6 @@ const filterList = document.getElementById('filterList');
 			return(filterList.innerHTML=`
 			
 			<div class="filter-history-item-cat" onClick="closeFilter(className)"><span>${cat}</span><span class="material-symbols-outlined">close</span></div>
-
-
 			`)
 
 			
@@ -405,8 +424,6 @@ const filterList = document.getElementById('filterList');
 		return(filterList.innerHTML=`
 			
 			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue}</span><span class="material-symbols-outlined">close</span></div>
-
-
 		`)
 	}
 	
@@ -615,7 +632,3 @@ function productDetails(id){
     window.location='product-details.jsp';
 	
 }
-
-
-
-

@@ -117,6 +117,29 @@
 
 })(jQuery);
 
+//----------------------------------------------------------
+var basket= [];
+var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+
+//get localStorage data------------------------------------
+for(var i=0;i<localStrorage.length;i++){
+	
+	basket.push(localStrorage[i]);
+					
+}
+
+console.log(basket);
+
+if(localStrorage !== null){
+	
+	var cartIcon = document.querySelector('.cart-amount');
+	cartIcon.style.display = "block";
+	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
+	console.log("hghhf");
+	
+}
+//------------------------------------------------------------
+
 //----------get products data--------------------------------------
 
 var proList = [];
@@ -173,7 +196,7 @@ function loadBestSellers(){
 			
 			
 			return`
-                    <div class="product__item sale">
+                    <div class="product__item sale" onClick="productDetails(${x.id})">
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
@@ -205,7 +228,7 @@ function loadBestSellers(){
 			if(proDate >= thisMonth){
 				
 				return`
-                    <div class="product__item">
+                    <div class="product__item" onClick="productDetails(${x.id})">
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
@@ -233,7 +256,7 @@ function loadBestSellers(){
 			}else{
 				
 				return`
-                    <div class="product__item">
+                    <div class="product__item" onClick="productDetails(${x.id})">
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                            
                             <ul class="product__hover">
@@ -272,7 +295,7 @@ function loadNewArrivals(){
 		if(proDate >= thisMonth){
 			
 			return`
-                    <div class="product__item">
+                    <div class="product__item" onClick="productDetails(${x.id})">
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
@@ -319,6 +342,13 @@ function BestSellers(){
 	Newproduct.style.display = "none";
 }
 
-
+//------------------------------------------------------
+//Derect product details page---------------------
+function productDetails(id){
+	
+	localStorage.setItem("id",id);
+    window.location='product-details.jsp';
+	
+}
 
 
