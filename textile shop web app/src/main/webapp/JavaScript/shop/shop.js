@@ -469,6 +469,12 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 		return(list_element.innerHTML= paginatedItems.map((x)=>{
 			if(x.saleActive==="true"){
 				
+				//calculate sale price--------------------------
+					var proPrice = x.price;
+					var presentage = x.salePercentage / 100;
+			
+					var totalValue = proPrice - (proPrice * presentage)
+				
 				return`
 	                    <div class="product__item sale" onClick="productDetails(${x.id})">
 	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
@@ -488,7 +494,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                                <i class="fa fa-star-o"></i>
 	                                <i class="fa fa-star-o"></i>
 	                            </div>
-	                            <div class="price-con"><h5>Rs ${x.price}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
+	                            <div class="price-con"><h5>Rs ${totalValue}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
 	                            
 	                        </div>
 	                    </div>

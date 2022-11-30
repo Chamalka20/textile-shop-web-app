@@ -138,108 +138,237 @@ getProDetails();
 
 function loadProDetails(data){
 	
-	return(proDetailsHolder.innerHTML=`
+	if(data[0].saleActive==="true"){
+		
+		//calculate sale price--------------------------
+		var proPrice = data[0].price;
+		var presentage = data[0].salePercentage / 100;
+
+		var totalValue = proPrice - (proPrice * presentage)
+		
+		return(proDetailsHolder.innerHTML=
+		//sale item-----------------------------------------------
+			`<div class="row">
+	                <div class="col-lg-6">
+	                    <div class="product__details__pic">
+	                      
+	                        <img src="../Images/product/${data[0].image}">
+	                        
+	                    </div>
+	                </div>
+	                <div class="col-lg-6">
+	                    <div class="product__details__text">
+	                        <h3>${data[0].name}</h3>
+	                        <div class="rating">
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <span>( 138 reviews )</span>
+	                        </div>
+	                        <div class="product__details__price">Rs ${totalValue}.00<span>Rs ${data[0].price}.00</span></div>
+	                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
+	                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+	                        
+	                         <div class="product__details__widget">
+	                            <ul>
+	                            	<li>
+	                                    <span>Available size:</span>
+	                                    <div class="size__btn" >
+	                                        <label for="xl-btn" >
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl})">
+	                                            xl
+	                                        </label>
+	                                        <label for="s-btn" >
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
+	                                            s
+	                                        </label>
+	                                        <label for="m-btn">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
+	                                            m
+	                                        </label>
+	                                        <label for="l-btn">
+	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
+	                                            l
+	                                        </label>
+	                                    </div>
+	                                </li>
+	                                <li>
+	                                    <span>Availability:</span>
+	                                    <div class="stock__checkbox">
+	                                        <label for="stockin">
+	                                            In Stock
+	                                            <input type="checkbox" id="stockin" >
+	                                            <span class="checkmark"></span>
+	                                        </label>
+	                                        <div class="size-alert" style="display:none;"><p></p></div>
+	                                    </div>
+	                                </li>
+	                                
+	                                
+	                                <li>
+	                                    <span>Promotions:</span>
+	                                    <p>Free shipping</p>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                                                
+	                        <div class="product__details__button">
+	                            <div class="quantity">
+	                                <span>Quantity:</span>
+	                                <div class="pro-qty">
+	                                	<div onClick="decrement()"><span class="material-symbols-outlined" id="minus" onCopy="return false" onselectstart="return false">remove</span></div>
+	                                    <div class="quantity-value">1</div>
+	                                    <div onClick="increment()"><span class="material-symbols-outlined" id="plus" onCopy="return false" onselectstart="return false">add</span></div>
+										
+	                                </div>
+	                            </div>
+	                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+	                            <ul>
+	                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+	                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+	                            </ul>
+	                        </div>
+	                       
+	                    </div>
+	                </div>
+	      
+	            </div>
 	
-		<div class="row">
-                <div class="col-lg-6">
-                    <div class="product__details__pic">
-                      
-                        <img src="../Images/product/${data[0].image}">
-                        
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="product__details__text">
-                        <h3>${data[0].name}</h3>
-                        <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <span>( 138 reviews )</span>
-                        </div>
-                        <div class="product__details__price">Rs ${data[0].price}.00<span>$ 83.0</span></div>
-                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
-                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
-                        
-                         <div class="product__details__widget">
-                            <ul>
-                            	<li>
-                                    <span>Available size:</span>
-                                    <div class="size__btn">
-                                        <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn" onClick="selectSize(${data[0].xl})">
-                                            xl
-                                        </label>
-                                        <label for="s-btn">
-                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
-                                            s
-                                        </label>
-                                        <label for="m-btn">
-                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
-                                            m
-                                        </label>
-                                        <label for="l-btn">
-                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
-                                            l
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <span>Availability:</span>
-                                    <div class="stock__checkbox">
-                                        <label for="stockin">
-                                            In Stock
-                                            <input type="checkbox" id="stockin" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <div class="size-alert" style="display:none;"><p></p></div>
-                                    </div>
-                                </li>
-                                
-                                
-                                <li>
-                                    <span>Promotions:</span>
-                                    <p>Free shipping</p>
-                                </li>
-                            </ul>
-                        </div>
-                                                
-                        <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                	<div onClick="decrement()"><span class="material-symbols-outlined" >remove</span></div>
-                                    <div class="quantity-value">1</div>
-                                    <div onClick="increment()"><span class="material-symbols-outlined" >add</span></div>
-									
-                                </div>
-                            </div>
-                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
-                            <ul>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
-                            </ul>
-                        </div>
-                       
-                    </div>
-                </div>
-      
-            </div>
+	
+				`)
+		
+		
+		}else{
+			
+		return(proDetailsHolder.innerHTML=
+		//----- not sale item-----------------------------------------------
+			`<div class="row">
+	                <div class="col-lg-6">
+	                    <div class="product__details__pic">
+	                      
+	                        <img src="../Images/product/${data[0].image}">
+	                        
+	                    </div>
+	                </div>
+	                <div class="col-lg-6">
+	                    <div class="product__details__text">
+	                        <h3>${data[0].name}</h3>
+	                        <div class="rating">
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <i class="fa fa-star"></i>
+	                            <span>( 138 reviews )</span>
+	                        </div>
+	                        <div class="product__details__price">Rs ${data[0].price}.00</div>
+	                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
+	                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+	                        
+	                         <div class="product__details__widget">
+	                            <ul>
+	                            	<li>
+	                                    <span>Available size:</span>
+	                                    <div class="size__btn" >
+	                                        <label for="xl-btn" >
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl})">
+	                                            xl
+	                                        </label>
+	                                        <label for="s-btn" >
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small})">
+	                                            s
+	                                        </label>
+	                                        <label for="m-btn">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium})">
+	                                            m
+	                                        </label>
+	                                        <label for="l-btn">
+	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large})">
+	                                            l
+	                                        </label>
+	                                    </div>
+	                                </li>
+	                                <li>
+	                                    <span>Availability:</span>
+	                                    <div class="stock__checkbox">
+	                                        <label for="stockin">
+	                                            In Stock
+	                                            <input type="checkbox" id="stockin" >
+	                                            <span class="checkmark"></span>
+	                                        </label>
+	                                        <div class="size-alert" style="display:none;"><p></p></div>
+	                                    </div>
+	                                </li>
+	                                
+	                                
+	                                <li>
+	                                    <span>Promotions:</span>
+	                                    <p>Free shipping</p>
+	                                </li>
+	                            </ul>
+	                        </div>
+	                                                
+	                        <div class="product__details__button">
+	                            <div class="quantity">
+	                                <span>Quantity:</span>
+	                                <div class="pro-qty">
+	                                	<div onClick="decrement()"><span class="material-symbols-outlined" id="minus" onCopy="return false" onselectstart="return false">remove</span></div>
+	                                    <div class="quantity-value">1</div>
+	                                    <div onClick="increment()"><span class="material-symbols-outlined" id="plus" onCopy="return false" onselectstart="return false">add</span></div>
+										
+	                                </div>
+	                            </div>
+	                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+	                            <ul>
+	                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+	                                <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+	                            </ul>
+	                        </div>
+	                       
+	                    </div>
+	                </div>
+	      
+	            </div>
 	
 	
-	`)
+				`)
+			
+			
+			
+		}
 	
 	
-	
+
 	
 }
 //----------------------------------------------------------
 
 //user select product size ---------------------------------
+var limit = 0;
+var items = 0;
 
 function selectSize(data){
+	limit= data;
+	//reset quantity------------------------------
+	items = 0;
+	update();
+	document.querySelector('#plus').style.color="black"
+	document.querySelector('#minus').style.color="black";
+	//----------------------------------------------------------
+	
+	$(document).ready(function(){
+		
+		$('.size__btn label').on('click',function(){
+			console.log("ner");
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');
+			
+		})
+		
+	})
+	
 	
 	document.querySelector('.size-alert').style.display = "none";
 	document.querySelector('#stockin').checked = false;
@@ -249,9 +378,12 @@ function selectSize(data){
 		document.querySelector('.size-alert').innerHTML= data+" in stock";
 		document.querySelector('.size-alert').style.display = "block";
 		
+		
+		
 	}else{
 		
 		document.querySelector('#stockin').checked = true;
+		
 		
 	}
 	
@@ -260,10 +392,26 @@ function selectSize(data){
 
 
 //------user select product quantity-------------------------
-var items = 0;
+
 function increment(){
 	
-	items+=1;
+	if(limit !== 0){
+		
+		if(limit>items){
+		
+		items+=1;
+		document.querySelector('#minus').style.color="black";
+		
+		}else{
+			
+			document.querySelector('#plus').style.color="#cfcbca";
+		}
+		
+	}else{
+		
+		items+=1;
+	}
+		
 	
 	update();
 	
@@ -271,10 +419,14 @@ function increment(){
 
 function decrement(){
 	
+	// limit minimumum quantity is one------------------------------
 	if(items !== 1){
 		
 		items-=1;
+		document.querySelector('#plus').style.color="black";
+	}else{
 		
+		document.querySelector('#minus').style.color="#cfcbca";
 	}
 	
 	update();

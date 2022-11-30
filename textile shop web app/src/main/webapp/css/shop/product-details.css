@@ -830,7 +830,7 @@ ol {
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	width:110px;
+	width:95px;
 	border: 3px solid #50e667;
 	border-radius:10px;
 }
@@ -921,6 +921,7 @@ ol {
 
 .product__details__widget ul li .size__btn label.active {
 	color: #ca1515;
+	background:#d7d9d7;
 }
 
 .product__details__widget ul li .size__btn label input {
