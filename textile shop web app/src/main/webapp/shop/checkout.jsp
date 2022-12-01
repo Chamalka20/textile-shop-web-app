@@ -12,19 +12,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nawara-Fashion</title>
 
-    <!-- Google Font -->
+<!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/shop/checkout.css" type="text/css">
+    
+     <!-- jquary  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./home.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./home.html"><img src="../Images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -84,8 +88,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="../Images/icon/search.png" alt=""></a>
                         <a href="#"><img src="../Images/icon/heart.png" alt=""></a>
-                        <a href="#"><img src="../Images/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="./shopping-cart.jsp"><img src="../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
+                        
                     </div>
                 </div>
             </div>
@@ -101,11 +105,11 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <h4>Check Out</h4>
-                        <div class="breadcrumb__links">
-                            <a href="./index.html">Home</a>
-                            <a href="./shop.html">Shop</a>
+                       
+                            <a href="./home.jsp">Home</a>>
+                            <a href="./shop.jsp">Shop</a>>
                             <span>Check Out</span>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -252,7 +256,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="../Images/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
@@ -321,17 +325,17 @@
     </div>
     <!-- Search End -->
 
-    <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    !-- Js Plugins -->
+    <script src="../JavaScript/shop/jquery-3.3.1.min.js"></script>
+    <script src="../JavaScript/shop/bootstrap.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nice-select.min.js"></script>
+    <script src="../JavaScript/shop/jquery.nicescroll.min.js"></script>
+    <script src="../JavaScript/shop/jquery.magnific-popup.min.js"></script>
+    <script src="../JavaScript/shop/jquery.countdown.min.js"></script>
+    <script src="../JavaScript/shop/jquery.slicknav.js"></script>
+    <script src="../JavaScript/shop/mixitup.min.js"></script>
+    <script src="../JavaScript/shop/owl.carousel.min.js"></script>
+    <script src="../JavaScript/shop/checkout.js"></script>
 </body>
 
 </html>

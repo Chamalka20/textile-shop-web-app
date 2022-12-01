@@ -117,10 +117,14 @@ var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
 
 //get localStorage data------------------------------------
-for(var i=0;i<localStrorage.length;i++){
+if(localStrorage !== null){
+	
+	for(var i=0;i<localStrorage.length;i++){
 	
 	basket.push(localStrorage[i]);
 					
+	}
+	
 }
 
 console.log(basket);
@@ -154,6 +158,8 @@ const list_element = document.getElementById('products-holder');
 const pagination_element = document.getElementById('pagination');
 let current_page = 1;
 let rows = 6;
+
+//get products data from database------------------------------------------
 
 function getDatalist(){
 	
@@ -423,7 +429,7 @@ const filterList = document.getElementById('filterList');
 		console.log(priceRage);
 		return(filterList.innerHTML=`
 			
-			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue}</span><span class="material-symbols-outlined">close</span></div>
+			<div class="filter-history-item-price" onClick="closeFilter(className)"><span>${priceRage}:</span><span> ${priceValue.toLocaleString("en-US")}</span><span class="material-symbols-outlined">close</span></div>
 		`)
 	}
 	
@@ -511,7 +517,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                                <i class="fa fa-star-o"></i>
 	                                <i class="fa fa-star-o"></i>
 	                            </div>
-	                            <div class="price-con"><h5>Rs ${totalValue}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
+	                            <div class="price-con"><h5>Rs ${totalValue.toLocaleString("en-US")}.00</h5><del><p>Rs ${x.price.toLocaleString("en-US")}.00</p></del></div>
 	                            
 	                        </div>
 	                    </div>
@@ -543,7 +549,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                                <i class="fa fa-star-o"></i>
 	                                <i class="fa fa-star-o"></i>
 	                            </div>
-	                             <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+	                             <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
 	                            
 	                        </div>
 	                    </div>
@@ -571,7 +577,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                                <i class="fa fa-star-o"></i>
 	                                <i class="fa fa-star-o"></i>
 	                            </div>
-	                            <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+	                            <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
 	                            
 	                        </div>
 	                    </div>

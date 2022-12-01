@@ -114,25 +114,326 @@
 
 //----------------------------------------------------------
 var basket= [];
-var localStrorage = JSON.parse(localStorage.getItem("cartData"));
-
-//get localStorage data------------------------------------
-for(var i=0;i<localStrorage.length;i++){
+function getLocalStorgeData(){
 	
-	basket.push(localStrorage[i]);
-					
+	var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+	
+	//get localStorage data------------------------------------
+	if(localStrorage !== null){
+		
+		for(var i=0;i<localStrorage.length;i++){
+		
+		basket.push(localStrorage[i]);
+						
+		}
+		
+	}
+	
+	
+	console.log(basket);
+	
+	if(localStrorage !== null){
+		
+		var cartIcon = document.querySelector('.cart-amount');
+		cartIcon.style.display = "block";
+		cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
+		
+		
+	}	
+	
+	
+	
 }
+getLocalStorgeData();
 
-console.log(basket);
-
-if(localStrorage !== null){
-	
-	var cartIcon = document.querySelector('.cart-amount');
-	cartIcon.style.display = "block";
-	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
-	console.log("hghhf");
-	
-}
 //------------------------------------------------------------
+
+//get products data from database------------------------------------------
+var proList = [];
+
+function getDatalist(){
+	
+		$.getJSON("../getPro", function(getData) {
+			
+			for(var i=0;i<getData.length;i++){
+					proList.push(getData[i]);
+					
+			}
+			generateCartItems(proList);
+			totalAomunt(proList)
+			console.log(proList);	
+		});
+
+};		
+getDatalist();
+
+
+// list cart items--------------------------------------------------
+var mainHolder=document.getElementById('cart-main-container');
+var subtotalPrice=0;
+var total =0;
+var totalCounter = [];
+
+function generateCartItems(data){
+	
+	
+	//Check cart is emptyor not -----------------------------
+	if(basket.length !== 0){
+		
+		mainHolder.innerHTML =`
+								<div class="row" >
+                <div class="col-lg-8">
+                    <div class="shopping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn">
+                                <a href="#">Continue Shopping</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="continue__btn update__btn" onClick="updateCart()">
+                                <a> Update cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="cart__discount">
+                        <h6>Discount codes</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Coupon code">
+                            <button type="submit">Apply</button>
+                        </form>
+                    </div>
+                    <div class="cart__total">
+                        <h6>Cart total</h6>
+                        <ul id="dispay-total">
+                            <li>Total <span></span></li>
+                        </ul>
+                        <div class="checkout_btn" onClick="checkOut()"><a >Proceed to checkout</a></div>
+                        
+                    </div>
+                </div>
+            </div>`
+		
+		
+		var itemTable = document.querySelector("tbody");					
+		
+		
+		return(itemTable .innerHTML = basket.map((x)=>{
+			
+			var{id,item,size,limit} = x;
+			var search = data.find((el)=> el.id === id )|| [];
+			console.log(search);
+			
+			//calculate each item total price----------------------------
+			subtotalPrice = search.price * item;
+			
+			
+			return`
+			<tr>
+				<td class="product__cart__item">
+                   <div class="product__cart__item__pic">
+                      <img src='../Images/product/${search.image}' alt="">
+                   </div>
+                   <div class="product__cart__item__text">
+                     <h6>${search.name}-${size}</h6>
+					 <h5>Rs ${search.price.toLocaleString("en-US")}.00</h5>
+				   </div>
+                </td>
+                <td class="quantity__item">
+                  <div class="quantity">
+                     <div class="pro-qty-2">
+                     	<div onClick="decrement(${item},${search.id})"><span class="material-symbols-outlined" id="minus-${search.id}" onCopy="return false" onselectstart="return false">remove</span></div>
+                        <div class="quantity-value" id="${search.id}">${item}</div>
+                        <div onClick="increment(${item},${limit},${search.id})"><span class="material-symbols-outlined" id="plus-${search.id}" onCopy="return false" onselectstart="return false">add</span></div>
+                      </div>
+                  </div>
+                </td>
+                <td class="cart__price">Rs ${subtotalPrice.toLocaleString("en-US")}.00</td>
+                <td class="cart__close"><i class="fa fa-close" onClick="removeItem(${search.id})"></i></td>
+             </tr>
+			
+			`
+			
+			
+		}))
+		
+		
+		
+	}else{
+		console.log("hgjgjgyj");
+		mainHolder.innerHTML=`	
+								<div class="empty-cart-message">
+									<h3>Cart is empty</h3>
+									<div class="continue__btn"><a href="../shop/shop.jsp">Continue Shopping</a></div>
+								</div>
+														
+							`;
+														
+		
+	}
+
+
+
+}
+
+//------user select product quantity-------------------------
+
+
+function increment(items,limit,id){
+	newitems = items;
+	var proId = id;
+	console.log(newitems);
+	if(limit !== 0){
+		
+		var search = basket.find((x) => x.id === proId);
+		
+		if(limit>search.item){
+		
+		
+		document.getElementById('minus-'+id).style.color="black";
+		
+		var search = basket.find((x) => x.id === proId)
+		
+			//Reduce when the same piece of data is stored 
+			if(search === undefined){
+				
+				basket.push({id:proId ,size:size,item:1});
+			}else{
+				
+				search.item+=1;
+			}
+		
+		//---------------------------
+		
+		console.log(basket);
+		
+		}else{
+			console.log("not");
+			document.getElementById('plus-'+id).style.color="#cfcbca";
+		}
+		
+	}else{
+		
+		newitems+=1;
+	}
+		
+	
+	update(proId);
+	
+}
+
+function decrement(items,id){
+	var proId = id
+	var search = basket.find((x) => x.id === proId);
+	// limit minimumum quantity is one------------------------------
+	if(search.item !== 0){
+		
+		
+		document.getElementById('plus-'+id).style.color="black";
+		
+		var search = basket.find((x) => x.id === proId);
+		if(search === undefined){
+			
+			basket.push({id:proId ,size:size,item:1});
+		}else{
+			
+			search.item-=1;
+		}
+		
+	}else{
+		
+		document.getElementById('minus-'+id).style.color="#cfcbca";
+	}
+	
+	update(proId);
+}
+
+function update(proId){
+	
+	var search = basket.find((x) => x.id === proId);
+	newitems = search.item;
+	document.getElementById(proId).innerHTML=search.item;
+	
+	
+}
+
+//----------------remove items-------------------------------
+
+function removeItem(id){
+	
+	var selectedId = id
+	basket = basket.filter((x)=> x.id !== selectedId)
+	localStorage.setItem("cartData",JSON.stringify(basket));
+	proList = [];
+	basket= [];
+	getLocalStorgeData();
+	getDatalist();
+	
+}
+
+function updateCart(){
+	
+	localStorage.setItem("cartData",JSON.stringify(basket));
+	proList = [];
+	basket= [];
+	getLocalStorgeData();
+	getDatalist();
+	
+}
+
+
+
+function totalAomunt(data){
+	
+ 	if(basket.length!== 0){
+	
+		total = basket.map((x)=>{
+			
+			var{id,item}=x;
+			var search = data.find((el)=> el.id === id )|| [];
+			
+			return search.price*item
+			
+			
+		}).reduce((x,y) => x+y ,0);
+	
+		//display total---------------------------
+		document.querySelector('#dispay-total li span').innerHTML = "RS "+total.toLocaleString("en-US")+".00";
+	
+	}else return
+	
+	
+}
+
+
+function checkOut(){
+	
+	window.location='checkout.jsp';
+	
+}
+
+ 
+
+
+
+
+
 
 

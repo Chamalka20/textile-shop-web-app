@@ -122,10 +122,14 @@ var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
 
 //get localStorage data------------------------------------
-for(var i=0;i<localStrorage.length;i++){
+if(localStrorage !== null){
+	
+	for(var i=0;i<localStrorage.length;i++){
 	
 	basket.push(localStrorage[i]);
 					
+	}
+	
 }
 
 console.log(basket);
@@ -135,7 +139,7 @@ if(localStrorage !== null){
 	var cartIcon = document.querySelector('.cart-amount');
 	cartIcon.style.display = "block";
 	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
-	console.log("hghhf");
+	
 	
 }
 //------------------------------------------------------------
@@ -214,7 +218,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <div class="price-con"><h5>Rs ${totalValue}.00</h5><del><p>Rs ${x.price}.00</p></del></div>
+                            <div class="price-con"><h5>Rs ${totalValue.toLocaleString("en-US")}.00</h5><del><p>Rs ${x.price.toLocaleString("en-US")}.00</p></del></div>
                             
                         </div>
                     </div>
@@ -246,7 +250,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                             <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+                             <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
                             
                         </div>
                     </div>
@@ -274,7 +278,7 @@ function loadBestSellers(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <div class="price-con"><h5>Rs ${x.price}.00</h5></div>
+                            <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
                             
                         </div>
                     </div>
@@ -313,7 +317,7 @@ function loadNewArrivals(){
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <h5>Rs ${x.price}.00</h5>
+                            <h5>Rs ${x.price.toLocaleString("en-US")}.00</h5>
                             
                         </div>
                     </div>`
