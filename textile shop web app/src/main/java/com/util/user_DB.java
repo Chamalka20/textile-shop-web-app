@@ -11,7 +11,7 @@ import com.models.user;
 
 public class user_DB {
 
-	public static boolean user_insert(String first_name,String last_name,String password,String email,String telephone,String address_line1,String address_line2,String city ){ 	
+	public  boolean user_insert(String first_name,String last_name,String password,String email,String telephone,String ZIP,String country,String address_line1,String address_line2,String city ){ 	
 		
 		boolean isSuccess = false;
 		ResultSet generatedkeys=null;
@@ -24,7 +24,7 @@ public class user_DB {
 		System.out.println(timesta);
 		
 		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`,`ceated_at`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"',?)";
-		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`address_line1`, `address_line2`, `city`) VALUES (?,'"+address_line1+"','"+address_line2+"', '"+city+"')";
+		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`ZIP`,`country`,`address_line1`, `address_line2`, `city`) VALUES (?,'"+ZIP+"','"+country+"','"+address_line1+"','"+address_line2+"', '"+city+"')";
 		
 		try {
 			

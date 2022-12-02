@@ -208,21 +208,22 @@ function totalAomunt(data){
 
 // select ceate account or not -----------------------------------------------------
 var accCreat =document.querySelector('.checkout__input__checkbox #acc');
-;var isAccountCreate = false;
+var isAccountCreate = false;
+
 
 function createAccount(){
 	
 	if(accCreat.checked === true){
 	
 		isAccountCreate = true;
-		document.querySelector('#pass-show').innerHTML = `<p>Account Password<span>*</span></p>
-                                									<input type="text" id="password">`;
-		
+		document.querySelector('#pass-show').style.display = "block";
+                                									
+		 
 	
 	}else{
 		
 		isAccountCreate = false;
-		document.querySelector('#pass-show').innerHTML =``;
+		document.querySelector('#pass-show').style.display = "none";
 	} 
 	
 	
@@ -236,6 +237,8 @@ function createAccount(){
 
 var payType = document.querySelectorAll(".checkout__input__checkbox #payment");
 
+var payMethod = "";
+
 payType.forEach(input=>{
 	
 	input.addEventListener("click",(e)=>{
@@ -243,11 +246,14 @@ payType.forEach(input=>{
 		if(e.target.value === "Cash-on-delivery"){
 			
 			document.querySelector('.pay-methods').innerHTML = ``;
+			payMethod = e.target.value;
 			
 		}else if(e.target.value === "Pay-Online"){
 			
 			document.querySelector('.pay-methods').innerHTML = `<img src="../Images/payment.png">`;
+			payMethod = e.target.value;
 		}
+	
 	
 	})
 	
@@ -271,7 +277,7 @@ function getUserInfor(){
 	var zip = document.getElementById('zip').value;
 	var phone = document.getElementById('phone').value;
 	var email = document.getElementById('email').value;
-	
+	var password=document.getElementById('password').value;
 	
 	if(firstName === "" ||  lastName === "" || country ===""|| street===""|| city===""|| zip==="" || phone===""|| email==="" ){
 		
@@ -286,8 +292,38 @@ function getUserInfor(){
 	}else{
 		
 		document.querySelector('.message-holder').innerHTML =``;
-		console.log("fghfghfdghyghghyhy");
 		
+		// user select cash on delivery----------------------------
+		if(payMethod === "Cash-on-delivery"){
+			
+			//if user select creat account-----------------------------
+			if(isAccountCreate === true){
+				
+				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,addli1:apartment,addli2:street,city:city},function(){
+		
+					alert("ok");
+		
+				});	
+				
+				
+			}
+			
+			
+			
+		
+		// user select pay-online----------------------------
+		}else if(payMethod === "Pay-Online"){
+			
+			console.log("pay");
+			
+		}else{
+		
+			document.body.scrollTop = 0;
+  			document.documentElement.scrollTop = 0;
+			document.querySelector('.message-holder').innerHTML =`<div class="warning-message"><p>Please select payment method</p></div>`;
+		}
+		
+
 	}
 	
 	

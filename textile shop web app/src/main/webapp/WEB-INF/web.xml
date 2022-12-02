@@ -18,7 +18,7 @@
 	<servlet-mapping>
 		
 		<servlet-name>user_registration</servlet-name>
-		<url-pattern>/insert</url-pattern>
+		<url-pattern>/user_insert</url-pattern>
 	
 	</servlet-mapping>
 	

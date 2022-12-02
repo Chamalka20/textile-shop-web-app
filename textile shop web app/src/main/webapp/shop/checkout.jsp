@@ -180,8 +180,9 @@
                                 <p>Create an account by entering the information below. If you are a returning customer
                                 please login at the top of the page</p>
                             </div>
-                            <div class="checkout__input" id="pass-show">
-                                
+                            <div class="checkout__input" id="pass-show" style="display:none;">
+                                <p>Account Password<span>*</span></p>
+                                <input type="text" id="password" value="">
                             </div>
                            
                         </div>
