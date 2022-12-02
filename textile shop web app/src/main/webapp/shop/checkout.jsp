@@ -68,19 +68,19 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li><a href="./home.html">Home</a></li>
-                            <li class="active"><a href="./shop.html">Shop</a></li>
+                            <li ><a href="../shop/home.jsp">Home</a></li>
+                            <li ><a href="../shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="./about.html">About Us</a></li>
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="../shop/about.jsp">About Us</a></li>
+                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
+                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contacts</a></li>
+                            <li><a href="../shop/blog.jsp">Blog</a></li>
+                            <li><a href="../shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -121,7 +121,6 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
@@ -131,48 +130,44 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="firstName">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="lastName">
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Country<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="country">
                             </div>
                             <div class="checkout__input">
                                 <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" id="street">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" id="apartment">
                             </div>
                             <div class="checkout__input">
                                 <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="city">
                             </div>
                             <div class="checkout__input">
                                 <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="zip">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" id="email">
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +182,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Account Password<span>*</span></p>
-                                <input type="text">
+                                <input type="text" id="password">
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="diff-acc">
@@ -207,14 +202,11 @@
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products">Product <span>Total</span></div>
                                 <ul class="checkout__total__products">
-                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-                                    <li>02. German chocolate <span>$ 170.0</span></li>
-                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
-                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+                                    
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                       
+                                   
                                 </ul>
                                 <div class="checkout__input__checkbox">
                                     <label for="acc-or">
@@ -223,27 +215,27 @@
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                                <p align="left">Your personal data will be used to support your experience throughout 
+                                this website, to manage access to your account, and for other purposes 
+                                described in our privacy policy.</p>
                                 <div class="checkout__input__checkbox">
-                                    <label for="payment">
-                                        Check Payment
-                                        <input type="checkbox" id="payment">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                    <label for="payment"></label>
+                                       
+                                        <input type="radio" name="payMethod" id="payment" value="Cash-on-delivery">
+                                         Cash on delivery
+                                    
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="paypal">
-                                        Paypal
-                                        <input type="checkbox" id="paypal">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                   
+                                        <input type="radio" name="payMethod" id="payment" value="Pay-Online">
+										Pay Online
+                         
                                 </div>
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" class="site-btn" onClick="getUserInfor()">PLACE ORDER</button>
                             </div>
                         </div>
                     </div>
-                </form>
+                
             </div>
         </div>
     </section>

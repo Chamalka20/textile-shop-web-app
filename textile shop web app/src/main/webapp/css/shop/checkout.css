@@ -728,8 +728,8 @@ ol {
 
 .checkout__order p {
 	color: #444444;
-	font-size: 16px;
-	line-height: 28px;
+	font-size: 13px;
+	line-height: 23px;
 }
 
 .checkout__order .site-btn {
@@ -773,8 +773,8 @@ ol {
 .checkout__total__all {
 	border-top: 1px solid #d7d7d7;
 	border-bottom: 1px solid #d7d7d7;
-	padding: 15px 0;
-	margin-bottom: 26px;
+	padding: 10px 0;
+	margin-bottom: 15px;
 }
 
 .checkout__total__all li {
@@ -790,7 +790,10 @@ ol {
 	font-weight: 700;
 	float: right;
 }
-
+.checkout__total__products li p{
+	
+	font-size:11px;
+}
 
 /*---------------------
   Footer

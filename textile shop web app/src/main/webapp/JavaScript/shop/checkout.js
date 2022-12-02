@@ -134,10 +134,121 @@ if(localStrorage !== null){
 	var cartIcon = document.querySelector('.cart-amount');
 	cartIcon.style.display = "block";
 	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
-	console.log("hghhf");
 	
+	
+}else{
+	
+	window.location='shopping-cart.jsp';
 }
 //------------------------------------------------------------
+
+
+//get products data from database------------------------------------------
+var proList = [];
+var listHolder=document.querySelector('.checkout__total__products');
+
+function getDatalist(){
+	
+		$.getJSON("../getPro", function(getData) {
+			
+			for(var i=0;i<getData.length;i++){
+					proList.push(getData[i]);
+					
+			}
+			displayoderList(proList);
+			totalAomunt(proList);
+			console.log(proList);	
+		});
+
+};		
+getDatalist();
+
+
+
+
+function displayoderList(data){
+	var no =0;
+	return(listHolder.innerHTML = basket.map((x)=>{
+		
+		var{id,item,size,limit} = x;
+		var search = data.find((el)=> el.id === id )|| [];
+		console.log(search);
+		no += 1;
+		var subtotalPrice = search.price * item;  
+	
+		return`<li>${no}. ${search.name} <span>Rs ${subtotalPrice.toLocaleString("en-US")}.00</span><p><i>Quantity &#xd7 ${item}</i></p></li>`
+		
+		
+	}).join(" "))
+	
+}
+
+
+function totalAomunt(data){
+	
+ 	if(basket.length!== 0){
+	
+		total = basket.map((x)=>{
+			
+			var{id,item}=x;
+			var search = data.find((el)=> el.id === id )|| [];
+			
+			return search.price*item
+			
+			
+		}).reduce((x,y) => x+y ,0);
+	
+		//display total---------------------------
+		document.querySelector('.checkout__total__all').innerHTML = `<li>Total <span>Rs ${total.toLocaleString("en-US")}.00</span></li>`;
+	
+	}else return
+	
+	
+}
+
+//select payment type-----------------------------------------------------------------------
+
+var payType = document.querySelectorAll(".checkout__input__checkbox #payment");
+
+payType.forEach(input=>{
+	
+	input.addEventListener("click",(e)=>{
+	
+		if(e.target.value === "Cash-on-delivery"){
+			
+			console.log("gttttedede");
+			
+		}else if(e.target.value === "Pay-Online"){
+			
+			console.log("mac");
+		}
+	
+	})
+	
+	
+})
+
+
+// get user input data------------------------------------------------------
+
+
+function getUserInfor(){
+	
+	var firstName = document.getElementById('firstName').value;
+	var lastName = document.getElementById('lastName').value;
+	var country = document.getElementById('country').value;
+	var street = document.getElementById('street').value;
+	var apartment = document.getElementById('apartment').value;
+	var city = document.getElementById('city').value;
+	var zip = document.getElementById('zip').value;
+	var phone = document.getElementById('phone').value;
+	var email = document.getElementById('email').value;
+	var password = document.getElementById('password').value;
+	
+	
+} 
+
+
 
 
 

@@ -398,6 +398,7 @@ function selectSize(data,proSize,id){
 	
 	document.querySelector('.size-alert').style.display = "none";
 	document.querySelector('#stockin').checked = false;
+	document.querySelector('#stockin').disabled = true;
 	
 	if(data <= 10){
 		document.querySelector('#stockin').checked = true;

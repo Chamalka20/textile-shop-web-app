@@ -272,7 +272,7 @@ function generateCartItems(data){
 			`
 			
 			
-		}))
+		}).join(" "))
 		
 		
 		
@@ -422,7 +422,7 @@ function totalAomunt(data){
 	
 }
 
-
+//----------------------------------------------
 function checkOut(){
 	
 	window.location='checkout.jsp';
