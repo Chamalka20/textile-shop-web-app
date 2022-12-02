@@ -206,6 +206,32 @@ function totalAomunt(data){
 	
 }
 
+// select ceate account or not -----------------------------------------------------
+var accCreat =document.querySelector('.checkout__input__checkbox #acc');
+;var isAccountCreate = false;
+
+function createAccount(){
+	
+	if(accCreat.checked === true){
+	
+		isAccountCreate = true;
+		document.querySelector('#pass-show').innerHTML = `<p>Account Password<span>*</span></p>
+                                									<input type="text" id="password">`;
+		
+	
+	}else{
+		
+		isAccountCreate = false;
+		document.querySelector('#pass-show').innerHTML =``;
+	} 
+	
+	
+	
+}
+
+
+
+
 //select payment type-----------------------------------------------------------------------
 
 var payType = document.querySelectorAll(".checkout__input__checkbox #payment");
@@ -216,11 +242,11 @@ payType.forEach(input=>{
 	
 		if(e.target.value === "Cash-on-delivery"){
 			
-			console.log("gttttedede");
+			document.querySelector('.pay-methods').innerHTML = ``;
 			
 		}else if(e.target.value === "Pay-Online"){
 			
-			console.log("mac");
+			document.querySelector('.pay-methods').innerHTML = `<img src="../Images/payment.png">`;
 		}
 	
 	})
@@ -233,7 +259,9 @@ payType.forEach(input=>{
 
 
 function getUserInfor(){
+
 	
+		
 	var firstName = document.getElementById('firstName').value;
 	var lastName = document.getElementById('lastName').value;
 	var country = document.getElementById('country').value;
@@ -243,9 +271,28 @@ function getUserInfor(){
 	var zip = document.getElementById('zip').value;
 	var phone = document.getElementById('phone').value;
 	var email = document.getElementById('email').value;
-	var password = document.getElementById('password').value;
 	
 	
+	if(firstName === "" ||  lastName === "" || country ===""|| street===""|| city===""|| zip==="" || phone===""|| email==="" ){
+		
+		// When the user clicks on the button, scroll to the top of the document---------------
+		document.body.scrollTop = 0;
+  		document.documentElement.scrollTop = 0;
+		
+		document.querySelector('.message-holder').innerHTML =`<div class="warning-message"><p>Please fill out fields</p></div>`;
+		
+		
+	
+	}else{
+		
+		document.querySelector('.message-holder').innerHTML =``;
+		console.log("fghfghfdghyghghyhy");
+		
+	}
+	
+	
+	
+  	
 } 
 
 

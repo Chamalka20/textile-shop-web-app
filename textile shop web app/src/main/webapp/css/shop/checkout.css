@@ -583,6 +583,21 @@ ol {
 	font-weight: 700;
 }
 
+/*----warning-messag-------------e*/
+.warning-message{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:red;
+	height:35px;
+	padding-top:11px;
+	
+}
+.warning-message p{
+	
+	color:#ffffff;
+}
+
 /*---------------------
   Checkout
 -----------------------*/
@@ -631,29 +646,29 @@ ol {
 	width: 100%;
 	border: 1px solid #e1e1e1;
 	font-size: 14px;
-	color: #b7b7b7;
+	color: #676767;
 	padding-left: 20px;
 	margin-bottom: 20px;
 }
 
 .checkout__input input::-webkit-input-placeholder {
-	color: #b7b7b7;
+	color: #676767;
 }
 
 .checkout__input input::-moz-placeholder {
-	color: #b7b7b7;
+	color: #676767;
 }
 
 .checkout__input input:-ms-input-placeholder {
-	color: #b7b7b7;
+	color: #676767;
 }
 
 .checkout__input input::-ms-input-placeholder {
-	color: #b7b7b7;
+	color: #676767;
 }
 
 .checkout__input input::placeholder {
-	color: #b7b7b7;
+	color: #676767;
 }
 
 .checkout__input__checkbox label {

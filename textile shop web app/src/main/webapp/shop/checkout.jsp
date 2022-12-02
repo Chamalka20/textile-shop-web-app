@@ -116,7 +116,7 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-
+	<div class="message-holder"></div>
     <!-- Checkout Section Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -174,28 +174,16 @@
                             <div class="checkout__input__checkbox">
                                 <label for="acc">
                                     Create an account?
-                                    <input type="checkbox" id="acc">
+                                    <input type="checkbox" id="acc" onClick="createAccount()">
                                     <span class="checkmark"></span>
                                 </label>
                                 <p>Create an account by entering the information below. If you are a returning customer
                                 please login at the top of the page</p>
                             </div>
-                            <div class="checkout__input">
-                                <p>Account Password<span>*</span></p>
-                                <input type="text" id="password">
+                            <div class="checkout__input" id="pass-show">
+                                
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="diff-acc">
-                                    Note about your order, e.g, special noe for delivery
-                                    <input type="checkbox" id="diff-acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
-                                <input type="text"
-                                placeholder="Notes about your order, e.g. special notes for delivery.">
-                            </div>
+                           
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
@@ -208,13 +196,7 @@
                        
                                    
                                 </ul>
-                                <div class="checkout__input__checkbox">
-                                    <label for="acc-or">
-                                        Create an account?
-                                        <input type="checkbox" id="acc-or">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
+                               
                                 <p align="left">Your personal data will be used to support your experience throughout 
                                 this website, to manage access to your account, and for other purposes 
                                 described in our privacy policy.</p>
@@ -229,7 +211,7 @@
                                    
                                         <input type="radio" name="payMethod" id="payment" value="Pay-Online">
 										Pay Online
-                         
+                         				<div class="pay-methods"></div>
                                 </div>
                                 <button type="submit" class="site-btn" onClick="getUserInfor()">PLACE ORDER</button>
                             </div>
