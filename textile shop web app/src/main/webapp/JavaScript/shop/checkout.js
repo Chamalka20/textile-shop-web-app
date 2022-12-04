@@ -112,6 +112,17 @@
 })(jQuery)
 
 
+//get the current date------------------------------------------
+today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+
+
 //----------------------------------------------------------
 var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
@@ -183,12 +194,14 @@ function displayoderList(data){
 	
 }
 
+// get total amount -----------------------------------
+var finaltotal = 0;
 
 function totalAomunt(data){
 	
  	if(basket.length!== 0){
 	
-		total = basket.map((x)=>{
+		var total = basket.map((x)=>{
 			
 			var{id,item}=x;
 			var search = data.find((el)=> el.id === id )|| [];
@@ -197,7 +210,8 @@ function totalAomunt(data){
 			
 			
 		}).reduce((x,y) => x+y ,0);
-	
+		
+		finaltotal = total;
 		//display total---------------------------
 		document.querySelector('.checkout__total__all').innerHTML = `<li>Total <span>Rs ${total.toLocaleString("en-US")}.00</span></li>`;
 	
@@ -205,6 +219,8 @@ function totalAomunt(data){
 	
 	
 }
+
+
 
 // select ceate account or not -----------------------------------------------------
 var accCreat =document.querySelector('.checkout__input__checkbox #acc');
@@ -248,6 +264,7 @@ payType.forEach(input=>{
 			document.querySelector('.pay-methods').innerHTML = ``;
 			payMethod = e.target.value;
 			
+			
 		}else if(e.target.value === "Pay-Online"){
 			
 			document.querySelector('.pay-methods').innerHTML = `<img src="../Images/payment.png">`;
@@ -262,7 +279,9 @@ payType.forEach(input=>{
 
 
 // get user input data------------------------------------------------------
+var strArr = {basket}
 
+console.log(strArr);
 
 function getUserInfor(){
 
@@ -299,7 +318,19 @@ function getUserInfor(){
 			//if user select creat account-----------------------------
 			if(isAccountCreate === true){
 				
-				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,addli1:apartment,addli2:street,city:city},function(){
+				
+				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
+											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
+					
+					alert("ok");
+		
+				});	
+				
+				
+			}else{
+				
+				
+				$.post("../user_insert",{fname:firstName,lname:lastName,email:email,ZIP:zip,country:country,phone:phone,isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today},function(){
 		
 					alert("ok");
 		
@@ -307,7 +338,6 @@ function getUserInfor(){
 				
 				
 			}
-			
 			
 			
 		
@@ -321,6 +351,7 @@ function getUserInfor(){
 			document.body.scrollTop = 0;
   			document.documentElement.scrollTop = 0;
 			document.querySelector('.message-holder').innerHTML =`<div class="warning-message"><p>Please select payment method</p></div>`;
+			
 		}
 		
 

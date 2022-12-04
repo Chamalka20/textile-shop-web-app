@@ -266,7 +266,7 @@ public class product_DB {
 			
 			jarr = builder.build();
 			
-			
+			System.out.println(jarr);
 			
 		}catch(Exception e) {
 			
