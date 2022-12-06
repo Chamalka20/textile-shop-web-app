@@ -281,8 +281,6 @@ payType.forEach(input=>{
 // get user input data------------------------------------------------------
 var strArr = {basket}
 
-console.log(strArr);
-
 function getUserInfor(){
 
 	

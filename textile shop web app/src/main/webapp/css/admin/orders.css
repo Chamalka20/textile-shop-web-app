@@ -1,4 +1,3 @@
-@charset "ISO-8859-1";
 
 body {
   margin: 0;
@@ -147,176 +146,115 @@ body {
 /* ---------- MAIN ---------- */
 
 .main-container {
-	 grid-area: main;
-	 overflow-y: auto;
-	 padding: 20px 20px;
+	display: flex;
 }
 
-.main-title {
-  display: flex;
-  justify-content: space-between;
+.main-title1 {
+ 	position: absolute;
 }
-
+.main-title2 {
+ 	position: absolute;
+ 	left:0;
+ 	top:75px;
+ 	left:890px;
+}
 .main-title > p {
   font-size: 20px;
 }
 
 
-.navBar{
-	flex:20%;
-	
-}
-.productContainer{
-	
-	flex:80%;
+.products-Container{
+
+	width:560px;
+	margin-top:60px;
+	margin-left:10px;
 }
 
-.update-container{
+.headerContainer{
 	
 	display:flex;
-	gap:25px;
-	
-}
-.proDetails{
-	
-	height:160px;
-	width:400px;
-	padding-top:16px;
-	margin-bottom: 20px;
-	border-radius:7px;
-	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-}
-.wrapper{
-	
-	display:flex;
-	align-items:center;
-	gap:15px;
-	height:20px;
-	margin-left:16px;
-	
-}
-.ImageWrapper{
-	
-	display:flex;
-	align-items:center;
-	gap:18px;
-	margin-left: 16px;
-	margin-bottom:10px;
+	gap:60px;
+	border: 1px solid;
+	width:820px;
 	height:50px;
-	
-	
+	align-items:center;
+
+		
 }
-.firstImg{
+
+.headerdata{
+	border-left:1px solid;
+	padding-left:10px;
+	width:550x;
+		
+}
+.subContainer{
 	
-	width:40px;
+	display:flex;
+	gap:50px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	width:820px;
 	height:50px;
-	border-radius:7px;
+	align-items:center;
 	
 }
 
-.editPro{
-	position: relative;
-	width:600px;
-	height:400px;
-	padding-left:12px;
-	padding-top:16px;
-	border-radius:7px;
-	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+.id{
+	
+	width:80px;
+	padding-left:6px;
+	
 	
 }
-.ImageWrapper2{
-	position:absolute;
-	top:110px;
-	left:430px;
-	height:150px;
-	width:100px;
+.userName{
+	display:flex;
+	align-items:center;
+	width:120px;
+	margin-left:20px;
+	
 	
 }
-.secondImg{
-	height:150px;
-	width:107px;
+
+.paymentMode{
+	
+	width:160px;
+		
+}
+
+
+.orderDate{
+	
+	width:140px;
 	
 }
-.button_outer {
+
+.action{
 	
-	text-align: center;
-	height: 50px;
-	width: 130px;
-	display: inline-block;
- 	transition: .2s;
-  	position: relative;
-  	overflow: hidden;
+	width:50px;
+	
 }
-.btn_upload {
+
+.btn1{
 	
-	color: #fff;
-	text-align: center;
-	position: relative;
-	display: inline-block;
-	overflow: hidden;
-	z-index: 3;
-	white-space: nowrap;
+	background-color: #2ec54c;
+	border:none;
+	width:50px;
+	height:25px;
+	margin-right:50px;
+	border-radius:6px;
+	color:#ffffff;
+	cursor:pointer;
 }
-.btn_upload input {
-	position: absolute;
- 	width: 100%;
-  	left: 0;
-  	top: 0;
-    width: 100%;
-    height: 105%;
-    cursor: pointer;
-    opacity: 0;
-}
-#upload-icon{
-	
-	padding-top:6px;
-	font-size:25px;
-	color:black;
-	
+
+
+.subContainer:hover{
+	background-color:#f0f2f5;
 }
 
 i:hover{
-	
 	color:red;
-	
-}
-
-
-#someul{
-	position: absolute;
-	z-index:2;
-	padding:0px;
-	width:206px;
-	height:60px;
-	overflow-y: scroll;
-	background-color:#ffffff;
-	
-	
-}
-.liitems:hover{
-	background-color:gray;
-	margin-bottom:2px;
-}
-
-/*discount add --------------------------------------------------*/
-
-.discountAdd{
-	
-	height:400px;
-	width:400px;
-	padding-left:12px;
-	padding-top:16px;
-	border-radius:7px;
-	box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-	
-}
-
-.no-discount{
-	
-	display:flex;
-	flex-direction: column;
-	justify-content:center;
-	align-items:center;
-	height:400px;
+	cursor:pointer;
 	
 }

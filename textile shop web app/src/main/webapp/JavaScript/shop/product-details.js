@@ -434,7 +434,8 @@ function increment(){
 		//Reduce when the same piece of data is stored 
 		if(search === undefined){
 			
-			basket.push({id:proId ,size:size,item:1,limit:limit});
+			basket.push({id:proId ,size:size,item:1,limit:limit})
+
 		}else{
 			
 			search.item+=1;

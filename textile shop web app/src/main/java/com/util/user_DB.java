@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Arrays;
 
+import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,6 +22,7 @@ public class user_DB {
 	public  boolean user_insert(String first_name,String last_name,String password,String email,String telephone,String isTemporaty,String ZIP,String country,String address_line1,String address_line2,String city,String date,String isOrder,String total,String [] selectItems,String payType ){ 	
 		
 		boolean isSuccess = false;
+		String orderStatus = "In progress";
 		
 		JSONArray arr = new JSONArray(Arrays.toString(selectItems));
 		JSONArray itemArr = arr.getJSONObject(0).getJSONArray("basket");
@@ -37,7 +40,7 @@ public class user_DB {
 		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`,`isTemporaty`,`ceated_at`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"','"+isTemporaty+"','"+date+"')";
 		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`ZIP`,`country`,`address_line1`, `address_line2`, `city`) VALUES (?,'"+ZIP+"','"+country+"','"+address_line1+"','"+address_line2+"', '"+city+"')";
 		String sql3 ="INSERT INTO `textile`.`user_payment` (`user_id`, `payment_type` ) VALUES (?,'CashOnDelivery');";
-		String sql4 ="INSERT INTO `textile`.`order_details` (`user_id`, `total`, `payment_id`) VALUES (?, '"+total+"', ?);";
+		String sql4 ="INSERT INTO `textile`.`order_details` (`user_id`, `total`, `payment_id`,`order_date`,`orderStatus`) VALUES (?, '"+total+"', ?,'"+date+"',?);";
 		String sql5 ="INSERT INTO `textile`.`order_items` (`order_id`, `product_id`, `pro_size`, `quantity`) VALUES (?, ?, ?, ?);";
 		
 		
@@ -116,6 +119,7 @@ public class user_DB {
 				PreparedStatement stmt4 = con.prepareStatement(sql4,Statement.RETURN_GENERATED_KEYS);
 				stmt4.setInt(1,user_id);
 				stmt4.setInt(2,pay_id);
+				stmt4.setString(3,orderStatus);
 				stmt4.executeUpdate();
 				
 				generatedkeys3 = stmt4.getGeneratedKeys();
@@ -251,6 +255,91 @@ public class user_DB {
 		return us;
 	
 	}	
+	
+	
+	public JsonArray getCusOrders() {
+		
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		JsonArray ordArr = null;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		
+		String sql1 = "SELECT * FROM textile.user,textile.user_address,textile.order_details,textile.user_payment WHERE  order_details.payment_id=user_payment.id AND user.user_id=user_address.user_id AND user.user_id = order_details.user_id";
+		
+		try {
+			
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			
+			ResultSet rs = stmt1.executeQuery();
+			
+			while(rs.next()) {
+				
+				builder.add(Json.createObjectBuilder()
+						
+						.add("OrderId",rs.getInt(17))
+						.add("userName",rs.getString(2))
+						.add("paymentMode",rs.getString(25))
+						.add("orderDate",rs.getString(21))
+						.add("orderStatus",rs.getString(22))
+						.add("lastName",rs.getString(3))
+						.add("email",rs.getString(5))
+						.add("phone",rs.getString(6))
+						.add("address_line1",rs.getString(14))
+						.add("address_line2",rs.getString(15))
+						.add("city",rs.getString(16))
+						.add("ZIP",rs.getString(12))
+						.build());
+				
+			}
+			
+			 ordArr = builder.build();
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		
+		return ordArr;
+	}
+	
+	
+	//get custumer order items------------------------------------------------------------------
+	public JsonArray getCusOrderItems() {
+		
+		JsonArrayBuilder builder = Json.createArrayBuilder();
+		JsonArray ordArr =null;
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		
+		String sql1 ="SELECT * FROM textile.order_details,textile.order_items WHERE  order_details.ordd_id=order_items.order_id ;";
+		
+		try {
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			ResultSet rs = stmt1.executeQuery();
+			
+			while(rs.next()) {
+				
+				builder.add(Json.createObjectBuilder()
+						.build());
+			
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		return ordArr;
+	}
 	
 	
 }

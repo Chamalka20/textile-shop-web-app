@@ -172,4 +172,19 @@
 		<url-pattern>/admin</url-pattern>
 	
 	</servlet-mapping>
+	
+	<servlet>
+		
+		<servlet-name>get_orders</servlet-name>
+		<servlet-class>com.servlet.get_orders</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>get_orders</servlet-name>
+		<url-pattern>/orders</url-pattern>
+	
+	</servlet-mapping>
+	
 </web-app>
