@@ -178,19 +178,19 @@ function loadProDetails(data){
 	                                    <span>Available size:</span>
 	                                    <div class="size__btn" >
 	                                        <label for="xl-btn" >
-	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id})">
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id},${data[0].sizeId})">
 	                                            xl
 	                                        </label>
 	                                        <label for="s-btn" >
-	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'Small',${data[0].id})">
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'Small',${data[0].id},${data[0].sizeId})">
 	                                            s
 	                                        </label>
 	                                        <label for="m-btn">
-	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'Medium',${data[0].id})">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'Medium',${data[0].id},${data[0].sizeId})">
 	                                            m
 	                                        </label>
 	                                        <label for="l-btn">
-	                                             <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'Large',${data[0].id})">
+	                                             <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'Large',${data[0].id},${data[0].sizeId})">
 	                                            l
 	                                        </label>
 	                                    </div>
@@ -274,19 +274,19 @@ function loadProDetails(data){
 	                                    <span>Available size:</span>
 	                                    <div class="size__btn" >
 	                                        <label for="xl-btn" >
-	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id})">
+	                                            <input type="radio" id="xl-btn" onClick="selectSize(${data[0].xl},'XL',${data[0].id},${data[0].sizeId})">
 	                                            xl
 	                                        </label>
 	                                        <label for="s-btn" >
-	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'Small',${data[0].id})">
+	                                            <input type="radio" id="s-btn" onClick="selectSize(${data[0].small},'small',${data[0].id},${data[0].sizeId})">
 	                                            s
 	                                        </label>
 	                                        <label for="m-btn">
-	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'Medium',${data[0].id})">
+	                                            <input type="radio" id="m-btn" onClick="selectSize(${data[0].medium},'medium',${data[0].id},${data[0].sizeId})">
 	                                            m
 	                                        </label>
 	                                        <label for="l-btn">
-	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'Large',${data[0].id})">
+	                                            <input type="radio" id="l-btn" onClick="selectSize(${data[0].large},'large',${data[0].id},${data[0].sizeId})">
 	                                            l
 	                                        </label>
 	                                    </div>
@@ -371,12 +371,15 @@ if(localStrorage !== null){
 var limit = 0;
 var items = 0;
 var proId = 0;
+var getsizeId =0;
 var size = "";
 
-function selectSize(data,proSize,id){
+function selectSize(data,proSize,id,sizeId){
 	limit= data;
 	proId = id;
 	size = proSize;
+	getsizeId = sizeId;
+	
 	//reset quantity------------------------------
 	items = 0;
 	update();
@@ -431,10 +434,11 @@ function increment(){
 		
 		var search = basket.find((x) => x.id === proId)
 		
+		console.log(search);
 		//Reduce when the same piece of data is stored 
 		if(search === undefined){
 			
-			basket.push({id:proId ,size:size,item:1,limit:limit})
+			basket.push({id:proId ,size:size,item:1,limit:limit,sizeId:getsizeId})
 
 		}else{
 			

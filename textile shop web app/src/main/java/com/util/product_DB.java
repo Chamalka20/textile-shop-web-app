@@ -11,6 +11,8 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
 
+import org.json.JSONArray;
+
 
 ;
 public class product_DB {
@@ -251,6 +253,7 @@ public class product_DB {
 				 	.add("id",rs.getInt(1))
 				 	.add("name",rs.getString(2))
 				 	.add("desc",rs.getString(3))
+				 	.add("sizeId",rs.getString(6))
 					.add("price",rs.getInt(7))
 					.add("image",rs.getString(8))
 					.add("stock",rs.getString(10))
@@ -356,6 +359,7 @@ public class product_DB {
 					.add("large",rs1.getString("large"))
 					.add("xl",rs1.getString("XL"))
 					.add("addDate",rs1.getString("add_date"))
+					.add("sizeId",rs1.getString("size_id"))
 					.build());
 				
 				
@@ -548,5 +552,89 @@ public class product_DB {
 		
 		return isSuccess;
 	}
+	
+	
+	public boolean OrderProductsUp(String [] selectItems) {
+		boolean isSuccess = false;
+		
+		DB_connect db = new DB_connect();
+		Connection con = null;
+		
+		JSONArray arr = new JSONArray(Arrays.toString(selectItems));
+		JSONArray itemArr = arr.getJSONObject(0).getJSONArray("basket");
+		
+		String sql1 ="UPDATE `textile`.`product` SET salles = salles + 1 WHERE pro_id = ?";
+		
+		String sql2 = "UPDATE `textile`.`product_sizes` SET small = small- ? WHERE siz_id = ?";
+		String sql3 = "UPDATE `textile`.`product_sizes` SET medium = medium- ? WHERE siz_id = ?";
+		String sql4 = "UPDATE `textile`.`product_sizes` SET large = large- ? WHERE siz_id = ?";
+		String sql5 = "UPDATE `textile`.`product_sizes` SET XL = XL- ? WHERE siz_id = ?";
+		                                        
+		
+		
+		try {
+			con=db.getConnection();
+			PreparedStatement stmt1 = con.prepareStatement(sql1);
+			PreparedStatement stmt2 = con.prepareStatement(sql2);
+			PreparedStatement stmt3 = con.prepareStatement(sql3);
+			PreparedStatement stmt4 = con.prepareStatement(sql4);
+			PreparedStatement stmt5 = con.prepareStatement(sql5);
+			
+			
+			for(int i=0;i<itemArr.length();i++) {
+				
+				stmt1.setInt(1,itemArr.getJSONObject(i).getInt("id"));
+				
+				if(itemArr.getJSONObject(i).getString("size").equals("small")) {
+					
+					
+					stmt2.setInt(1,itemArr.getJSONObject(i).getInt("item"));
+					stmt2.setInt(2,itemArr.getJSONObject(i).getInt("sizeId"));
+					stmt2.executeUpdate();
+					
+				}else if(itemArr.getJSONObject(i).getString("size").equals("medium")) {
+					
+					stmt3.setInt(1,itemArr.getJSONObject(i).getInt("item"));
+					stmt3.setInt(2,itemArr.getJSONObject(i).getInt("sizeId"));
+					
+					stmt3.executeUpdate();
+					
+				}else if(itemArr.getJSONObject(i).getString("size").equals("large")) {
+					
+					stmt4.setInt(1,itemArr.getJSONObject(i).getInt("item"));
+					stmt4.setInt(2,itemArr.getJSONObject(i).getInt("sizeId"));
+					stmt4.executeUpdate();
+					
+				}else if(itemArr.getJSONObject(i).getString("size").equals("XL")) {
+					
+					stmt5.setInt(1,itemArr.getJSONObject(i).getInt("item"));
+					stmt5.setInt(2,itemArr.getJSONObject(i).getInt("sizeId"));
+					stmt5.executeUpdate();
+					
+				}
+				
+				
+				
+				
+				
+				stmt1.executeUpdate();
+				
+				
+			}
+			
+			
+			
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+		}
+		
+		
+		return isSuccess;
+	}
+	
+	
+	
 }
 

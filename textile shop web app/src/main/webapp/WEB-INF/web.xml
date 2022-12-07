@@ -201,4 +201,18 @@
 	
 	</servlet-mapping>
 	
+	<servlet>
+		
+		<servlet-name>orderProUp</servlet-name>
+		<servlet-class>com.servlet.orderProductsUp</servlet-class>
+	
+	</servlet>
+	<servlet-mapping>
+		
+		<servlet-name>orderProUp</servlet-name>
+		<url-pattern>/orderprUp</url-pattern>
+	
+	</servlet-mapping>
+	
+	
 </web-app>

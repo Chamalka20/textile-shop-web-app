@@ -320,6 +320,8 @@ function getUserInfor(){
 				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
 											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
 					
+					//update sells and products quantity---------------------------------
+					$.post("../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
 					
 					
 					localStorage.removeItem("cartData");
@@ -331,6 +333,8 @@ function getUserInfor(){
 																	</div>`
 		
 				});	
+				
+				
 				
 				
 			}else{
@@ -348,6 +352,7 @@ function getUserInfor(){
 																		<button><a href="../shop/home.jsp">Back to Home</button>
 																	</div>`
 		
+				
 				});	
 				
 				
@@ -375,25 +380,25 @@ function getUserInfor(){
 																	                </div>
 																	                <div class="inputBox">
 																	                    <span>name on card :</span>
-																	                    <input type="text" placeholder="mr. john deo">
+																	                    <input type="text" id="card-name">
 																	                </div>
 																	                <div class="inputBox">
 																	                    <span>credit card number :</span>
-																	                    <input type="number" placeholder="1111-2222-3333-4444">
+																	                    <input type="number" placeholder="1111-2222-3333-4444" id="card-no">
 																	                </div>
 																	                <div class="inputBox">
 																	                    <span>exp month :</span>
-																	                    <input type="text" placeholder="january">
+																	                    <input type="text" placeholder="january" id="card-month">
 																	                </div>
 																	
 																	                <div class="flex">
 																	                    <div class="inputBox">
 																	                        <span>exp year :</span>
-																	                        <input type="number" placeholder="2022">
+																	                        <input type="number" placeholder="2022" id="card-year">
 																	                    </div>
 																	                    <div class="inputBox">
 																	                        <span>CVV :</span>
-																	                        <input type="text" placeholder="1234">
+																	                        <input type="text" placeholder="1234" id="card-cvv">
 																	                    </div>
 																	                </div>
 																	
@@ -401,7 +406,7 @@ function getUserInfor(){
 																	    
 																	        </div>
 																	
-																	        <input type="submit" value="proceed to checkout" class="submit-btn">
+																	        <input type="submit" onClick="payOnline()" value="proceed to checkout" class="submit-btn">
 																	
 																	    </div>
 
@@ -426,7 +431,37 @@ function getUserInfor(){
   	
 } 
 
-
+//cerdit card information----------------------------------------
+function payOnline(){
+	var cardName = document.getElementById('card-name').value;
+	var cardNo = document.getElementById('card-no').value;
+	var cardMonth = document.getElementById('card-month').value;
+	var cardYear = document.getElementById('card-year').value;
+	var cardCvv = document.getElementById('card-cvv').value;
+	
+	if(cardName === "" ||  cardNo === "" || cardMonth ===""|| cardYear===""|| cardCvv==="" ){
+		
+		document.body.scrollTop = 0;
+  		document.documentElement.scrollTop = 0;
+		
+		document.querySelector('.message-holder').innerHTML =`<div class="warning-message"><p>Please fill out fields</p></div>`;
+		
+		
+	}else{
+		
+		document.querySelector('.message-holder').innerHTML =``;
+		document.querySelector('.checkout').innerHTML=`<div class="success-container">
+																		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_4qldwfx4.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;"  autoplay></lottie-player>
+																		<h5>Your order is Complete</h5>
+																		<button><a href="../shop/home.jsp">Back to Home</button>
+																	</div>`
+		
+		
+	}
+	
+	
+	
+}
 
 
 
