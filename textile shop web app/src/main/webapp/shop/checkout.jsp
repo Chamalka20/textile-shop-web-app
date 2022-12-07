@@ -29,6 +29,8 @@
     
      <!-- jquary  -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- lottiefiles  -->
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
@@ -217,6 +219,7 @@
                                 <button type="submit" class="site-btn" onClick="getUserInfor()">PLACE ORDER</button>
                             </div>
                         </div>
+                        
                     </div>
                 
             </div>

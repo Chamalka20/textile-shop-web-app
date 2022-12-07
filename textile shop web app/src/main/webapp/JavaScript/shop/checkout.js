@@ -320,19 +320,36 @@ function getUserInfor(){
 				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
 											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
 					
-					alert("ok");
+					
+					
+					localStorage.removeItem("cartData");
+					
+					document.querySelector('.checkout').innerHTML=`<div class="success-container">
+																		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_4qldwfx4.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;"  autoplay></lottie-player>
+																		<h5>Your order is Complete</h5>
+																		<button><a href="../shop/home.jsp">Back to Home</button>
+																	</div>`
 		
 				});	
 				
 				
 			}else{
 				
-				
-				$.post("../user_insert",{fname:firstName,lname:lastName,email:email,ZIP:zip,country:country,phone:phone,isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today},function(){
-		
-					alert("ok");
+					$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
+											isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
+					
+					
+					
+					localStorage.removeItem("cartData");
+					
+					document.querySelector('.checkout').innerHTML=`<div class="success-container">
+																		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_4qldwfx4.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;"  autoplay></lottie-player>
+																		<h5>Your order is Complete</h5>
+																		<button><a href="../shop/home.jsp">Back to Home</button>
+																	</div>`
 		
 				});	
+				
 				
 				
 			}
@@ -342,7 +359,56 @@ function getUserInfor(){
 		// user select pay-online----------------------------
 		}else if(payMethod === "Pay-Online"){
 			
-			console.log("pay");
+			document.querySelector('.checkout').innerHTML=`<div class="success-container">
+																		  <div  class="card-holder">
+
+																	        <div class="row">
+																	
+																	
+																	            <div class="col">
+																	
+																	                <h3 class="title">payment</h3>
+																	
+																	                <div class="inputBox">
+																	                    <span>cards accepted :</span>
+																	                    <img src="images/card_img.png" alt="">
+																	                </div>
+																	                <div class="inputBox">
+																	                    <span>name on card :</span>
+																	                    <input type="text" placeholder="mr. john deo">
+																	                </div>
+																	                <div class="inputBox">
+																	                    <span>credit card number :</span>
+																	                    <input type="number" placeholder="1111-2222-3333-4444">
+																	                </div>
+																	                <div class="inputBox">
+																	                    <span>exp month :</span>
+																	                    <input type="text" placeholder="january">
+																	                </div>
+																	
+																	                <div class="flex">
+																	                    <div class="inputBox">
+																	                        <span>exp year :</span>
+																	                        <input type="number" placeholder="2022">
+																	                    </div>
+																	                    <div class="inputBox">
+																	                        <span>CVV :</span>
+																	                        <input type="text" placeholder="1234">
+																	                    </div>
+																	                </div>
+																	
+																	            </div>
+																	    
+																	        </div>
+																	
+																	        <input type="submit" value="proceed to checkout" class="submit-btn">
+																	
+																	    </div>
+
+																		
+																		
+																	</div>`
+			
 			
 		}else{
 		

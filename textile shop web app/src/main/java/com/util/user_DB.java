@@ -333,6 +333,7 @@ public class user_DB {
 						.add("proName",rs.getString(13))
 						.add("price",rs.getInt(18))
 						.add("quantity",rs.getInt(11))
+						.add("total",rs.getInt(3))
 						.build());
 			
 			}

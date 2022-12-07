@@ -103,7 +103,7 @@
 					</div>
 				
 					<div class="dataContainer" id="dataHolder">	</div>	
-					<	
+					<div class="total-container"></div>	
 				</div>
 	 	  	
 	 	  	

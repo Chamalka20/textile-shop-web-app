@@ -100,6 +100,7 @@ function loadOrderDetails(){
 
 
 var orderItemsHolder = document.getElementById('dataHolder');
+var totalHolder = document.querySelector('.total-container');
 
 function loadOrderItems(){
 	
@@ -121,7 +122,7 @@ function loadOrderItems(){
 			</div>
 			
 
-	`}).join(" "))
+	`}).join(" ")),(totalHolder.innerHTML = `<p>Total Rs ${searchOrderItem[0].total.toLocaleString("en-US")}.00</p>`)
 	
 	
 	

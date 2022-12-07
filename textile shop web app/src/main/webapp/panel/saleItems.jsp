@@ -61,14 +61,11 @@
           <li class="sidebar-list-item">
             <a href="products.jsp"><span class="material-icons-outlined">inventory_2</span> Products</a>
           </li>
-          <li class="sidebar-list-item">
-            <span class="material-icons-outlined">fact_check</span> Inventory
-          </li>
           <li class="sidebar-list-item"> 
             <a href="saleItems.jsp"><span class="material-icons-outlined">sell</span> sale Items</a>
           </li>
           <li class="sidebar-list-item">
-            <span class="material-icons-outlined">shopping_cart</span> Sales Orders
+            <a href="orders.jsp"><span class="material-icons-outlined">shopping_cart</span> Sales Orders</a>
           </li>
         
         </ul>

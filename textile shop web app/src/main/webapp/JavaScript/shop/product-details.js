@@ -499,6 +499,8 @@ function addToCart(){
 	var cartIcon = document.querySelector('.cart-amount');
 	var proAddAlert=document.querySelector(".product-add-alert");
 	
+	document.body.scrollTop = 0;
+  	document.documentElement.scrollTop = 0;
 	proAddAlert.style.display = "block";
 	proAddAlert.innerHTML=proDetails[0].name+" have been added to your cart.";
 	cartIcon.style.display = "block";

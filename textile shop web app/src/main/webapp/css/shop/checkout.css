@@ -602,6 +602,15 @@ ol {
   Checkout
 -----------------------*/
 
+.checkout{
+	
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content:center;
+	
+}
+
 .coupon__code {
 	color: #0d0d0d;
 	font-size: 14px;
@@ -809,6 +818,106 @@ ol {
 	
 	font-size:11px;
 }
+
+.success-container{
+	
+	display:flex;
+	gap:10px;
+	flex-direction: column;
+	align-items:center;
+	justify-content:center;
+	
+}
+.success-container button{
+	
+	font-size: 14px;
+	color: #ffffff;
+	background: #111111;
+	font-weight: 700;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 14px 30px;
+}
+
+.success-container button a{
+	
+	color: #ffffff;
+}
+
+/* Enter card section details--------------------------------------*/
+
+
+ .card-holder{
+  padding:20px;
+  width:500px;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+}
+
+ .card-holder .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:15px;
+}
+
+ .card-holder .row .col{
+  flex:1 1 250px;
+}
+
+.card-holder .row .col .title{
+  font-size: 20px;
+  color:#333;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+ .card-holder .row .col .inputBox{
+  margin:15px 0;
+}
+
+.card-holder .row .col .inputBox span{
+  margin-bottom: 10px;
+  display: block;
+}
+
+.card-holder .row .col .inputBox input{
+  width: 100%;
+  border:1px solid #ccc;
+  padding:10px 15px;
+  font-size: 15px;
+  text-transform: none;
+}
+
+.card-holder .row .col .inputBox input:focus{
+  border:1px solid #000;
+}
+
+.card-holder .row .col .flex{
+  display: flex;
+  gap:15px;
+}
+
+ .card-holder .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+ .card-holder .row .col .inputBox img{
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+ .card-holder .submit-btn{
+  width: 100%;
+  padding:12px;
+  font-size: 17px;
+  background: #27ae60;
+  color:#fff;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
 
 /*---------------------
   Footer
