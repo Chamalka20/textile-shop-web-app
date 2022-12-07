@@ -77,7 +77,6 @@
                                     <li><a href="../shop/about.jsp">About Us</a></li>
                                     <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
                                     <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
                                     <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>

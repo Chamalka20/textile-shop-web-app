@@ -40,22 +40,39 @@ function logOut(){
 
 
 //--------------main-cards---------------------------------
-
+var products =[];
 function getDatalist(){
 	
 	$.getJSON("../getPro", function(getData) {
 			
 			document.getElementById('products-count').innerHTML = getData.length;
-						
+			
+			for(var i=0;i<getData.length;i++){
+				
+				products.push(getData[i]);
+				
+			}
+			
+		var topProducts=products.filter(function(x) { return x.salles >= 20 });
+		console.log(topProducts);			
 	});
 
 };	
-
+console.log(products);
 getDatalist();
 
 
-
-
+function getOrderlist(){
+	
+	$.getJSON("../orders", function(getData) {
+			
+			document.getElementById('orders-count').innerHTML = getData.length;
+						
+		});
+	
+	
+}
+getOrderlist();
 
 
 
@@ -68,6 +85,10 @@ getDatalist();
 
 
 // ---------- CHARTS ----------
+
+
+
+
 
 // BAR CHART
 var barChartOptions = {

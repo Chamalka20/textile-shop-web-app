@@ -1247,12 +1247,14 @@ ol {
 .shop__sidebar__price ul li,
 .shop__sidebar__brand ul li {
 	list-style: none;
+	
 }
 
 .shop__sidebar__categories ul li a,
 .shop__sidebar__brand ul li a {
 	color: #b7b7b7;
 	font-size: 15px;
+	cursor: pointer;
 	line-height: 32px;
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;

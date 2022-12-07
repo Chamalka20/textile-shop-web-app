@@ -134,7 +134,6 @@ if(localStrorage !== null){
 	var cartIcon = document.querySelector('.cart-amount');
 	cartIcon.style.display = "block";
 	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
-	console.log("hghhf");
 	
 }
 //------------------------------------------------------------
@@ -268,6 +267,29 @@ function defaultSelect(data){
 	
 }
 
+
+//----------------filter price low to high------------------------
+
+
+function filterLowToHigh(){
+	var selectBox = document.getElementById("filterPrice");
+	var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	
+	
+	if(selectedValue === "HighToLow"){
+		
+		
+		
+	}else if(selectedValue ==="LowToHigh"){
+		
+		
+		
+	}
+	
+	
+}
+
+
   
 //--------------filter by Categories----------------------
 	  
@@ -301,7 +323,9 @@ function filterbyCategories(data,categorie){
 	DisplayList(resultProductData, list_element, rows, current_page);
 	SetupPagination(resultProductData, pagination_element, rows);	
 		
-}	    
+}	
+
+    
 	    
 //------------------Price Range--------------------------------------
 
@@ -435,6 +459,8 @@ const filterList = document.getElementById('filterList');
 	
 }
 
+
+
 function closeFilter(name){
 	
 	if(name==="filter-history-item-cat"){
@@ -485,7 +511,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	
 	//total results-----------------------------------------------------------
 	var results =document.querySelector('.shop__product__option__left  p');
-    results.innerHTML ="Showing 1-"+rows+" of 126 results";
+    results.innerHTML ="Showing 1-"+rows+" of "+resultProductData.length+" results";
     
 	if(items.length != 0){//if product result is empty-------------------------
 		
@@ -504,7 +530,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                            <span class="label">Sale</span>
 	                            <ul class="product__hover">
 	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">
@@ -536,7 +562,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                            <span class="label">New</span>
 	                            <ul class="product__hover">
 	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">
@@ -564,7 +590,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                           
 	                            <ul class="product__hover">
 	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">

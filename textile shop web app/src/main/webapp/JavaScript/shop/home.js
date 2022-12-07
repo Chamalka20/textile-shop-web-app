@@ -205,7 +205,7 @@ function loadBestSellers(){
                             <span class="label">Sale</span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -237,7 +237,7 @@ function loadBestSellers(){
                             <span class="label">New</span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -265,7 +265,7 @@ function loadBestSellers(){
                            
                             <ul class="product__hover">
                                 <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -304,7 +304,7 @@ function loadNewArrivals(){
                             <span class="label">New</span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Compare</span></a></li>
+                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">

@@ -455,7 +455,7 @@ function payOnline(){
 																		<h5>Your order is Complete</h5>
 																		<button><a href="../shop/home.jsp">Back to Home</button>
 																	</div>`
-		
+		localStorage.removeItem("cartData");
 		
 	}
 	

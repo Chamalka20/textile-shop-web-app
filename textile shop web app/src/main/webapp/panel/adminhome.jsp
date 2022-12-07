@@ -91,16 +91,9 @@
               <p class="text-primary">SALES ORDERS</p>
               <span class="material-icons-outlined text-green">shopping_cart</span>
             </div>
-            <span class="text-primary font-weight-bold">79</span>
+            <h3 id="orders-count"></h3>
           </div>
 
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">INVENTORY ALERTS</p>
-              <span class="material-icons-outlined text-red">notification_important</span>
-            </div>
-            <span class="text-primary font-weight-bold">56</span>
-          </div>
 
         </div>
 

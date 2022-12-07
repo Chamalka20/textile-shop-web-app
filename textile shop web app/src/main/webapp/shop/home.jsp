@@ -73,7 +73,6 @@
                                     <li><a href="../shop/about.jsp">About Us</a></li>
                                     <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
                                     <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
                                     <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
@@ -108,7 +107,7 @@
                                 <h2>Find the best outfit to go to the event</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                 commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="../shop/shop.jsp" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -129,7 +128,7 @@
                                 <h2>New Office Wear Collection</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                 commitment to exceptional quality.</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="../shop/shop.jsp" class="primary-btn">Shop now <span class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -156,7 +155,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Clothing Collections 2022</h2>
-                            <a href="#">Shop now</a>
+                            <a href="../shop/shop.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -167,7 +166,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Office Wear</h2>
-                            <a href="#">Shop now</a>
+                            <a href="../shop/shop.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -178,7 +177,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>20% OFF</h2>
-                            <a href="#">Shop now</a>
+                            <a href="../shop/shop.jsp">Shop now</a>
                         </div>
                     </div>
                 </div>

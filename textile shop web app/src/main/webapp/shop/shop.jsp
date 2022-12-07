@@ -74,7 +74,6 @@
                                     <li><a href="../shop/about.jsp">About Us</a></li>
                                     <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
                                     <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="../shop/checkout.jsp">Check Out</a></li>
                                     <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
@@ -190,10 +189,10 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
                                     <p>Sort by Price:</p>
-                                    <select>
-                                        <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
+                                    <select onchange="filterLowToHigh()" id="filterPrice">
+                                    	 <option value="HighToLow" >High To Low</option>
+                                        <option value="LowToHigh" >Low To High</option>
+                                       
                                     </select>
                                 </div>
                             </div>
