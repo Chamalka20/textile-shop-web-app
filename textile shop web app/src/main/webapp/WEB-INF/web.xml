@@ -187,4 +187,18 @@
 	
 	</servlet-mapping>
 	
+	<servlet>
+		
+		<servlet-name>get_orderItems</servlet-name>
+		<servlet-class>com.servlet.get_orderItems</servlet-class>
+	
+	</servlet>
+	
+	<servlet-mapping>
+		
+		<servlet-name>get_orderItems</servlet-name>
+		<url-pattern>/orderItems</url-pattern>
+	
+	</servlet-mapping>
+	
 </web-app>

@@ -206,7 +206,7 @@ body {
 
 .oederItems-Container{
 
-	width:560px;
+	width:930px;
 	margin-top:60px;
 	margin-left:10px;
 }
@@ -214,25 +214,104 @@ body {
 .headerContainer{
 	
 	display:flex;
-	gap:60px;
-	border: 1px solid;
-	width:760px;
+	gap:50px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-top: 1px solid;
+	width:930px;
 	height:50px;
 	align-items:center;
 
 		
 }
 
-.headerdata{
+.headerdata-ItemId{
 	border-left:1px solid;
 	padding-left:10px;
-	width:500px;
+	width:50px;
+		
+}
+.headerdata-Image{
+	border-left:1px solid;
+	padding-left:10px;
+	width:200px;
 		
 }
 
+.headerdata-Product{
+	border-left:1px solid;
+	padding-left:10px;
+	width:300px;
+		
+}
+.headerdata-Price{
+	border-left:1px solid;
+	padding-left:10px;
+	width:300px;
+		
+}
 
+.headerdata-Quantity{
+	border-left:1px solid;
+	padding-left:10px;
+	
+		
+}
 
+.headerdata-Total{
+	border-left:1px solid;
+	padding-left:10px;
+	width:400px;
+		
+}
 
+.subContainer{
+	
+	display:flex;
+	gap:50px;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	width:930px;
+	height:50px;
+	align-items:center;
+	
+}
 
+.proImage{
+	width:30px;
+	height:40px;
+	margin-right:20px;
+	
+}
 
+.itemId{
+	
+	width:100px;
+	padding-left:10px;
+	
+}
+
+.image-holder{
+	
+	width:50px;
+	
+}
+
+.product-name{
+	
+	width:140px;
+	
+}
+
+.price{
+	
+	width:170px;
+	
+}
+.quantity{
+	
+	width:60px;
+}
 

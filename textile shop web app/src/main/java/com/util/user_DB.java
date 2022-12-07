@@ -316,7 +316,7 @@ public class user_DB {
 		DB_connect db = new DB_connect();
 		Connection con = null;
 		
-		String sql1 ="SELECT * FROM textile.order_details,textile.order_items WHERE  order_details.ordd_id=order_items.order_id ;";
+		String sql1 ="SELECT * FROM textile.order_details,textile.order_items,textile.product WHERE  order_details.ordd_id=order_items.order_id AND  product.pro_id=order_items.product_id ;";
 		
 		try {
 			con=db.getConnection();
@@ -326,9 +326,17 @@ public class user_DB {
 			while(rs.next()) {
 				
 				builder.add(Json.createObjectBuilder()
+						
+						.add("orddId",rs.getInt(1))
+						.add("itemId",rs.getInt(9))
+						.add("Image",rs.getString(19))
+						.add("proName",rs.getString(13))
+						.add("price",rs.getInt(18))
+						.add("quantity",rs.getInt(11))
 						.build());
 			
 			}
+			ordArr = builder.build();
 			
 		}catch(Exception e) {
 			

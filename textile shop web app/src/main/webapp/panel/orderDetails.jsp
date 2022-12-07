@@ -94,16 +94,16 @@
 	 	  		<div class="oederItems-Container">
 					
 					<div class="headerContainer">	
-						<div class="headerdata">Item </div>
-						<div class="headerdata">Image</div>
-						<div class="headerdata">Product</div>
-						<div class="headerdata">Price</div>
-						<div class="headerdata">Quantity</div>
-						<div class="headerdata">Total</div>	  
+						<div class="headerdata-ItemId">Item Id</div>
+						<div class="headerdata-Image">Image</div>
+						<div class="headerdata-Product">Product</div>
+						<div class="headerdata-Price">Price</div>
+						<div class="headerdata-Quantity">Quantity</div>
+						<div class="headerdata-Total">Total</div>	  
 					</div>
 				
 					<div class="dataContainer" id="dataHolder">	</div>	
-						
+					<	
 				</div>
 	 	  	
 	 	  	
