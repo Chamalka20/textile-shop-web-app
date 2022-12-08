@@ -41,6 +41,7 @@ function logOut(){
 
 //--------------main-cards---------------------------------
 var products =[];
+var resizeArr = [];
 function getDatalist(){
 	
 	$.getJSON("../getPro", function(getData) {
@@ -52,9 +53,19 @@ function getDatalist(){
 				products.push(getData[i]);
 				
 			}
-			
+		
 		var topProducts=products.filter(function(x) { return x.salles >= 20 });
-		console.log(topProducts);			
+		
+
+		for(var i=0;i<5;i++){
+			
+			resizeArr.push(topProducts[i]);
+			
+		}
+
+		console.log(resizeArr[0].salles);			
+		barChart(resizeArr);
+				
 	});
 
 };	
@@ -77,23 +88,15 @@ getOrderlist();
 
 
 
-
-
-
-
-
-
-
 // ---------- CHARTS ----------
 
 
-
-
-
-// BAR CHART
+function barChart(data){
+	
+	// BAR CHART
 var barChartOptions = {
   series: [{
-    data: [10, 8, 6, 4, 2]
+    data: [data[0].salles, data[1].salles, data[2].salles, data[3].salles, data[3].salles]
   }],
   chart: {
     type: 'bar',
@@ -124,7 +127,7 @@ var barChartOptions = {
     show: false
   },
   xaxis: {
-    categories: ["Laptop", "Phone", "Monitor", "Headphones", "Camera"],
+    categories: [data[0].name, data[1].name, data[2].name, data[3].name, data[4].name],
   },
   yaxis: {
     title: {
@@ -135,6 +138,14 @@ var barChartOptions = {
 
 var barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
 barChart.render();
+	
+	
+	
+	
+}
+
+
+
 
 
 // AREA CHART

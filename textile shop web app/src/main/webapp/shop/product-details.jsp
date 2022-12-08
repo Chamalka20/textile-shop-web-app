@@ -93,8 +93,9 @@
         </div>
     </header>
     <!-- Header Section End -->
-	
-	<div class="product-add-alert" style="display:none;"><span></span></div>
+
+	<div class="product-add-alert"></div>
+	<div class="product-add-warning"></div>
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container" id="product-details-holder">

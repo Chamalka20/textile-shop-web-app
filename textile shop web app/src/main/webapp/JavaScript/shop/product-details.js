@@ -425,39 +425,57 @@ function selectSize(data,proSize,id,sizeId){
 
 function increment(){
 	
-	if(limit !== 0){
+	var proAddAlert=document.querySelector(".product-add-warning");
+	//user not select size---------------------
+	if(size !== ""){
 		
-		if(limit>items){
+		proAddAlert.innerHTML=``;
 		
-		items+=1;
-		document.querySelector('#minus').style.color="black";
+		if(limit !== 0){
 		
-		var search = basket.find((x) => x.id === proId)
-		
-		console.log(search);
-		//Reduce when the same piece of data is stored 
-		if(search === undefined){
+			if(limit>items){
 			
-			basket.push({id:proId ,size:size,item:1,limit:limit,sizeId:getsizeId})
-
+			items+=1;
+			document.querySelector('#minus').style.color="black";
+			
+			var search = basket.find((x) => x.id === proId)
+			
+			console.log(search);
+			//Reduce when the same piece of data is stored 
+				if(search === undefined){
+					
+					basket.push({id:proId ,size:size,item:1,limit:limit,sizeId:getsizeId})
+		
+				}else{
+					
+					search.item+=1;
+				}
+			
+			//---------------------------
+		
+			console.log(basket);
+		
+			}else{
+				
+				document.querySelector('#plus').style.color="#cfcbca";
+			}
+		
 		}else{
 			
-			search.item+=1;
+			items+=1;
 		}
 		
-		//---------------------------
 		
-		console.log(basket);
-		
-		}else{
-			
-			document.querySelector('#plus').style.color="#cfcbca";
-		}
 		
 	}else{
+		document.body.scrollTop = 0;
+  		document.documentElement.scrollTop = 0;
 		
-		items+=1;
+		proAddAlert.innerHTML=`<div class="warning-message"><p>Please select product size.</p></div>`;
+		
 	}
+	
+	
 		
 	
 	update();
@@ -505,8 +523,8 @@ function addToCart(){
 	
 	document.body.scrollTop = 0;
   	document.documentElement.scrollTop = 0;
-	proAddAlert.style.display = "block";
-	proAddAlert.innerHTML=proDetails[0].name+" have been added to your cart.";
+	
+	proAddAlert.innerHTML=`<div class="success-message"><p>${proDetails[0].name} have been added to your cart.</p></div>`;
 	cartIcon.style.display = "block";
     cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0)
 	

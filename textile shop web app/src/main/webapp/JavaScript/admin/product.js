@@ -222,7 +222,7 @@ function productAdd(){
 	xl = document.getElementById('xl').value;
 	cate = document.getElementById("searchCate").value;
 	
-	if(name === "" ||  desc === "" || price ===""|| small===""|| medium===""|| large==="" || xl===""|| cate==="" || newImage===""){
+	if(name === "" ||  desc === "" || price ===""|| small===""|| medium===""|| large==="" || xl===""|| cate==="" || newImage==="" ){
 		
 		document.getElementById("loginFailure").innerHTML = "Please fill out fields" ;
 		

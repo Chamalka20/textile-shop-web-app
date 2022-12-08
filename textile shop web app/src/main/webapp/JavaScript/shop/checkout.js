@@ -449,6 +449,8 @@ function payOnline(){
 		
 	}else{
 		
+		document.body.scrollTop = 0;
+  		document.documentElement.scrollTop = 0;
 		document.querySelector('.message-holder').innerHTML =``;
 		document.querySelector('.checkout').innerHTML=`<div class="success-container">
 																		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_4qldwfx4.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;"  autoplay></lottie-player>

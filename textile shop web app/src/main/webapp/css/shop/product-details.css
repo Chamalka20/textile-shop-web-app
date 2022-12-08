@@ -527,15 +527,32 @@ ol {
 /*---------------------
   Product Details
 -----------------------*/
-.product-add-alert{
-
+.warning-message{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	background:#28ed28;
-	height:30px;
-	color:#ffffff;
+	background-color:red;
+	height:35px;
+	padding-top:11px;
 	
+}
+.warning-message p{
+	
+	color:#ffffff;
+}
+
+.product-add-alert .success-message{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:#1ff53f;
+	height:35px;
+	padding-top:11px;
+	
+}
+.success-message p{
+	
+	color:#ffffff;
 }
 
 .product-details {
