@@ -116,7 +116,8 @@
 var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
 
-//get localStorage data------------------------------------
+
+//get localStorage cart data------------------------------------
 if(localStrorage !== null){
 	
 	for(var i=0;i<localStrorage.length;i++){
@@ -169,6 +170,7 @@ function getDatalist(){
 					
 			}
 			defaultSelect(proList);
+			
 				
 		});
 
@@ -310,6 +312,8 @@ function filterbyCategories(data,categorie){
 		
 		activeFilters(categorie,storePriceChangetype,storePriceChangevalue);
 		activeCat = categorie;
+		
+	//get all results--------------------------------------------------	
 	}else{
 		
 		for(var i=0;i<data.length;i++){
@@ -496,6 +500,62 @@ function closeFilter(name){
 	
 }
 
+//-----------------------------------------------------
+// search resaults show----------------------------------------------
+
+
+const search_list = document.getElementById('search-list');
+const searchList_container = document.getElementById('search-results');
+const search_input = document.getElementById('search-input');
+
+
+function DisplayResulst(data){
+	
+	return(search_list.innerHTML= data.map((x)=>{
+		
+		
+		return`
+			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
+			
+		`
+		
+		
+		}))
+	
+	
+}
+
+
+function filterdata(data,searchText){
+	
+	return data.filter((x)=>x.name.toLowerCase().includes(searchText.toLowerCase()));
+}
+
+
+search_input.addEventListener('input',function(){
+	
+	if(search_input.value==""){
+		
+		searchList_container.style.display = "none";
+		
+	}else{
+		searchList_container.style.display="block";
+		var fildata = filterdata(proList,search_input.value);
+		DisplayResulst(fildata);
+		
+	}
+	
+	
+});
+
+
+//user select one search result--------------------
+function SearchSelectItem(id){
+	
+	productDetails(id);
+	
+}
+
 
 //---------------------------------------------------------------
 
@@ -529,7 +589,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
 	                            <span class="label">Sale</span>
 	                            <ul class="product__hover">
-	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
+	                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
 	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 	                            </ul>
 	                        </div>
@@ -549,7 +609,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                    </div>
 	                `
 			
-			}else {
+			}else{
 				
 				 // convert strings to Date objcts--------------
 				var proDate = new Date(x.add_date);
@@ -561,7 +621,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
 	                            <span class="label">New</span>
 	                            <ul class="product__hover">
-	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
+	                                  <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
 	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 	                            </ul>
 	                        </div>
@@ -582,32 +642,41 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                `
 				
 					
-				}else{
+				}else {
 					
+								
 					return`
-	                    <div class="product__item" onClick="productDetails(${x.id})">
-	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
-	                           
-	                            <ul class="product__hover">
-	                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
-	                            </ul>
-	                        </div>
-	                        <div class="product__item__text">
-	                            <h6>${x.name}</h6>
-	                            
-	                            <div class="rating">
-	                                <i class="fa fa-star-o"></i>
-	                                <i class="fa fa-star-o"></i>
-	                                <i class="fa fa-star-o"></i>
-	                                <i class="fa fa-star-o"></i>
-	                                <i class="fa fa-star-o"></i>
-	                            </div>
-	                            <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
-	                            
-	                        </div>
-	                    </div>
-	                `
+				                   
+						 <div class="product__item" onClick="productDetails(${x.id})">
+				                        <div class="product__item__pic "  style="background-image:url('../Images/product/${x.image}');">
+				                           
+				                            <ul class="product__hover">
+				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
+				                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+				                            </ul>
+				                        </div>
+				                        <div class="product__item__text" >
+				                            <h6>${x.name}</h6>
+				                            
+				                            <div class="rating">
+				                                <i class="fa fa-star-o"></i>
+				                                <i class="fa fa-star-o"></i>
+				                                <i class="fa fa-star-o"></i>
+				                                <i class="fa fa-star-o"></i>
+				                                <i class="fa fa-star-o"></i>
+				                            </div>
+				                            <div class="price-con"><h5>Rs ${x.price.toLocaleString("en-US")}.00</h5></div>
+				                            
+				                        </div>
+				                    </div>
+				                		`		
+								
+								
+										
+							
+							
+					
+					
 				}
 				
 				
@@ -654,6 +723,49 @@ function PaginationButton (page, items) {
 
 	return button;
 }
+
+//---------------------------------------------------------------------------------------
+//add to the user favorite products---------------------------------------
+
+var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
+var fav_items =[];
+
+
+//get localStorage fav data------------------------------------
+
+if(localfav_items !== null){
+	
+	for(var i=0;i<localfav_items.length;i++){
+	
+	fav_items.push(localfav_items[i]);
+				
+	}
+	
+}
+
+
+function addOrRemoveFavorite(id){
+	
+	
+	const fav_icon = document.getElementById('fav-icon-'+id);
+	
+	fav_icon.src = '../Images/icon/love.png';
+	
+	var search = fav_items.find((x) => x === id)
+	
+	if(search === undefined){
+		
+		fav_items.push(id);
+		
+	}
+	
+	
+	
+	localStorage.setItem("fav_items",JSON.stringify(fav_items));
+	
+	
+}
+
 
 
 //------------------------------------------------------

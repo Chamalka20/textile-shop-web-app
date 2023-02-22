@@ -935,9 +935,12 @@ ol {
 .product__item {
 	overflow: hidden;
 	margin-bottom: 40px;
+	
+	
 }
 
 .product__item :hover{
+	
 	cursor: pointer;
 }
 .product__item__text{
@@ -999,6 +1002,7 @@ ol {
 	position: absolute;
 	right: -200px;
 	top: 20px;
+	z-index: 2;
 	-webkit-transition: all, 0.8s;
 	-o-transition: all, 0.8s;
 	transition: all, 0.8s;
@@ -1008,6 +1012,7 @@ ol {
 	list-style: none;
 	margin-bottom: 10px;
 	position: relative;
+	
 }
 
 .product__item__pic .product__hover li:hover span {
@@ -1048,6 +1053,8 @@ ol {
 
 .product__item__pic .product__hover li img {
 	background: #ffffff;
+	width:40px;
+	height:40px;
 	padding: 10px;
 	display: inline-block;
 }
@@ -1957,6 +1964,17 @@ input[type="range"]::-webkit-slider-thumb{
 .product__details__tab__content__item p {
 	margin-bottom: 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /*---------------------
   Related

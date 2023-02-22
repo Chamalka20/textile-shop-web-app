@@ -356,3 +356,62 @@ function productDetails(id){
 }
 
 
+// search resaults show----------------------------------------------
+
+
+const search_list = document.getElementById('search-list');
+const searchList_container = document.getElementById('search-results');
+const search_input = document.getElementById('search-input');
+
+
+function DisplayResulst(data){
+	
+	return(search_list.innerHTML= data.map((x)=>{
+		
+		
+		return`
+			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
+			
+		`
+		
+		
+		}))
+	
+	
+}
+
+
+function filterdata(data,searchText){
+	
+	return data.filter((x)=>x.name.toLowerCase().includes(searchText.toLowerCase()));
+}
+
+
+search_input.addEventListener('input',function(){
+	
+	if(search_input.value==""){
+		
+		searchList_container.style.display = "none";
+		
+	}else{
+		searchList_container.style.display="block";
+		var fildata = filterdata(proList,search_input.value);
+		DisplayResulst(fildata);
+		
+	}
+	
+	
+});
+
+
+//user select one search result--------------------
+function SearchSelectItem(id){
+	
+	productDetails(id);
+	
+}
+
+
+//---------------------------------------------------------------
+
+

@@ -996,3 +996,50 @@ ol {
 }
 
 
+/*---------------------
+ search-results
+-----------------------*/
+
+.search-results{
+	display:none;
+	margin-top:10px;
+	
+}
+
+.search-results ul{
+	
+	list-style-type:none;
+	margin-top:20px;
+	
+	
+}
+
+.result-row:hover{
+	
+	background-color:#3d3d3d;
+	cursor:pointer;
+	
+}
+
+.result-row{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	gap:10px;
+	
+}
+
+.result-row p{
+	
+	color:#ffff;		
+	
+}
+
+.search-img{
+	width:55px;
+	height:75px;
+	
+}
+
+
+

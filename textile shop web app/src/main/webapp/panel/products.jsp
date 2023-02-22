@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>hnsert title here</title>
+<title>Inventory</title>
 
 
 	<!-- jquary  -->
