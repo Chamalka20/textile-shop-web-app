@@ -115,6 +115,7 @@
 //----------------------------------------------------------
 var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
 
 
 //get localStorage cart data------------------------------------
@@ -569,13 +570,32 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	let end = start + rows_per_page;
 	let paginatedItems = items.slice(start, end);
 	
+// Generate the non-Wishlist and Wishlist product lists using the map function	
+	const productsWithWishlistFlag = paginatedItems.map(product => ({
+	  id: product.id,
+	  add_date : product.add_date,
+	  categorie : product.categorie,
+	  desc : product.desc,
+	  image : product.image,
+	  name : product.name,
+	  price : product.price,
+	  saleActive : product.saleActive,
+	  salePercentage : product.salePercentage,
+	  salles : product.salles,
+      sizeId : product.sizeId,
+	  stock : product.stock,	 
+	  isWishlist: localfav_items.includes(product.id)
+	}));
+	
+	console.log(productsWithWishlistFlag)
+	
 	//total results-----------------------------------------------------------
 	var results =document.querySelector('.shop__product__option__left  p');
     results.innerHTML ="Showing 1-"+rows+" of "+resultProductData.length+" results";
     
 	if(items.length != 0){//if product result is empty-------------------------
 		
-		return(list_element.innerHTML= paginatedItems.map((x)=>{
+		return(list_element.innerHTML= productsWithWishlistFlag.map((x)=>{
 			if(x.saleActive==="true"){
 				
 				//calculate sale price--------------------------
@@ -651,7 +671,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 				                        <div class="product__item__pic "  style="background-image:url('../Images/product/${x.image}');">
 				                           
 				                            <ul class="product__hover">
-				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
+				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love.png' : 'favorite.png'}" ></li>
 				                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
 				                            </ul>
 				                        </div>
@@ -727,7 +747,7 @@ function PaginationButton (page, items) {
 //---------------------------------------------------------------------------------------
 //add to the user favorite products---------------------------------------
 
-var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
+
 var fav_items =[];
 
 
