@@ -609,8 +609,8 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
 	                            <span class="label">Sale</span>
 	                            <ul class="product__hover">
-	                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+	                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+	                                
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">
@@ -641,8 +641,8 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
 	                            <span class="label">New</span>
 	                            <ul class="product__hover">
-	                                  <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/favorite.png" ></li>
-	                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+	                                  <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+	                                
 	                            </ul>
 	                        </div>
 	                        <div class="product__item__text">
@@ -671,8 +671,8 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 				                        <div class="product__item__pic "  style="background-image:url('../Images/product/${x.image}');">
 				                           
 				                            <ul class="product__hover">
-				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love.png' : 'favorite.png'}" ></li>
-				                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+				                                
 				                            </ul>
 				                        </div>
 				                        <div class="product__item__text" >
@@ -769,7 +769,8 @@ function addOrRemoveFavorite(id){
 	
 	const fav_icon = document.getElementById('fav-icon-'+id);
 	
-	fav_icon.src = '../Images/icon/love.png';
+	fav_icon.src = '../Images/icon/love1.png';
+	
 	
 	var search = fav_items.find((x) => x === id)
 	
