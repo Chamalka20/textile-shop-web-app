@@ -234,6 +234,19 @@ ol {
 	cursor: pointer;
 }
 
+.result-row{
+	
+	display:flex;
+	flex-direction:row;
+	gap:7px;
+}
+.result-row .search-img{
+
+	width:40px;
+	height:60px;
+	
+	
+}
 .search-model {
 	display: none;
 	position: fixed;
@@ -946,14 +959,18 @@ ol {
 .product__item__text{
 	
 	margin-left:22px;
+	font-size:10px;
 }
 .label{
 	
-	margin-left:34px;
+	margin-left:25px;
+	
 }
-.product__item.sale .product__item__pic .label {
-	color: #ffffff;
-	background: #111111;
+.product__item__pic .label {
+	color: #111111;
+	background: #ffffff;
+	border-radius:4px;
+	margin-left:25px;
 	
 }
 

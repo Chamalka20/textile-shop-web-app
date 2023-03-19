@@ -120,6 +120,7 @@
 //----------------------------------------------------------
 var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
+var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
 
 //get localStorage data------------------------------------
 if(localStrorage !== null){
@@ -204,8 +205,8 @@ function loadBestSellers(){
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                                
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -236,8 +237,8 @@ function loadBestSellers(){
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                               
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -264,8 +265,8 @@ function loadBestSellers(){
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                            
                             <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                                
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -293,7 +294,28 @@ function loadBestSellers(){
 
 function loadNewArrivals(){
 	
-	return(Newproduct.innerHTML= proList.map((x)=>{
+	
+	// Generate the non-Wishlist and Wishlist product lists using the map function	
+	const productsWithWishlistFlag = proList.map(product => ({
+	  id: product.id,
+	  add_date : product.add_date,
+	  categorie : product.categorie,
+	  desc : product.desc,
+	  image : product.image,
+	  name : product.name,
+	  price : product.price,
+	  saleActive : product.saleActive,
+	  salePercentage : product.salePercentage,
+	  salles : product.salles,
+      sizeId : product.sizeId,
+	  stock : product.stock,	 
+	  isWishlist: localfav_items.includes(product.id)
+	}));
+	
+	console.log(productsWithWishlistFlag)
+	
+	
+	return(Newproduct.innerHTML= productsWithWishlistFlag.map((x)=>{
 		var proDate = new Date(x.add_date);
 		
 		if(proDate >= thisMonth){
@@ -303,8 +325,8 @@ function loadNewArrivals(){
                         <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="../Images/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="../Images/icon/compare.png" alt=""> <span>Quick View</span></a></li>
+                               <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                               
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -404,6 +426,8 @@ search_input.addEventListener('input',function(){
 });
 
 
+
+
 //user select one search result--------------------
 function SearchSelectItem(id){
 	
@@ -413,5 +437,53 @@ function SearchSelectItem(id){
 
 
 //---------------------------------------------------------------
+
+//---------------------------------------------------------------------------------------
+//add to the user favorite products---------------------------------------
+
+
+var fav_items =[];
+
+
+//get localStorage fav data------------------------------------
+
+if(localfav_items !== null){
+	
+	for(var i=0;i<localfav_items.length;i++){
+	
+	fav_items.push(localfav_items[i]);
+				
+	}
+	
+}
+
+
+
+
+function addOrRemoveFavorite(id){
+	
+	
+	const fav_icon = document.getElementById('fav-icon-'+id);
+	
+	fav_icon.src = '../Images/icon/love1.png';
+	
+	
+	var search = fav_items.find((x) => x === id)
+	
+	if(search === undefined){
+		
+		fav_items.push(id);
+		
+	}
+	
+	
+	
+	localStorage.setItem("fav_items",JSON.stringify(fav_items));
+	
+	
+}
+
+
+
 
 

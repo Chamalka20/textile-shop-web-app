@@ -78,7 +78,7 @@ let loadData= () =>{
 			return`
 				<div class="subContainer" id="items-${x.id}">
 				 	
-					<div class="name"><img class="proImage" src="../Images/${x.image}"></div>
+					<div class="name"><img class="proImage" src="../Images/product/${x.image}"></div>
 					<div class="id">${x.id}</div>
 					<div class="desc">${x.name}</div>
 					<div class="price">Rs ${x.price}.00</div>
@@ -269,7 +269,7 @@ function showProductList(resultProductData){
 			
 			return`
 				<div class="subContaineradd" id="items-${x.id}">
-				 	<div class="wrapper"><input class="form-check-input" onClick="checktheproducts(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/${x.image}"></div>
+				 	<div class="wrapper"><input class="form-check-input" onClick="checktheproducts(${x.id})" autocomplete="off" type="checkbox" value=${x.id} id="flexCheckDefault${x.id}"><img class="newProImage" src="../Images/product/${x.image}"></div>
 				 	<div class="wrapper">Salles: ${x.salles}</div>
 				 	<div class="wrapper">Add date: ${x.add_date}</div>
 				 	<div class="wrapper"><a href="#" onclick="productInfor(${x.id})">More info</a></div>
@@ -315,7 +315,7 @@ function popUpWindow(data){
 	popUpHolder.style.visibility="visible";
 	return( popUpSubHolder.innerHTML=`
 		
-		<div class="popUp-image-wrapper"><img class="popUp-image"src="../Images/${data[0].image}"></div>
+		<div class="popUp-image-wrapper"><img class="popUp-image"src="../Images/product/${data[0].image}"></div>
 		<div class="popUp-product-details">
 			<div class="pop_warapper"><h6>Id: </h6><p>${data[0].id}</p></div>
 			<div class="pop_warapper"><h6>Name: </h6><p>${data[0].name}</p></div>
