@@ -318,12 +318,15 @@ function getUserInfor(){
 				
 				
 				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
-											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
+											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery",provider:"null",account_no:0,expiry:"null"},function(){
 					
 					//update sells and products quantity---------------------------------
 					$.post("../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
 					
 					
+					document.body.scrollTop = 20;
+  					document.documentElement.scrollTop = 20;
+  					
 					localStorage.removeItem("cartData");
 					
 					document.querySelector('.checkout').innerHTML=`<div class="success-container">
@@ -340,9 +343,14 @@ function getUserInfor(){
 			}else{
 				
 					$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
-											isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery"},function(){
+											isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery",provider:"null",account_no:0,expiry:"null"},function(){
+					
+					//update sells and products quantity---------------------------------
+					$.post("../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
 					
 					
+					document.body.scrollTop = 20;
+  					document.documentElement.scrollTop = 20;
 					
 					localStorage.removeItem("cartData");
 					

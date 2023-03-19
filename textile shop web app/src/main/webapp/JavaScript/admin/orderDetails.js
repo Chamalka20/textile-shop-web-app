@@ -1,7 +1,7 @@
 //---------------show admin details------------------------
 const adminName = localStorage.getItem("adminName");
 var orId  = localStorage.getItem("ordId");
-
+console.log(orId)
 function showAccount(){
 	
 	document.getElementById("acc-name").innerHTML = adminName;
@@ -57,7 +57,7 @@ function getOrderItems(){
 				
 				ordItems.push(getData[i]);
 			}
-			searchOrderItem = ordItems.filter((el)=> el.orddId == orId )|| [];	
+			searchOrderItem = ordItems.filter((el)=> el.userId == orId )|| [];	
 			console.log(searchOrderItem);
 			console.log(ordItems);
 			loadOrderItems();

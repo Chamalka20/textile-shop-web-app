@@ -19,7 +19,7 @@ import com.models.user;
 
 public class user_DB {
 
-	public  boolean user_insert(String first_name,String last_name,String password,String email,String telephone,String isTemporaty,String ZIP,String country,String address_line1,String address_line2,String city,String date,String isOrder,String total,String [] selectItems,String payType ){ 	
+	public  boolean user_insert(String first_name,String last_name,String password,String email,String telephone,String isTemporaty,String ZIP,String country,String address_line1,String address_line2,String city,String date,String isOrder,String total,String [] selectItems,String payType,String provider,String account_no,String expiry ){ 	
 		
 		boolean isSuccess = false;
 		String orderStatus = "In progress";
@@ -39,7 +39,7 @@ public class user_DB {
 		
 		String sql1 ="INSERT INTO `textile`.`user` (`first_name`, `last_name`, `password`, `email`, `telephone`,`isTemporaty`,`ceated_at`) VALUES ('"+first_name+"','"+last_name+"','"+password+"','"+email+"','"+telephone+"','"+isTemporaty+"','"+date+"')";
 		String sql2 ="INSERT INTO `textile`.`user_address` (`user_id` ,`ZIP`,`country`,`address_line1`, `address_line2`, `city`) VALUES (?,'"+ZIP+"','"+country+"','"+address_line1+"','"+address_line2+"', '"+city+"')";
-		String sql3 ="INSERT INTO `textile`.`user_payment` (`user_id`, `payment_type` ) VALUES (?,'CashOnDelivery');";
+		String sql3 ="INSERT INTO `textile`.`user_payment` (`user_id`, `payment_type`,`provider`,`account_no`,`expiry` ) VALUES (?,'"+payType+"','"+provider+"','"+account_no+"','"+expiry+"')";
 		String sql4 ="INSERT INTO `textile`.`order_details` (`user_id`, `total`, `payment_id`,`order_date`,`orderStatus`) VALUES (?, '"+total+"', ?,'"+date+"',?);";
 		String sql5 ="INSERT INTO `textile`.`order_items` (`order_id`, `product_id`, `pro_size`, `quantity`) VALUES (?, ?, ?, ?);";
 		
@@ -279,8 +279,8 @@ public class user_DB {
 						
 						.add("OrderId",rs.getInt(17))
 						.add("userName",rs.getString(2))
-						.add("paymentMode",rs.getString(25))
-						.add("orderDate",rs.getString(21))
+						.add("paymentMode",rs.getString(24))
+						.add("orderDate",rs.getString(20))
 						.add("orderStatus",rs.getString(22))
 						.add("lastName",rs.getString(3))
 						.add("email",rs.getString(5))
@@ -328,6 +328,7 @@ public class user_DB {
 				builder.add(Json.createObjectBuilder()
 						
 						.add("orddId",rs.getInt(1))
+						.add("userId",rs.getInt(2))
 						.add("itemId",rs.getInt(9))
 						.add("Image",rs.getString(19))
 						.add("proName",rs.getString(13))

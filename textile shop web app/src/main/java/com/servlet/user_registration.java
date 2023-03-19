@@ -50,6 +50,9 @@ public class user_registration extends HttpServlet {
 		String isOrder = req.getParameter("isOrder");
 		String total = req.getParameter("total");
 		String payType = req.getParameter("payType");
+		String provider = req.getParameter("provider");
+		String account_no = req.getParameter("account_no");
+		String expiry = req.getParameter("expiry");
 		
 		String [] selectItems = req.getParameterValues("selectItems[]");
 		
@@ -57,7 +60,7 @@ public class user_registration extends HttpServlet {
 		user_DB us = new user_DB();
 		
 		
-		boolean isTrue= us.user_insert(fname, lname, pass, email, phone,isTemporaty,ZIP,country, addr1,addr2,city,date,isOrder,total,selectItems,payType);
+		boolean isTrue= us.user_insert(fname, lname, pass, email, phone,isTemporaty,ZIP,country, addr1,addr2,city,date,isOrder,total,selectItems,payType,provider,account_no,expiry);
 		
 		
 		if(isTrue==true) {
