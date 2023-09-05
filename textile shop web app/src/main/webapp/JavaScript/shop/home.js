@@ -122,6 +122,13 @@ var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
 var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
 
+
+if(localfav_items == null){
+	
+	localfav_items = [0];
+}
+
+
 //get localStorage data------------------------------------
 if(localStrorage !== null){
 	

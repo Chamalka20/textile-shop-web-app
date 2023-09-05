@@ -115,8 +115,8 @@
 //----------------------------------------------------------
 var basket= [];
 var localStrorage = JSON.parse(localStorage.getItem("cartData"));
-
-
+var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
+console.log(localfav_items)
 //get localStorage cart data------------------------------------
 if(localStrorage !== null){
 	
@@ -137,6 +137,74 @@ if(localStrorage !== null){
 	cartIcon.innerHTML = basket.map((x) => x.item).reduce((x,y) => x+y ,0);
 	
 }
+
+
+var proList = [];
+
+function getDatalist(){
+	
+		$.getJSON("../getPro", function(getData) {
+			
+			for(var i=0;i<getData.length;i++){
+					proList.push(getData[i]);
+					
+			}
+			
+			
+			DisplayWishList(proList);	
+		});
+
+};		
+getDatalist();
+
+
+const diswish_list = document.getElementById('wishlist-container');
+
+function DisplayWishList (data){
+	
+	
+	// Generate the non-Wishlist and Wishlist product lists using the map function	
+	const productsWithWishlistFlag = data.map(product => ({
+	  id: product.id,
+	  add_date : product.add_date,
+	  categorie : product.categorie,
+	  desc : product.desc,
+	  image : product.image,
+	  name : product.name,
+	  price : product.price,
+	  saleActive : product.saleActive,
+	  salePercentage : product.salePercentage,
+	  salles : product.salles,
+      sizeId : product.sizeId,
+	  stock : product.stock,	 
+	  isWishlist: localfav_items.includes(product.id)
+	}));
+	
+	var wishlist = productsWithWishlistFlag.filter(item =>{return item.isWishlist === true })
+	
+	
+	diswish_list.innerHTML = wishlist.map(ele =>{
+		
+		
+		return`
+		
+			<div class="wish-element"><img src="../Images/product/${ele.image}"><p class="pro-name">${ele.name}</p><p class="price">Rs ${ele.price.toLocaleString("en-US")}.00</p><div class="in-stock"><p>${ele.stock ? "in-stock" : "out-of-stock"}</p></div><div class="actions"><p>Options</p></div></div> 
+		
+		
+		
+		
+		`
+		
+		
+		
+	})
+	
+	
+	
+	
+	
+}
+
 
 
 

@@ -215,4 +215,19 @@
 	</servlet-mapping>
 	
 	
+	<servlet>
+		
+		<servlet-name>getDetails</servlet-name>
+		<servlet-class>com.servlet.getDetails</servlet-class>
+	
+	</servlet>
+	
+	
+	<servlet-mapping>
+		
+		<servlet-name>getDetails</servlet-name>
+		<url-pattern>/passDetails</url-pattern>
+	
+	</servlet-mapping>
+	
 </web-app>

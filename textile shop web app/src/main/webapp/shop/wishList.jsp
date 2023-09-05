@@ -57,7 +57,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li ><a href="../shop/home.jsp">Home</a></li>
-                            <li class="active"><a href="../shop/shop.jsp">Shop</a></li>
+                            <li><a href="../shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="../shop/about.jsp">About Us</a></li>
@@ -95,8 +95,10 @@
 	
 	<!--  wishlist section Begin -->
 	
-	<div class="wishlist-container">
-		<div class="wish-element"><img src="../Images/product/hugkjg.jpg"><p class="pro-name">dfgdfghshfghffghdfghdsfghg</p><div class="in-stock">in-stock</div><div class="actions"><p>Options</p></div></div>   
+	<div id="wishlist-container">
+		  
+		
+		
 		
 	</div>
 	
