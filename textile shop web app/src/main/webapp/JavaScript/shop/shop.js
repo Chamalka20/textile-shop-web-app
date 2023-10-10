@@ -776,13 +776,14 @@ function addOrRemoveFavorite(id){
 	
 	const fav_icon = document.getElementById('fav-icon-'+id);
 	
-	fav_icon.src = '../Images/icon/love1.png';
 	
-	
-	var search = fav_items.find((x) => x === id)
-	
-	if(search === undefined){
+	if(fav_items.includes(id)){
 		
+		fav_icon.src = '../Images/icon/favorite.png';
+		fav_items.pop(id);
+	}else{
+		
+		fav_icon.src = '../Images/icon/love1.png';
 		fav_items.push(id);
 		
 	}
