@@ -320,9 +320,10 @@ function filterbyCategories(data,categorie){
 		
 		activeFilters(categorie,storePriceChangetype,storePriceChangevalue);
 		activeCat = categorie;
-		
+		current_page=1;
 	//get all results--------------------------------------------------	
 	}else{
+		resultProductData=[];
 		
 		for(var i=0;i<data.length;i++){
 					resultProductData.push(data[i]);
