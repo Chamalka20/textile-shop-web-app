@@ -161,7 +161,8 @@ if(localStrorage !== null){
 var isCatFilterActive = false;
 var isPriceFilterActive = false;
 var proList = [];
-var resultProductData = [];
+var filterProductData = [];
+var tempFilterProductData=[];
 const list_element = document.getElementById('products-holder');
 const pagination_element = document.getElementById('pagination');
 let current_page = 1;
@@ -307,7 +308,7 @@ function filterbyCategories(data,categorie){
 	
 	if(categorie !== "All"){
 		
-		resultProductData= data.filter(function (a) {
+		filterProductData= data.filter(function (a) {
 				var hitCategory =[];
 	            hitCategory.push(a.categorie);
 	
@@ -316,25 +317,26 @@ function filterbyCategories(data,categorie){
 	            
 				return hitCategoryMatches.length>0;
 			})
-		isCatFilterActive=true
+		isCatFilterActive=true;
+		tempFilterProductData=filterProductData;
 		
 		activeFilters(categorie,storePriceChangetype,storePriceChangevalue);
 		activeCat = categorie;
 		current_page=1;
 	//get all results--------------------------------------------------	
 	}else{
-		resultProductData=[];
+		filterProductData=[];
 		
 		for(var i=0;i<data.length;i++){
-					resultProductData.push(data[i]);
+					filterProductData.push(data[i]);
 					
 			}
 		
 	}
 		
-	PriceRange(resultProductData);	
-	DisplayList(resultProductData, list_element, rows, current_page);
-	SetupPagination(resultProductData, pagination_element, rows);	
+	PriceRange(filterProductData);	
+	DisplayList(filterProductData, list_element, rows, current_page);
+	SetupPagination(filterProductData, pagination_element, rows);	
 		
 }	
 
@@ -387,41 +389,42 @@ function PriceRange(data){
 		//after user change the price-----------------------
 		input.addEventListener("input",(e)=>{
 			
-			var minVal = parseInt(rangeInput[0].value);
-			var maxVal = parseInt(rangeInput[1].value);
+			var tempMinVal = parseInt(rangeInput[0].value);
+			var tempMaxVal = parseInt(rangeInput[1].value);
 		
-			if(maxVal-minVal < priceGap){
+			if(tempMaxVal-tempMinVal < priceGap){
 				//if active slider---------------
 				if(e.target.className ==="range-min"){
-					rangeInput[0].value = maxVal - priceGap;
+					rangeInput[0].value = tempMaxVal - priceGap;
 					
 				}else{
 					
-					rangeInput[1].value = minVal + priceGap;
-					console.log(minVal + priceGap);
+					rangeInput[1].value = tempMinVal + priceGap;
+					console.log(tempMinVal + priceGap);
 				}
 				
 			}else{
-				showPrice[0].innerHTML="Minimum price: Rs "+ minVal;
-				showPrice[1].innerHTML="Maximum price: Rs "+ maxVal;
+				showPrice[0].innerHTML="Minimum price: Rs "+ tempMinVal;
+				showPrice[1].innerHTML="Maximum price: Rs "+ tempMaxVal;
 				
-				progress.style.left = (minVal/rangeInput[0].max)*100+"%";
-				progress.style.right = 100-(maxVal/rangeInput[1].max)*100+"%";
+				progress.style.left = (tempMinVal/rangeInput[0].max)*100+"%";
+				progress.style.right = 100-(tempMaxVal/rangeInput[1].max)*100+"%";
 			}
 			
-			resultProductData= data.filter(function (a) {
+			filterProductData= data.filter(function (a) {
 				var hitprice =[];
 	            hitprice.push(a.price);
 	
 				
-	            var hitpriceMatches = hitprice.filter(function(val) { return val >= minVal && val <= maxVal });
+	            var hitpriceMatches = hitprice.filter(function(val) { return val >= tempMinVal && val <= tempMaxVal });
 	           
 				return hitpriceMatches.length>0;
 			})
 			
-			
-			DisplayList(resultProductData, list_element, rows, current_page);
-			SetupPagination(resultProductData, pagination_element, rows);	
+			minVal=tempMinVal;
+			maxVal=tempMaxVal;
+			DisplayList(filterProductData, list_element, rows, current_page);
+			SetupPagination(filterProductData, pagination_element, rows);	
 		})
 		
 	})
@@ -483,9 +486,33 @@ function closeFilter(name){
 		catlistItem.classList.remove('active');
 		document.querySelector('.filter-history-item-cat').style.display="none";
 		isCatFilterActive = false;
-		proList = [];
-		resultProductData = [];
-		getDatalist();
+		//proList = [];
+		filterProductData = [];
+		//getDatalist();
+		
+		//if user close the prize filter and go to the previous one----------
+		if(isPriceFilterActive == true){
+			
+			filterProductData= proList.filter(function (a) {
+				var hitprice =[];
+	            hitprice.push(a.price);
+	 
+				
+	            var hitpriceMatches = hitprice.filter(function(val) { return val >= minVal && val <= maxVal });
+	           
+				return hitpriceMatches.length>0;
+			})
+			
+			DisplayList(filterProductData, list_element, rows, current_page);
+			SetupPagination(filterProductData, pagination_element, rows);
+			PriceRange(proList);
+			
+		}else{
+			
+			proList = [];
+			getDatalist();
+		}
+		
 		
 	}
 	
@@ -503,6 +530,18 @@ function closeFilter(name){
 	
 		rangeInput[0].value = minVal;
 		rangeInput[1].value = maxVal;
+		
+		//if user close the prize filter and go to the previous one----------
+		if(isCatFilterActive == true){
+			
+			DisplayList(tempFilterProductData, list_element, rows, current_page);
+			SetupPagination(tempFilterProductData, pagination_element, rows);
+			
+		}else{
+			
+			proList=[];
+			getDatalist();
+		}
 		
 	}
 	
@@ -599,7 +638,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 	
 	//total results-----------------------------------------------------------
 	var results =document.querySelector('.shop__product__option__left  p');
-    results.innerHTML ="Showing 1-"+rows+" of "+resultProductData.length+" results";
+    results.innerHTML ="Showing 1-"+rows+" of "+filterProductData.length+" results";
     
 	if(items.length != 0){//if product result is empty-------------------------
 		
