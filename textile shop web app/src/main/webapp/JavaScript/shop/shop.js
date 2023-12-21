@@ -241,8 +241,9 @@ function loadCat(data){
 	input.addEventListener("click",(e)=>{
 		
 		//default select active class color change-------------------------
-		
-		document.querySelector('.nice-scroll li a.active').style.color="#b7b7b7";
+		let current_cat = document.querySelector('.nice-scroll li a.active');
+		current_cat.style.color="#b7b7b7";
+		current_cat.classList.remove('active');
 		
 		if(isCatFilterActive !== true){
 			
@@ -482,13 +483,17 @@ function closeFilter(name){
 	if(name==="filter-history-item-cat"){
 		
 		var catlistItem = document.querySelector('.nice-scroll li a.active');
+		let cat = document.querySelectorAll('.nice-scroll li a');
 		catlistItem.style.color="#b7b7b7";
 		catlistItem.classList.remove('active');
+		cat[0].classList.add('active');
+		cat[0].style.color="black";
+		
 		document.querySelector('.filter-history-item-cat').style.display="none";
 		isCatFilterActive = false;
-		//proList = [];
+		
 		filterProductData = [];
-		//getDatalist();
+		
 		
 		//if user close the prize filter and go to the previous one----------
 		if(isPriceFilterActive == true){
@@ -509,8 +514,10 @@ function closeFilter(name){
 			
 		}else{
 			
+			categorie = "All";
 			proList = [];
 			getDatalist();
+			
 		}
 		
 		
