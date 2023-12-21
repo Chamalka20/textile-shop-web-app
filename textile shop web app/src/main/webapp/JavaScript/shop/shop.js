@@ -114,8 +114,16 @@
 
 //----------------------------------------------------------
 var basket= [];
-var localStrorage = JSON.parse(localStorage.getItem("cartData"));
-var localfav_items = JSON.parse(localStorage.getItem("fav_items"));
+var localStrorage=[]; 
+var localfav_items=[];
+
+function getLocalStorageData(){
+	
+  basket= [];
+  localStrorage = JSON.parse(localStorage.getItem("cartData"));
+  localfav_items = JSON.parse(localStorage.getItem("fav_items"));
+}
+getLocalStorageData();
 
 
 
@@ -254,6 +262,9 @@ function loadCat(data){
 					
 					e.target.classList.add('active');
 					e.target.style.color ="black";
+					//Refresh use add favorite items--------------
+					getLocalStorageData();
+					//---------------------------------------
 					filterbyCategories(proList,e.target.innerHTML);
 					
 					
@@ -517,7 +528,7 @@ function closeFilter(name){
 			categorie = "All";
 			proList = [];
 			getDatalist();
-			
+			getLocalStorageData();
 		}
 		
 		
