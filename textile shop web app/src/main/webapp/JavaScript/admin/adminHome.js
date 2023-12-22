@@ -42,10 +42,11 @@ function logOut(){
 //--------------main-cards---------------------------------
 var products =[];
 var resizeArr = [];
+
 function getDatalist(){
 	
-	$.getJSON("../getPro", function(getData) {
-			
+	$.getJSON("../../getPro", function(getData) {
+			console.log("jyhguy");
 			document.getElementById('products-count').innerHTML = getData.length;
 			
 			for(var i=0;i<getData.length;i++){
@@ -75,7 +76,7 @@ getDatalist();
 
 function getOrderlist(){
 	
-	$.getJSON("../orders", function(getData) {
+	$.getJSON("../../orders", function(getData) {
 			
 			document.getElementById('orders-count').innerHTML = getData.length;
 						

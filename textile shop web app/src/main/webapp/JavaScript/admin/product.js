@@ -28,7 +28,7 @@ var proList = [];
 
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -57,7 +57,7 @@ let loadData= () =>{
 			<div class="subContainer" id="items-${x.id}">
 			 	
 				<div class="id">${x.id}</div>
-				<div class="name"><img class="proImage" src="../Images/product/${x.image}">${x.name}</div>
+				<div class="name"><img class="proImage" src="../../Images/product/${x.image}">${x.name}</div>
 				<div class="price">Rs ${x.price}.00</div>
 				<div class="action"><button class="btn1" onClick="editProduct(${x.id})">Edit</button><i class="fas fa-trash" id="delete" onClick="deleteItem(${x.id})"></i></div>
 			</div>
@@ -80,7 +80,7 @@ let loadData= () =>{
 function deleteItem(id){
 	$(document).ready(function(){
 		
-		$.post("../deleteProduct",{id:id},function(){
+		$.post("../../deleteProduct",{id:id},function(){
 			
 			alert("one iten is delete\n id="+id);
 			proList=[];
@@ -160,7 +160,7 @@ function search_category(){
 	
 	var name = document.getElementById('name').value;
 	//get categorys from database---------------------------------
-	$.get("../getCate", function(arraylist) {   
+	$.get("../../getCate", function(arraylist) {   
 		 split_string = arraylist.split(" ");   
 		 loadCat(split_string);	
 			
@@ -228,7 +228,7 @@ function productAdd(){
 		
 	}else{
 		
-		$.post("../pro_add",{name:name,desc:desc,price:price,imageUp:newImage,date:today,small:small,medium:medium,large:large,xl:xl,cate:cate},function(){
+		$.post("../../pro_add",{name:name,desc:desc,price:price,imageUp:newImage,date:today,small:small,medium:medium,large:large,xl:xl,cate:cate},function(){
 		
 		alert("add");
 		proList=[];

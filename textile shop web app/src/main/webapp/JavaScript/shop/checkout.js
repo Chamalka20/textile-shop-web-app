@@ -160,7 +160,7 @@ var listHolder=document.querySelector('.checkout__total__products');
 
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -267,7 +267,7 @@ payType.forEach(input=>{
 			
 		}else if(e.target.value === "Pay-Online"){
 			
-			document.querySelector('.pay-methods').innerHTML = `<img src="../Images/payment.png">`;
+			document.querySelector('.pay-methods').innerHTML = `<img src="../../Images/payment.png">`;
 			payMethod = e.target.value;
 		}
 	
@@ -317,11 +317,11 @@ function getUserInfor(){
 			if(isAccountCreate === true){
 				
 				
-				$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
+				$.post("../../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
 											isTemporaty:"false",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery",provider:"null",account_no:0,expiry:"null"},function(){
 					
 					//update sells and products quantity---------------------------------
-					$.post("../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
+					$.post("../../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
 					
 					
 					document.body.scrollTop = 20;
@@ -342,11 +342,11 @@ function getUserInfor(){
 				
 			}else{
 				
-					$.post("../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
+					$.post("../../user_insert",{fname:firstName,lname:lastName,pass:password ,email:email,ZIP:zip,country:country,phone:phone,
 											isTemporaty:"true",isOrder:"true",addli1:apartment,addli2:street,city:city,date:today,'selectItems[]':JSON.stringify(strArr),total:finaltotal,payType:"CashOnDelivery",provider:"null",account_no:0,expiry:"null"},function(){
 					
 					//update sells and products quantity---------------------------------
-					$.post("../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
+					$.post("../../orderprUp",{'selectItems[]':JSON.stringify(strArr)},function(){});
 					
 					
 					document.body.scrollTop = 20;
@@ -463,7 +463,7 @@ function payOnline(){
 		document.querySelector('.checkout').innerHTML=`<div class="success-container">
 																		<lottie-player src="https://assets10.lottiefiles.com/packages/lf20_4qldwfx4.json" background="transparent"  speed="1"  style="width: 300px; height: 300px;"  autoplay></lottie-player>
 																		<h5>Your order is Complete</h5>
-																		<button><a href="../shop/home.jsp">Back to Home</button>
+																		<button><a href="../../jsp/shop/home.jsp">Back to Home</button>
 																	</div>`
 		localStorage.removeItem("cartData");
 		

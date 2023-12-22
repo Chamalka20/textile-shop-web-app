@@ -122,7 +122,7 @@ var proDetailsHolder=document.querySelector("#product-details-holder");
 function getProDetails(){
 	
 	$(document).ready(function(){
-		$.getJSON("../ProDetails",{id:id},function(getData){
+		$.getJSON("../../ProDetails",{id:id},function(getData){
 				
 			for(var i=0;i<getData.length;i++){
 				proDetails.push(getData[i]);
@@ -153,7 +153,7 @@ function loadProDetails(data){
 	                <div class="col-lg-6">
 	                    <div class="product__details__pic">
 	                      
-	                        <img src="../Images/product/${data[0].image}">
+	                        <img src="../../Images/product/${data[0].image}">
 	                        
 	                    </div>
 	                </div>
@@ -249,7 +249,7 @@ function loadProDetails(data){
 	                <div class="col-lg-6">
 	                    <div class="product__details__pic">
 	                      
-	                        <img src="../Images/product/${data[0].image}">
+	                        <img src="../../Images/product/${data[0].image}">
 	                        
 	                    </div>
 	                </div>

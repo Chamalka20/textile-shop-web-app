@@ -27,7 +27,7 @@ function getOrderDetails(){
 	
 	
 	$(document).ready(function(){
-		$.getJSON("../orders",function(getData){
+		$.getJSON("../../orders",function(getData){
 				
 			for(var i=0;i<getData.length;i++){
 				ordDetails.push(getData[i]);
@@ -51,7 +51,7 @@ var ordItems = [];
 var searchOrderItem=[];
 function getOrderItems(){
 	
-	$.getJSON("../orderItems",function(getData){
+	$.getJSON("../../orderItems",function(getData){
 				
 			for(var i=0;i<getData.length;i++){
 				
@@ -113,7 +113,7 @@ function loadOrderItems(){
 	
 			<div class="subContainer" id="items">
 				<div class="itemId">${x.itemId}</div>
-				<div class="image-holder"><img class="proImage" src="../Images/product/${x.Image}"></div>
+				<div class="image-holder"><img class="proImage" src="../../Images/product/${x.Image}"></div>
 				<div class="product-name">${x.proName}</div>
 				<div class="price">Rs ${x.price.toLocaleString("en-US")}.00</div>
 				<div class="quantity">${x.quantity}</div>

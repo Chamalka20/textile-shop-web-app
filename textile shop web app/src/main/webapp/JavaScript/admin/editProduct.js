@@ -44,7 +44,7 @@ function logOut(){
 function getProDetails(){
 	
 	$(document).ready(function(){
-		$.getJSON("../ProDetails",{id:id},function(getData){
+		$.getJSON("../../ProDetails",{id:id},function(getData){
 				
 			for(var i=0;i<getData.length;i++){
 				proDetails.push(getData[i]);
@@ -75,12 +75,12 @@ function loadProDetails(data){
 	return(detailsHolder.innerHTML= 
 		
 		`
-		 <div class="ImageWrapper"><img class="firstImg" src="../Images/product/${data[0].image}"><h4>${data[0].name}</<h4></div>
+		 <div class="ImageWrapper"><img class="firstImg" src="../../Images/product/${data[0].image}"><h4>${data[0].name}</<h4></div>
 		 <div class="wrapper"><h6>Id:</h6><p>${data[0].id}</p></div>
 		 <div class="wrapper"><h6>Sales:</h6><p>${data[0].salles}</p></div>
 		 <div class="wrapper"><h6>Quantity: </h6><p>${data[0].quantity}</p></div>
 		 <div class="wrapper"><h6>Add date: </h6><p>${data[0].addDate}</p></div>`
-	),(imgHolder.innerHTML=`<img src="../Images/product/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+	),(imgHolder.innerHTML=`<img src="../../Images/product/${data[0].image}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 		
 };
@@ -89,7 +89,7 @@ function loadProDetails(data){
 //user edit product category---------------------------------------
 function search_category(){
 	
-	 $.get("../getCate", function(arraylist) {   
+	 $.get("../../getCate", function(arraylist) {   
 		 ArrayList = arraylist.split(" ");   
 		 loadData(ArrayList);	
 		console.log(ArrayList);
@@ -147,7 +147,7 @@ function RefreshImage(){
 	
 	
 	
-	return(imgHolder.innerHTML=`<img src="../Images/product/${newImage}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
+	return(imgHolder.innerHTML=`<img src="../../Images/product/${newImage}" class="secondImg" ><div class="button_outer"><div class="btn_upload"><input type="file" id="imageUp" onChange="RefreshImage()"><i class="fas fa-upload" id="upload-icon"></i></div></div>`);
 	
 }
 
@@ -173,7 +173,7 @@ function updateProduct(){
 		
 	}else{
 		
-		$.post("../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:newImage,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
+		$.post("../../sendEditPro",{id:id,name:editName,desc: editDesc,price:editPrice,image:newImage,small:editSmall,medium:editMedium,large:editLarge,xl:editXl,categorie:editCategorie }, function() {
 	
 			alert("product is update");
 			proDetails=[];

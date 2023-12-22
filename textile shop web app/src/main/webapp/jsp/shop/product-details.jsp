@@ -17,18 +17,18 @@
     rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/shopping-cart.css" type="text/css">
-    
-     <!-- jquary  -->
+	 <!-- jquary  -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../../css/shop/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/product-details.css" type="text/css">
 </head>
 
 <body>
@@ -36,9 +36,7 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
-    <!-- Header Section Begin -->
-    <header class="header">
+       <header class="header">
         <div class="header__top">
             <div class="container">
                 <div class="row">
@@ -61,32 +59,32 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="../Images/logo.png" alt=""></a>
+                       <a href="../../shop/home.jsp"><img src="../../Images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li ><a href="../shop/home.jsp">Home</a></li>
-                            <li ><a href="../shop/shop.jsp">Shop</a></li>
+                            <li ><a href="../../jsp/shop/home.jsp">Home</a></li>
+                            <li class="active"><a href="../../jsp/shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="../shop/about.jsp">About Us</a></li>
-                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
+                                    <li><a href="../../jsp/shop/about.jsp">About Us</a></li>
+                                    <li><a href="../../jsp/shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../../jsp/shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../../jsp/shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../shop/blog.jsp">Blog</a></li>
-                            <li><a href="../shop/contact.jsp">Contacts</a></li>
+                            <li><a href="../../jsp/shop/blog.jsp">Blog</a></li>
+                            <li><a href="../../jsp/shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                         <a href="#" class="search-switch"><img src="../Images/icon/search.png" alt=""></a>
-                        <a href="#"><img src="../Images/icon/heart.png" alt=""></a>
-                        <a href="./shopping-cart.jsp"><img src="../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
+                         <a href="#" class="search-switch"><img src="../../Images/icon/search.png" alt=""></a>
+                        <a href="../../jsp/shop/wishList.jsp"><img src="../../Images/icon/heart.png" alt=""></a>
+                        <a href="../../jsp/shop/shopping-cart.jsp"><img src="../../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
                         
                     </div>
                 </div>
@@ -96,41 +94,25 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__text">
-                        <h4>Shopping Cart</h4>
-                        
-                            <a href="./home.jsp">Home</a>>
-                            <a href="./shop.jsp">Shop</a>>
-                            <span>Shopping Cart</span>
-                       
-                    </div>
-                </div>
-            </div>
+	<div class="product-add-alert"></div>
+	<div class="product-add-warning"></div>
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container" id="product-details-holder">
+           
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
+    <!-- Product Details Section End -->
+    
 
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad">
-        <div class="container" id="cart-main-container">
-            
-        </div>
-    </section>
-    <!-- Shopping Cart Section End -->
-
-    <!-- Footer Section Begin -->
+     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="../Images/footer-logo.png" alt=""></a>
+                           <a href="#"><img src="../../Images/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
@@ -140,10 +122,9 @@
                     <div class="footer__widget">
                         <h6>Shopping</h6>
                         <ul>
-                            <li><a href="#">Clothing Store</a></li>
-                            <li><a href="#">Trending Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sale</a></li>
+                            <li><a href="#">New Collection</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">On Sale</a></li>
                         </ul>
                     </div>
                 </div>
@@ -190,35 +171,26 @@
 
     <!-- Search Begin -->
     <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">                               
+        <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
             <form class="search-model-form">
                 <input type="text" id="search-input" placeholder="Search here.....">
-                <div id="search-results" style="height:250px;overflow-y:scroll;display:none">
-	            	<ul id="search-list">
-	            		
-						          	
-	            	</ul>
-            	
-         		</div>
             </form>
-           
         </div>
-         
     </div>
     <!-- Search End -->
 
     <!-- Js Plugins -->
-    <script src="../JavaScript/shop/jquery-3.3.1.min.js"></script>
-    <script src="../JavaScript/shop/bootstrap.min.js"></script>
-    <script src="../JavaScript/shop/jquery.nice-select.min.js"></script>
-    <script src="../JavaScript/shop/jquery.nicescroll.min.js"></script>
-    <script src="../JavaScript/shop/jquery.magnific-popup.min.js"></script>
-    <script src="../JavaScript/shop/jquery.countdown.min.js"></script>
-    <script src="../JavaScript/shop/jquery.slicknav.js"></script>
-    <script src="../JavaScript/shop/mixitup.min.js"></script>
-    <script src="../JavaScript/shop/owl.carousel.min.js"></script>
-    <script src="../JavaScript/shop/shopping-cart.js"></script>
+    <script src="../../JavaScript/shop/jquery-3.3.1.min.js"></script>
+    <script src="../../JavaScript/shop/bootstrap.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.nice-select.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.nicescroll.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.magnific-popup.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.countdown.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.slicknav.js"></script>
+    <script src="../../JavaScript/shop/mixitup.min.js"></script>
+    <script src="../../JavaScript/shop/owl.carousel.min.js"></script>
+    <script src="../../JavaScript/shop/product-details.js"></script>
 </body>
 
 </html>

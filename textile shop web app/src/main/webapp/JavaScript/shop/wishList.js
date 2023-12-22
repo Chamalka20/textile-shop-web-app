@@ -143,7 +143,7 @@ var proList = [];
 
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -188,7 +188,7 @@ function DisplayWishList (data){
 		
 		return`
 		
-			<div class="wish-element"><img src="../Images/product/${ele.image}"><p class="pro-name">${ele.name}</p><p class="price">Rs ${ele.price.toLocaleString("en-US")}.00</p><div class="in-stock"><p>${ele.stock ? "in-stock" : "out-of-stock"}</p></div><div class="actions"><p>Options</p></div></div> 
+			<div class="wish-element"><img src="../../Images/product/${ele.image}"><p class="pro-name">${ele.name}</p><p class="price">Rs ${ele.price.toLocaleString("en-US")}.00</p><div class="in-stock"><p>${ele.stock ? "in-stock" : "out-of-stock"}</p></div><div class="actions"><p>Options</p></div></div> 
 		
 		
 		

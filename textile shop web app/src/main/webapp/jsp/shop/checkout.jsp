@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="../css/shop/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="../css/shop/checkout.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/shop/checkout.css" type="text/css">
     
      <!-- jquary  -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -64,32 +64,32 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="./home.html"><img src="../Images/logo.png" alt=""></a>
+                        <a href="../../home.html"><img src="../../Images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li ><a href="../shop/home.jsp">Home</a></li>
-                            <li ><a href="../shop/shop.jsp">Shop</a></li>
+                            <li ><a href="../../jsp/shop/home.jsp">Home</a></li>
+                            <li ><a href="../../jsp/shop/shop.jsp">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="../shop/about.jsp">About Us</a></li>
-                                    <li><a href="../shop/shop-details.jsp">Shop Details</a></li>
-                                    <li><a href="../shop/shopping-cart.jsp">Shopping Cart</a></li>
-                                    <li><a href="../shop/blog-details.jsp">Blog Details</a></li>
+                                    <li><a href="../../jsp/shop/about.jsp">About Us</a></li>
+                                    <li><a href="../../jsp/shop/shop-details.jsp">Shop Details</a></li>
+                                    <li><a href="../../jsp/shop/shopping-cart.jsp">Shopping Cart</a></li>
+                                    <li><a href="../../jsp/shop/blog-details.jsp">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="../shop/blog.jsp">Blog</a></li>
-                            <li><a href="../shop/contact.jsp">Contacts</a></li>
+                            <li><a href="../../jsp/shop/blog.jsp">Blog</a></li>
+                            <li><a href="../../jsp/shop/contact.jsp">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="../Images/icon/search.png" alt=""></a>
-                        <a href="#"><img src="../Images/icon/heart.png" alt=""></a>
-                        <a href="./shopping-cart.jsp"><img src="../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
+                        <a href="#" class="search-switch"><img src="../../Images/icon/search.png" alt=""></a>
+                        <a href="../../jsp/shop/wishList.jsp"><img src="../../Images/icon/heart.png" alt=""></a>
+                        <a href="../../jsp/shop/shopping-cart.jsp"><img src="../../Images/icon/cart.png" alt=""> <span class="cart-amount" style="display:none;"></span></a>
                         
                     </div>
                 </div>
@@ -107,8 +107,8 @@
                     <div class="breadcrumb__text">
                         <h4>Check Out</h4>
                        
-                            <a href="./home.jsp">Home</a>>
-                            <a href="./shop.jsp">Shop</a>>
+                            <a href=".../../home.jsp">Home</a>>
+                            <a href="../../shop.jsp">Shop</a>>
                             <span>Check Out</span>
                         
                     </div>
@@ -233,7 +233,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="../Images/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="../../Images/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
                         <a href="#"><img src="img/payment.png" alt=""></a>
@@ -303,16 +303,16 @@
     <!-- Search End -->
 
     !-- Js Plugins -->
-    <script src="../JavaScript/shop/jquery-3.3.1.min.js"></script>
-    <script src="../JavaScript/shop/bootstrap.min.js"></script>
-    <script src="../JavaScript/shop/jquery.nice-select.min.js"></script>
-    <script src="../JavaScript/shop/jquery.nicescroll.min.js"></script>
-    <script src="../JavaScript/shop/jquery.magnific-popup.min.js"></script>
-    <script src="../JavaScript/shop/jquery.countdown.min.js"></script>
-    <script src="../JavaScript/shop/jquery.slicknav.js"></script>
-    <script src="../JavaScript/shop/mixitup.min.js"></script>
-    <script src="../JavaScript/shop/owl.carousel.min.js"></script>
-    <script src="../JavaScript/shop/checkout.js"></script>
+    <script src="../../JavaScript/shop/jquery-3.3.1.min.js"></script>
+    <script src="../../JavaScript/shop/bootstrap.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.nice-select.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.nicescroll.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.magnific-popup.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.countdown.min.js"></script>
+    <script src="../../JavaScript/shop/jquery.slicknav.js"></script>
+    <script src="../../JavaScript/shop/mixitup.min.js"></script>
+    <script src="../../JavaScript/shop/owl.carousel.min.js"></script>
+    <script src="../../JavaScript/shop/checkout.js"></script>
 </body>
 
 </html>

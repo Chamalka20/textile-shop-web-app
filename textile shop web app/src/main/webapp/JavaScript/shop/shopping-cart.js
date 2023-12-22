@@ -153,7 +153,7 @@ var proList = [];
 
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -202,7 +202,7 @@ function generateCartItems(data){
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="continue__btn">
-                                <a href="../shop/shop.jsp">Continue Shopping</a>
+                                <a href="../../shop/shop.jsp">Continue Shopping</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -249,7 +249,7 @@ function generateCartItems(data){
 			<tr>
 				<td class="product__cart__item">
                    <div class="product__cart__item__pic">
-                      <img src='../Images/product/${search.image}' alt="">
+                      <img src='../../Images/product/${search.image}' alt="">
                    </div>
                    <div class="product__cart__item__text">
                      <h6>${search.name}-${size}</h6>
@@ -281,7 +281,7 @@ function generateCartItems(data){
 		mainHolder.innerHTML=`	
 								<div class="empty-cart-message">
 									<h3>Cart is empty</h3>
-									<div class="continue__btn"><a href="../shop/shop.jsp">Continue Shopping</a></div>
+									<div class="continue__btn"><a href="../../jsp/shop/shop.jsp">Continue Shopping</a></div>
 								</div>
 														
 							`;
@@ -445,7 +445,7 @@ function DisplayResulst(data){
 		
 		
 		return`
-			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
+			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
 			
 		`
 		

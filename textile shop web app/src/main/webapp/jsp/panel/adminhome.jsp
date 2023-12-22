@@ -17,10 +17,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/admin/adminHome.css">
+    <link rel="stylesheet" href="../../css/admin/adminHome.css">
     <!-- user validation -->
-   <script defer src="../JavaScript/admin/auth.js"></script>
-   <script defer src="../JavaScript/admin/initialize.js"></script>
+   <script defer src="../../JavaScript/admin/auth.js"></script>
+   <script defer src="../../JavaScript/admin/initialize.js"></script>
 	
   </head>
   <body>
@@ -119,6 +119,6 @@
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
-    <script  src="../JavaScript/admin/adminHome.js"></script>
+    <script  src="../../JavaScript/admin/adminHome.js"></script>
   </body>
 </html>

@@ -180,7 +180,7 @@ let rows = 6;
 
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -203,7 +203,7 @@ var activeCat = "";
 var storePriceChangetype = "";
 var storePriceChangevalue = 0;
 
-$.get("../getCate", function(arraylist) {   
+$.get("../../getCate", function(arraylist) {   
 		
 	 split_string = arraylist.split(" ");   
 	 loadCat(split_string);	 
@@ -446,6 +446,10 @@ function PriceRange(data){
 }
 PriceRange()
 
+//----------------------sort by price-----------------------------
+
+
+
 //-----------------set-filter-history------------------------------
 function activeFilters(cat,priceRage,priceValue){
 	
@@ -671,10 +675,10 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 				
 				return`
 	                    <div class="product__item sale" onClick="productDetails(${x.id})">
-	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+	                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
 	                            <span class="label">Sale</span>
 	                            <ul class="product__hover">
-	                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+	                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
 	                                
 	                            </ul>
 	                        </div>
@@ -703,10 +707,10 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 					
 					return`
 	                    <div class="product__item" onClick="productDetails(${x.id})">
-	                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+	                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
 	                            <span class="label">New</span>
 	                            <ul class="product__hover">
-	                                  <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+	                                  <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
 	                                
 	                            </ul>
 	                        </div>
@@ -733,10 +737,10 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 					return`
 				                   
 						 <div class="product__item" onClick="productDetails(${x.id})">
-				                        <div class="product__item__pic "  style="background-image:url('../Images/product/${x.image}');">
+				                        <div class="product__item__pic "  style="background-image:url('../../Images/product/${x.image}');">
 				                           
 				                            <ul class="product__hover">
-				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+				                                <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
 				                                
 				                            </ul>
 				                        </div>
@@ -837,11 +841,11 @@ function addOrRemoveFavorite(id){
 	
 	if(fav_items.includes(id)){
 		
-		fav_icon.src = '../Images/icon/favorite.png';
+		fav_icon.src = '../../Images/icon/favorite.png';
 		fav_items.pop(id);
 	}else{
 		
-		fav_icon.src = '../Images/icon/love1.png';
+		fav_icon.src = '../../Images/icon/love1.png';
 		fav_items.push(id);
 		
 	}

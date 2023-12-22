@@ -22,7 +22,7 @@ var ordList = [];
 
 function getDatalist(){
 	
-		$.getJSON("../orders", function(getData) {
+		$.getJSON("../../orders", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 				

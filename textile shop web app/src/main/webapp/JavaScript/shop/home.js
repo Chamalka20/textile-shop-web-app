@@ -157,7 +157,7 @@ if(localStrorage !== null){
 var proList = [];
 function getDatalist(){
 	
-		$.getJSON("../getPro", function(getData) {
+		$.getJSON("../../getPro", function(getData) {
 			
 			for(var i=0;i<getData.length;i++){
 					proList.push(getData[i]);
@@ -209,10 +209,10 @@ function loadBestSellers(){
 			
 			return`
                     <div class="product__item sale" onClick="productDetails(${x.id})">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
-                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
                                 
                             </ul>
                         </div>
@@ -241,10 +241,10 @@ function loadBestSellers(){
 				
 				return`
                     <div class="product__item" onClick="productDetails(${x.id})">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
                                
                             </ul>
                         </div>
@@ -269,10 +269,10 @@ function loadBestSellers(){
 				
 				return`
                     <div class="product__item" onClick="productDetails(${x.id})">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
                            
                             <ul class="product__hover">
-                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                                 <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
                                 
                             </ul>
                         </div>
@@ -329,10 +329,10 @@ function loadNewArrivals(){
 			
 			return`
                     <div class="product__item" onClick="productDetails(${x.id})">
-                        <div class="product__item__pic " style="background-image:url('../Images/product/${x.image}');">
+                        <div class="product__item__pic " style="background-image:url('../../Images/product/${x.image}');">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                               <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
+                               <li onclick="addOrRemoveFavorite(${x.id});event.stopPropagation();"><img id="fav-icon-${x.id}" src="../../Images/icon/${x.isWishlist ? 'love1.png' : 'favorite.png'}" ></li>
                                
                             </ul>
                         </div>
@@ -399,7 +399,7 @@ function DisplayResulst(data){
 		
 		
 		return`
-			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
+			<li onClick="SearchSelectItem(${x.id})"><div class="result-row"><img class="search-img" src="../../Images/product/${x.image}"><p class="search-name">${x.name}</p ><p class="search-price">Rs ${x.price}</p></div></li>
 			
 		`
 		
@@ -474,11 +474,11 @@ function addOrRemoveFavorite(id){
 	
 	if(fav_items.includes(id)){
 		
-		fav_icon.src = '../Images/icon/favorite.png';
+		fav_icon.src = '../../Images/icon/favorite.png';
 		fav_items.pop(id);
 	}else{
 		
-		fav_icon.src = '../Images/icon/love1.png';
+		fav_icon.src = '../../Images/icon/love1.png';
 		fav_items.push(id);
 		
 	}

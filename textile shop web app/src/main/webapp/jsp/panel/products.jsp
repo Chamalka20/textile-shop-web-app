@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>hnsert title here</title>
+<title>Inventory</title>
 
 
 	<!-- jquary  -->
@@ -20,11 +21,11 @@
 	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <!-- Custom CSS -->
-	<link rel="stylesheet" href="../css/admin/orders.css">
-    <link href='../icons/icon list/all.css' rel='stylesheet'>
+	<link rel="stylesheet" href="../../css/admin/productStyle.css">
+    <link href='../../icons/icon list/all.css' rel='stylesheet'>
     <!-- user validation -->
-   <script defer src="../JavaScript/admin/auth.js"></script>
-   <script defer src="../JavaScript/admin/initialize.js"></script>
+   <script defer src="../../JavaScript/admin/auth.js"></script>
+   <script defer src="../../JavaScript/admin/initialize.js"></script>
 </head>
 <body>
 	<div class="grid-container">
@@ -72,27 +73,88 @@
         </ul>
       </aside>
       <!-- end Sidebar -->
-		<main class="main-container">
+	  <!-- Main -->
+     	<main class="main-container">
 			<div class="main-title1">
-          		<p class="font-weight-bold">Orders</p>
+          		<p class="font-weight-bold">Products</p>
         	</div>
 			<div class="products-Container">
-					<div class="headerContainer">	
-					<div class="headerdata">Order Id</div>
-					<div class="headerdata">User Name</div>
-					<div class="headerdata">Payment Mode</div>
-					<div class="headerdata">Order Date</div>
+					
+				<div class="headerContainer">	
+					<div class="headerdata">Id</div>
+					<div class="headerdata">Product</div>
+					<div class="headerdata">Price</div>
 					<div class="headerdata">Action</div>		  
 				</div>
 				
 				<div class="dataContainer" id="dataHolder">	</div>	
 						
-			</div>	
+			</div>
+			<div class="main-title2">
+          		<p class="font-weight-bold">New Product</p>
+        	</div>	
+			<div class="new-product-container">
+				<div class="table-container">
+					<div class="ImageWrapper" id="img"></div>
+					<table>
+						<tr>
+							<td>Name</td>
+							<td><input type="text" id="name" value=""></td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td><input type="text" id="desc" value=""></td>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td><input type="text" id="price" value=""></td>
+						</tr>
+						<tr>
+							<td>Product Size:</td>
+							
+						</tr>
+						<tr>
+							<td>Small</td>
+							<td><input type="text" id="small" placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Medium</td>
+							<td><input type="text" id="medium"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Large</td>
+							<td><input type="text" id="large"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>XL</td>
+							<td><input type="text" id="xl"  placeHolder="Enter quantity"></td>
+						</tr>
+						<tr>
+							<td>Category</td>
+							<td><input type="text"  id="searchCate"onclick="search_category()"><ul id="someul" style="display:none; list-style-type: none; cursor: context-menu;"></ul></td>
+						</tr>
+						<tr>
+							<td><div id="loginFailure" style="color:red; position:absolute;"><p></p></div></td>
+							
+						</tr>
+					
+					</table>
+					
+					<button type="button" class="btn btn-primary" onClick="productAdd()">Add</button>
+					
+					
+				</div>	
+			</div>
+		
 		</main>
+      <!-- End Main -->
+	
 	</div>
+		
+			
+			
+<script src="../../JavaScript/admin/product.js"></script>			
 
-	 <!-- Custom JS -->
-    <script  src="../JavaScript/admin/orders.js"></script>
 
 </body>
 </html>
