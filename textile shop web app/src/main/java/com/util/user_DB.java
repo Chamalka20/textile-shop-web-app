@@ -13,7 +13,7 @@ import javax.json.JsonArrayBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.models.user;
+import com.entities.user;
 
 
 

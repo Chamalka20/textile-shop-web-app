@@ -1,4 +1,4 @@
-package com.models;
+package com.entities;
 
 public class user {
 
