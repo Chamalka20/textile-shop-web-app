@@ -197,7 +197,24 @@ function loadBestSellers(){
 		
 	})
 	
-	return(Bestproduct.innerHTML= bestSalles.map((x)=>{
+	// Generate the non-Wishlist and Wishlist product lists using the map function	
+	const productsWithWishlistFlag = bestSalles.map(product => ({
+	  id: product.id,
+	  add_date : product.add_date,
+	  categorie : product.categorie,
+	  desc : product.desc,
+	  image : product.image,
+	  name : product.name,
+	  price : product.price,
+	  saleActive : product.saleActive,
+	  salePercentage : product.salePercentage,
+	  salles : product.salles,
+      sizeId : product.sizeId,
+	  stock : product.stock,	 
+	  isWishlist: localfav_items.includes(product.id)
+	}));
+	
+	return(Bestproduct.innerHTML= productsWithWishlistFlag.map((x)=>{
 		if(x.saleActive==="true"){
 
 			//calculate sale price--------------------------
@@ -475,7 +492,14 @@ function addOrRemoveFavorite(id){
 	if(fav_items.includes(id)){
 		
 		fav_icon.src = '../../Images/icon/favorite.png';
-		fav_items.pop(id);
+		
+		const newFav_items = fav_items.filter(function (fav) {
+			
+           return fav !== id;
+        });
+		
+		fav_items = newFav_items;
+		
 	}else{
 		
 		fav_icon.src = '../../Images/icon/love1.png';

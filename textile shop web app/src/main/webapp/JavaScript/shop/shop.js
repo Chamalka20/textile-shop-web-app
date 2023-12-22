@@ -842,7 +842,14 @@ function addOrRemoveFavorite(id){
 	if(fav_items.includes(id)){
 		
 		fav_icon.src = '../../Images/icon/favorite.png';
-		fav_items.pop(id);
+		
+		const newFav_items = fav_items.filter(function (fav) {
+			
+           return fav !== id;
+        });
+		
+		fav_items = newFav_items;
+		
 	}else{
 		
 		fav_icon.src = '../../Images/icon/love1.png';
