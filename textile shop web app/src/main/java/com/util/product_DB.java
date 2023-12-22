@@ -392,7 +392,7 @@ public class product_DB {
 		int cat_id = 0;
 		int quantity = 0;
 		
-		String sql1 = "UPDATE `textile`.`product` SET `name` = '"+name+"', `desc` = '"+desc+"',`category_id`=?,`image`='"+image+"' WHERE (`pro_id` = '"+id+"');";
+		String sql1 = "UPDATE `textile`.`product` SET `name` = '"+name+"', `desc` = '"+desc+"',`category_id`=?,`price`='"+price+"',`image`='"+image+"' WHERE (`pro_id` = '"+id+"');";
 		String sql2 = "SELECT id FROM textile.product_category WHERE cat_name='"+categorie+"'";
 		String sql3 = "UPDATE `textile`.`product_sizes`,`textile`.`product`\r\n"
 						+ "SET `small`='"+small+"',`medium`='"+medium+"',`large`='"+large+"',`XL`='"+xl+"' \r\n"
@@ -424,6 +424,7 @@ public class product_DB {
 			if(rs2>0) {
 				
 				isSuccess=true;
+				System.out.println("update product table");
 			}
 			
 			//update product_sizes table-------------------------------------------
